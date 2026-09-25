@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TiketHub - Super Admin Console</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN with Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration verbatim as specified -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "outline-variant": "#c7c4d8",
+            "tertiary": "#005338",
+            "secondary-fixed": "#eaddff",
+            "on-primary-fixed-variant": "#3323cc",
+            "secondary": "#712ae2",
+            "on-primary": "#ffffff",
+            "surface-variant": "#dae2fd",
+            "primary-container": "#4f46e5",
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#0f0069",
+            "surface-container-low": "#f2f3ff",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-surface-variant": "#464555",
+            "on-error": "#ffffff",
+            "tertiary-container": "#006e4b",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#faf8ff",
+            "secondary-container": "#8a4cfc",
+            "on-surface": "#131b2e",
+            "on-primary-container": "#dad7ff",
+            "surface-container-high": "#e2e7ff",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed": "#25005a",
+            "background": "#faf8ff",
+            "surface-dim": "#d2d9f4",
+            "tertiary-fixed": "#6ffbbe",
+            "on-secondary-fixed-variant": "#5a00c6",
+            "surface": "#faf8ff",
+            "on-tertiary-fixed-variant": "#005236",
+            "outline": "#777587",
+            "secondary-fixed-dim": "#d2bbff",
+            "inverse-on-surface": "#eef0ff",
+            "inverse-primary": "#c3c0ff",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed": "#002113",
+            "surface-container": "#eaedff",
+            "surface-container-lowest": "#ffffff",
+            "surface-tint": "#4d44e3",
+            "on-background": "#131b2e",
+            "primary": "#3525cd",
+            "on-tertiary-container": "#67f4b7",
+            "on-tertiary": "#ffffff",
+            "on-secondary-container": "#fffbff",
+            "surface-container-highest": "#dae2fd",
+            "inverse-surface": "#283044",
+            "primary-fixed": "#e2dfff",
+            "primary-fixed-dim": "#c3c0ff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter-desktop": "1.5rem",
+            "space-3xl": "4rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.5rem",
+            "space-xl": "2rem",
+            "gutter-mobile": "1rem",
+            "container-max": "80rem",
+            "space-sm": "0.75rem",
+            "space-2xs": "0.25rem",
+            "space-2xl": "3rem"
+          },
+          "fontFamily": {
+            "label-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "display-hero": ["Plus Jakarta Sans"],
+            "display-hero-mobile": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "numeric-data": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-md": ["13px", {"lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+            "body-md": ["14px", {"lineHeight": "22px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "headline-xl": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700"}],
+            "body-sm": ["13px", {"lineHeight": "18px", "letterSpacing": "0em", "fontWeight": "400"}],
+            "display-hero": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "800"}],
+            "display-hero-mobile": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.025em", "fontWeight": "800"}],
+            "headline-md": ["22px", {"lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "600"}],
+            "body-lg": ["16px", {"lineHeight": "26px", "letterSpacing": "-0.005em", "fontWeight": "400"}],
+            "label-sm": ["11px", {"lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700"}],
+            "headline-sm": ["18px", {"lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "headline-lg": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "headline-xl-mobile": ["26px", {"lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+            "numeric-data": ["15px", {"lineHeight": "22px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+            "label-lg": ["15px", {"lineHeight": "20px", "letterSpacing": "0em", "fontWeight": "600"}]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: rgba(241, 245, 249, 0.6);
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #c7c4d8;
+      border-radius: 9999px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #777587;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased flex h-screen overflow-hidden font-body-md text-body-md select-none">
+<!-- ==================== SIDEBAR ==================== -->
+<aside class="w-72 bg-inverse-surface text-inverse-on-surface flex flex-col justify-between shrink-0 z-30 shadow-xl border-r border-outline/20">
+<!-- Top Branding & Platform Role -->
+<div class="p-space-lg border-b border-outline/10">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-secondary flex items-center justify-center text-on-primary shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-2xl">confirmation_number</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-headline-sm text-headline-sm font-extrabold tracking-tight text-white">TiketHub</span>
+<span class="text-[10px] font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-primary text-on-primary">Admin</span>
+</div>
+<p class="font-body-sm text-body-sm text-outline-variant">Platform Master Control</p>
+</div>
+</div>
+</div>
+<!-- Quick Switcher / Status Badge -->
+<div class="mt-4 flex items-center justify-between px-3 py-2 rounded-lg bg-white/5 border border-white/10">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed-dim animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-inverse-primary">Laravel API v2.4</span>
+</div>
+<span class="text-[10px] text-tertiary-fixed-dim font-bold bg-tertiary/60 px-2 py-0.5 rounded-full border border-tertiary-fixed-dim/20">LIVE</span>
+</div>
+</div>
+<!-- Navigation Links -->
+<div class="flex-1 overflow-y-auto custom-scrollbar px-3 py-4 space-y-1">
+<div class="px-3 pb-2 text-[10px] font-bold uppercase tracking-wider text-outline-variant">Main Ecosystem</div>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-xl bg-primary text-on-primary font-semibold transition-all duration-150" id="nav-dashboard" onclick="switchView('dashboard')">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">dashboard</span>
+<span class="font-label-md text-label-md">Dashboard</span>
+</div>
+<span class="text-[11px] px-2 py-0.5 rounded-full bg-white/20 text-white font-bold">Live</span>
+</button>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-xl text-outline-variant hover:text-white hover:bg-white/5 font-medium transition-all duration-150" id="nav-users" onclick="switchView('users')">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">group</span>
+<span class="font-label-md text-label-md">Users</span>
+</div>
+<span class="text-[11px] px-2 py-0.5 rounded-full bg-surface-container-high/10 text-outline-variant">48.2k</span>
+</button>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-xl text-outline-variant hover:text-white hover:bg-white/5 font-medium transition-all duration-150" id="nav-events" onclick="switchView('events')">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">event</span>
+<span class="font-label-md text-label-md">Events</span>
+</div>
+<span class="text-[11px] px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 font-bold">28 req</span>
+</button>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-xl text-outline-variant hover:text-white hover:bg-white/5 font-medium transition-all duration-150" id="nav-bookings" onclick="switchView('bookings')">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">receipt_long</span>
+<span class="font-label-md text-label-md">Bookings</span>
+</div>
+<span class="text-[11px] px-2 py-0.5 rounded-full bg-surface-container-high/10 text-outline-variant">24.8k</span>
+</button>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-xl text-outline-variant hover:text-white hover:bg-white/5 font-medium transition-all duration-150" id="nav-payments" onclick="switchView('payments')">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">payments</span>
+<span class="font-label-md text-label-md">Payments</span>
+</div>
+</button>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-xl text-outline-variant hover:text-white hover:bg-white/5 font-medium transition-all duration-150" id="nav-refunds" onclick="switchView('refunds')">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">currency_exchange</span>
+<span class="font-label-md text-label-md">Refunds</span>
+</div>
+<span class="text-[11px] px-2 py-0.5 rounded-full bg-rose-500/20 text-rose-300 font-bold">14 new</span>
+</button>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-xl text-outline-variant hover:text-white hover:bg-white/5 font-medium transition-all duration-150" id="nav-gate-checkin" onclick="switchView('gate-checkin')">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">qr_code_scanner</span>
+<span class="font-label-md text-label-md">Gate Check-in</span>
+</div>
+<span class="text-[11px] px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-bold">Fast-Lane</span>
+</button>
+<button class="w-full flex items-center justify-between px-space-md py-space-sm rounded-xl text-outline-variant hover:text-white hover:bg-white/5 font-medium transition-all duration-150" id="nav-analytics" onclick="switchView('analytics')">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-xl">monitoring</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</div>
+</button>
+<div class="pt-4 px-3 pb-2 text-[10px] font-bold uppercase tracking-wider text-outline-variant">Platform Control</div>
+<button class="w-full flex items-center gap-3 px-space-md py-space-sm rounded-xl text-outline-variant hover:text-white hover:bg-white/5 font-medium transition-all duration-150">
+<span class="material-symbols-outlined text-xl">settings</span>
+<span class="font-label-md text-label-md">Settings</span>
+</button>
+<button class="w-full flex items-center gap-3 px-space-md py-space-sm rounded-xl text-outline-variant hover:text-white hover:bg-white/5 font-medium transition-all duration-150">
+<span class="material-symbols-outlined text-xl">security</span>
+<span class="font-label-md text-label-md">Audit Logs</span>
+</button>
+</div>
+<!-- Admin User Footer -->
+<div class="p-space-md border-t border-outline/10 bg-black/20">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary/30 border border-inverse-primary/30 flex items-center justify-center font-bold text-white text-sm">
+            SA
+          </div>
+<div class="leading-tight">
+<p class="font-label-md text-label-md text-white">Yosef Tadesse</p>
+<p class="text-[11px] text-tertiary-fixed-dim font-medium">Platform Master</p>
+</div>
+</div>
+<button class="p-2 rounded-lg text-outline-variant hover:text-white hover:bg-white/10 transition-colors" title="Log Out">
+<span class="material-symbols-outlined text-xl">logout</span>
+</button>
+</div>
+</div>
+</aside>
+<!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+<div class="flex-1 flex flex-col h-full overflow-hidden bg-background">
+<!-- TOP HEADER -->
+<header class="h-16 border-b border-outline-variant/30 bg-surface-container-lowest px-space-xl flex items-center justify-between shrink-0 shadow-sm z-20">
+<!-- Breadcrumb / Console Context -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<span class="text-on-surface-variant/80">TiketHub Console</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-primary font-bold" id="current-view-title">Super Admin Console</span>
+</div>
+<span class="hidden md:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+          Gateway Online
+        </span>
+</div>
+<!-- Center / Search Box -->
+<div class="w-96 relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3.5 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="w-full pl-10 pr-4 py-2 text-sm bg-surface-container-low border border-outline-variant/40 rounded-xl focus:bg-white focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all placeholder:text-outline/70" placeholder="Search events, booking ref, user phone or ticket #..." type="text"/>
+<kbd class="absolute right-3 top-1/2 -translate-y-1/2 text-[10px] bg-white border border-outline-variant/50 text-outline-variant px-1.5 py-0.5 rounded font-mono">⌘K</kbd>
+</div>
+<!-- Right Header Actions -->
+<div class="flex items-center gap-3">
+<!-- Quick Action Notification Button with Popup -->
+<div class="relative">
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors relative" id="notif-btn" onclick="toggleNotifications()">
+<span class="material-symbols-outlined text-2xl">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full bg-secondary ring-2 ring-white"></span>
+</button>
+<!-- Notification Dropdown Preview -->
+<div class="hidden absolute right-0 mt-2 w-84 bg-white rounded-2xl shadow-2xl border border-outline-variant/30 py-3 px-4 z-50 animate-in fade-in slide-in-from-top-2 duration-150" id="notif-dropdown">
+<div class="flex items-center justify-between pb-2 border-b border-outline-variant/20 mb-2">
+<span class="font-headline-sm text-sm font-bold text-on-surface">Urgent System Alerts</span>
+<span class="text-[11px] font-bold text-primary cursor-pointer hover:underline">Mark all read</span>
+</div>
+<div class="space-y-2.5 max-h-72 overflow-y-auto custom-scrollbar">
+<div class="p-2 rounded-xl bg-amber-50 border border-amber-200/60 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-amber-600 text-lg">warning</span>
+<div>
+<p class="text-xs font-bold text-amber-950">Addis Jazz Fest: Capacity 98%</p>
+<p class="text-[11px] text-amber-800">Only 24 tickets remaining in VIP lounge.</p>
+</div>
+</div>
+<div class="p-2 rounded-xl bg-rose-50 border border-rose-200/60 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-rose-600 text-lg">error</span>
+<div>
+<p class="text-xs font-bold text-rose-950">Chapa Payout Failure: Ref #TX882</p>
+<p class="text-[11px] text-rose-800">Failed webhook retry attempt #3.</p>
+</div>
+</div>
+<div class="p-2 rounded-xl bg-emerald-50 border border-emerald-200/60 flex items-start gap-2.5">
+<span class="material-symbols-outlined text-emerald-600 text-lg">verified</span>
+<div>
+<p class="text-xs font-bold text-emerald-950">Gate Scanner Station 04 Online</p>
+<p class="text-[11px] text-emerald-800">Millennium Hall entrance synchronized.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<button class="p-2 rounded-xl text-on-surface-variant hover:bg-surface-container-high transition-colors" title="Download System CSV Report">
+<span class="material-symbols-outlined text-2xl">cloud_download</span>
+</button>
+<div class="h-6 w-px bg-outline-variant/40 mx-1"></div>
+<!-- Role Pill -->
+<div class="flex items-center gap-2 pl-2">
+<div class="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-bold flex items-center justify-center text-xs shadow-md">
+            YT
+          </div>
+<div class="hidden lg:block text-left">
+<span class="block text-xs font-bold leading-none text-on-surface">Super Admin</span>
+<span class="text-[11px] text-outline-variant leading-none">Addis Ababa (UTC+3)</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ==================== DYNAMIC VIEWS CONTAINER ==================== -->
+<main class="flex-1 overflow-y-auto custom-scrollbar p-space-xl space-y-6">
+<!-- ==================== VIEW 1: MAIN DASHBOARD OVERVIEW ==================== -->
+<section class="space-y-6" id="view-dashboard">
+<!-- Welcome Hero & Filter Bar -->
+<div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-on-surface tracking-tight">Super Admin Overview</h1>
+<p class="text-on-surface-variant font-body-md text-body-md">Real-time nationwide ticketing health, transactional throughput, and inventory status.</p>
+</div>
+<div class="flex flex-wrap items-center gap-3">
+<div class="inline-flex rounded-xl bg-white border border-outline-variant/30 p-1 shadow-sm">
+<button class="px-3 py-1.5 text-xs font-bold rounded-lg bg-primary text-white shadow-xs">Today</button>
+<button class="px-3 py-1.5 text-xs font-semibold rounded-lg text-on-surface-variant hover:text-on-surface">7 Days</button>
+<button class="px-3 py-1.5 text-xs font-semibold rounded-lg text-on-surface-variant hover:text-on-surface">30 Days</button>
+<button class="px-3 py-1.5 text-xs font-semibold rounded-lg text-on-surface-variant hover:text-on-surface">Year-to-Date</button>
+</div>
+<button class="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary to-secondary text-white font-semibold text-sm shadow-md shadow-primary/25 hover:shadow-lg hover:shadow-primary/30 active:scale-95 transition-all" onclick="triggerApprovalFlow()">
+<span class="material-symbols-outlined text-lg">verified_user</span>
+<span>Quick Actions</span>
+</button>
+</div>
+</div>
+<!-- METRIC ROW 1 (Users, Events, Inventory) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm relative overflow-hidden group hover:border-primary/40 hover:shadow-md transition-all">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold uppercase tracking-wider text-outline">Total Users</span>
+<span class="p-2 rounded-xl bg-primary/10 text-primary">
+<span class="material-symbols-outlined text-xl">group</span>
+</span>
+</div>
+<div class="mt-3">
+<span class="font-headline-xl text-headline-xl font-extrabold text-on-surface">48,290</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="inline-flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+<span class="material-symbols-outlined text-sm">trending_up</span> +12.4%
+                </span>
+<span class="text-xs text-outline-variant">vs last month</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-primary to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm relative overflow-hidden group hover:border-amber-400/40 hover:shadow-md transition-all">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold uppercase tracking-wider text-outline">Total Events</span>
+<span class="p-2 rounded-xl bg-amber-500/10 text-amber-600">
+<span class="material-symbols-outlined text-xl">event_available</span>
+</span>
+</div>
+<div class="mt-3">
+<span class="font-headline-xl text-headline-xl font-extrabold text-on-surface">342</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="inline-flex items-center text-xs font-bold text-amber-700 bg-amber-50 px-1.5 py-0.5 rounded">
+                  28 pending approval
+                </span>
+<span class="text-xs text-outline-variant">requires review</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-1 bg-amber-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm relative overflow-hidden group hover:border-emerald-500/40 hover:shadow-md transition-all">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold uppercase tracking-wider text-outline">Active Events</span>
+<span class="p-2 rounded-xl bg-emerald-500/10 text-emerald-600">
+<span class="material-symbols-outlined text-xl">broadcast_on_personal</span>
+</span>
+</div>
+<div class="mt-3">
+<span class="font-headline-xl text-headline-xl font-extrabold text-on-surface">184</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="inline-flex items-center text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 mr-1 animate-ping"></span> Live now
+                </span>
+<span class="text-xs text-outline-variant">Across Ethiopia</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-1 bg-emerald-500 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm relative overflow-hidden group hover:border-secondary/40 hover:shadow-md transition-all">
+<div class="flex items-center justify-between">
+<span class="text-xs font-bold uppercase tracking-wider text-outline">Sold Out Events</span>
+<span class="p-2 rounded-xl bg-secondary/10 text-secondary">
+<span class="material-symbols-outlined text-xl">stars</span>
+</span>
+</div>
+<div class="mt-3">
+<span class="font-headline-xl text-headline-xl font-extrabold text-on-surface">38</span>
+<div class="flex items-center gap-1.5 mt-1">
+<span class="inline-flex items-center text-xs font-bold text-secondary bg-secondary-fixed/50 px-1.5 py-0.5 rounded">
+                  High Sell-Through
+                </span>
+<span class="text-xs text-outline-variant">100% capacity</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 h-1 bg-secondary opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+</div>
+<!-- METRIC ROW 2 (Financials & Bookings Performance) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 5 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm">
+<span class="text-xs font-bold uppercase tracking-wider text-outline">Total Bookings</span>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg font-extrabold text-on-surface">24,815</span>
+<span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-full">+18.2%</span>
+</div>
+<p class="text-xs text-outline-variant mt-1">Total transaction sessions processed</p>
+</div>
+<!-- Card 6 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm">
+<span class="text-xs font-bold uppercase tracking-wider text-outline">Confirmed Bookings</span>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg font-extrabold text-on-surface">23,104</span>
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full">93.1% Conv</span>
+</div>
+<p class="text-xs text-outline-variant mt-1">Paid &amp; QR passes successfully minted</p>
+</div>
+<!-- Card 7 -->
+<div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/30 shadow-sm">
+<span class="text-xs font-bold uppercase tracking-wider text-outline">Tickets Sold</span>
+<div class="mt-2 flex items-baseline justify-between">
+<span class="font-headline-lg text-headline-lg font-extrabold text-on-surface">62,490</span>
+<span class="text-xs font-bold text-secondary bg-secondary/10 px-2 py-0.5 rounded-full">Passes</span>
+</div>
+<p class="text-xs text-outline-variant mt-1">Average 2.5 passes per order</p>
+</div>
+<!-- Card 8 -->
+<div class="bg-gradient-to-br from-primary via-primary to-secondary p-5 rounded-2xl text-white shadow-lg shadow-primary/20">
+<div class="flex items-center justify-between text-white/80">
+<span class="text-xs font-bold uppercase tracking-wider">Gross GMV Revenue</span>
+<span class="material-symbols-outlined text-lg">account_balance_wallet</span>
+</div>
+<div class="mt-2">
+<span class="font-headline-lg text-headline-lg font-extrabold text-white tracking-tight">34,820,000 ETB</span>
+<p class="text-xs text-inverse-primary/90 mt-1 flex items-center justify-between font-semibold">
+<span>≈ $310,800 USD</span>
+<span class="bg-white/20 px-2 py-0.5 rounded-md text-[11px]">+22.4% MoM</span>
+</p>
+</div>
+</div>
+</div>
+<!-- QUICK ACTION BAR -->
+<div class="bg-surface-container-lowest p-4 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-wrap items-center justify-between gap-3">
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold uppercase tracking-wider text-outline-variant mr-1">Admin Fast Bar:</span>
+<button class="px-3.5 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold text-xs flex items-center gap-1.5 transition-colors" onclick="switchView('users')">
+<span class="material-symbols-outlined text-base text-primary">person_add</span> Manage Users
+            </button>
+<button class="px-3.5 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold text-xs flex items-center gap-1.5 transition-colors" onclick="openApprovalModal()">
+<span class="material-symbols-outlined text-base text-amber-600">playlist_add_check</span> Approve Events (28)
+            </button>
+<button class="px-3.5 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold text-xs flex items-center gap-1.5 transition-colors" onclick="switchView('bookings')">
+<span class="material-symbols-outlined text-base text-secondary">receipt</span> View Bookings
+            </button>
+<button class="px-3.5 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold text-xs flex items-center gap-1.5 transition-colors" onclick="switchView('payments')">
+<span class="material-symbols-outlined text-base text-emerald-600">account_balance</span> Audit Payments
+            </button>
+<button class="px-3.5 py-1.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-on-surface font-semibold text-xs flex items-center gap-1.5 transition-colors" onclick="switchView('gate-checkin')">
+<span class="material-symbols-outlined text-base text-indigo-600">qr_code_scanner</span> Gate Scanner
+            </button>
+</div>
+<div class="flex items-center gap-2 text-xs text-outline font-medium">
+<span class="material-symbols-outlined text-base text-emerald-500">lock</span>
+            Super Admin Session Signed with 2FA
+          </div>
+</div>
+<!-- DUAL DATA SECTION: Left: Recent Events / Right: Live Bookings Stream -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- LEFT: Recent Events Table (7 cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest rounded-2xl border border-outline-variant/30 shadow-sm p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Recent Platform Events</h2>
+<p class="text-xs text-outline-variant">Live concerts, festivals &amp; stage conferences across regions</p>
+</div>
+<button class="text-xs font-bold text-primary hover:underline flex items-center gap-1" onclick="switchView('events')">
+                  View Full Roster <span class="material-symbols-outlined text-sm">arrow_forward</span>
+</button>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/20 text-[11px] uppercase tracking-wider font-bold text-outline">
+<th class="pb-3 font-semibold">Event &amp; Organizer</th>
+<th class="pb-3 font-semibold">Date &amp; Venue</th>
+<th class="pb-3 font-semibold">Capacity</th>
+<th class="pb-3 font-semibold">Status</th>
+<th class="pb-3 font-semibold text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10 text-xs">
+<!-- Event Row 1 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-3">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-xl object-cover border border-outline-variant/20 shrink-0" data-alt="A vivid modern Ethiopian music concert festival poster at night with purple and indigo stage laser lighting, energetic performers, and deep dark cinematic atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0k2sFxQNtOziSrz-Owd9wxPO3MGYx3EWgV8e2Tg0K1HIMn_dYrpqjQNISa1_eX4-QmM3TE0jegS2rhGmPS48eD0L3ffWNm2pLvky-Z0V8GSEdRwbSIiquVTVn13F8nzfzcs2BN8P5iWJnfn5UK3ulfWMgvi7AcJRZVKOZhuxyvPaVaB-FcQ7YKsgxM6L85anNkanHEx4EQVGdqF7Bqytfxj14ApapV03oEmuYd-Qkd-_Y556jgxIx_w"/>
+<div>
+<span class="font-bold text-on-surface group-hover:text-primary transition-colors block">Addis Soundwave Fest 2025</span>
+<span class="text-[11px] text-outline-variant">by Balageru Media</span>
+</div>
+</div>
+</td>
+<td class="py-3">
+<span class="font-semibold text-on-surface block">Oct 26, 2025</span>
+<span class="text-[11px] text-outline-variant">Millennium Hall, Addis</span>
+</td>
+<td class="py-3">
+<div class="w-28">
+<div class="flex justify-between text-[11px] mb-1">
+<span class="font-semibold text-on-surface">4,280</span>
+<span class="text-outline-variant">/ 5,000</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 85%"></div>
+</div>
+</div>
+</td>
+<td class="py-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Live
+                        </span>
+</td>
+<td class="py-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1 rounded-lg text-outline-variant hover:text-primary hover:bg-surface-container transition-colors" onclick="inspectEvent('Addis Soundwave Fest 2025')" title="View Details">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1 rounded-lg text-outline-variant hover:text-rose-600 hover:bg-rose-50 transition-colors" onclick="openCancelModal('Addis Soundwave Fest 2025', 4280)" title="Emergency Cancel">
+<span class="material-symbols-outlined text-base">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Event Row 2 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-3">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-xl object-cover border border-outline-variant/20 shrink-0" data-alt="An energetic youth tech conference auditorium in East Africa with bright violet screen displays, keynote speakers on stage, and modern minimalist auditorium seating." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9708oRQNhj4qh4lU1MCwhaTFiFphhG9PjpdGwdMLBYtMZoqFkk3h1B0zexyJ72CKtS1mQDOENuXkbyE5bviMGIeDoZMrmf66FlMDe1gRvhk6Cz44hM7N3CEfH5zIG3WdIOMXLS1qdwp5n57TgK_McX_AqDhWKRAu9O9toa75oZIUXFd6IlbZRj2fkq4yp59cjnQx-3VvAAUituf9AigZ-0zDBdQFUv4mje1qvmzEwazNTGEQUTxAZVQ"/>
+<div>
+<span class="font-bold text-on-surface group-hover:text-primary transition-colors block">Africa Fintech Summit</span>
+<span class="text-[11px] text-outline-variant">by Shega Media</span>
+</div>
+</div>
+</td>
+<td class="py-3">
+<span class="font-semibold text-on-surface block">Nov 04, 2025</span>
+<span class="text-[11px] text-outline-variant">Skylight Hotel Grand Hall</span>
+</td>
+<td class="py-3">
+<div class="w-28">
+<div class="flex justify-between text-[11px] mb-1">
+<span class="font-semibold text-on-surface">1,200</span>
+<span class="text-outline-variant">/ 1,200</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 100%"></div>
+</div>
+</div>
+</td>
+<td class="py-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-50 text-rose-700 border border-rose-200">
+<span class="w-1.5 h-1.5 rounded-full bg-rose-500"></span> Sold Out
+                        </span>
+</td>
+<td class="py-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1 rounded-lg text-outline-variant hover:text-primary hover:bg-surface-container transition-colors" onclick="inspectEvent('Africa Fintech Summit')">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1 rounded-lg text-outline-variant hover:text-rose-600 hover:bg-rose-50 transition-colors" onclick="openCancelModal('Africa Fintech Summit', 1200)">
+<span class="material-symbols-outlined text-base">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Event Row 3 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-3">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-xl object-cover border border-outline-variant/20 shrink-0" data-alt="Traditional cultural dance and jazz festival celebration under warm amber and golden stage lanterns with acoustic instruments and contemporary modern staging." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfzjdgsHFZCyE1eNiwRjrVaGhPVm6SACJBGe_Ht297nSjzcPwwJMm3emx0HKW80x8TCOX4PxAdtJuVzDznUx-Nbie-M12z8HbsJ8KZITz3JDJjoV3rsO2WwLMw3bNqqfW5B78Ooy7SZRQDW8WxyLvpeFuGnmvMpmjCyrnh6UyBte9aM9WXWQ-cx7VkC0aaWWFOyqGiqQYVSjQBJLwC8LeGJuVXk7FFAk7o2ERx7ID7UF8nfuvO3myZ0g"/>
+<div>
+<span class="font-bold text-on-surface group-hover:text-primary transition-colors block">Ethio Cultural Nights</span>
+<span class="text-[11px] text-outline-variant">by Fendika Cultural Hub</span>
+</div>
+</div>
+</td>
+<td class="py-3">
+<span class="font-semibold text-on-surface block">Nov 12, 2025</span>
+<span class="text-[11px] text-outline-variant">Ghion Peacock Park</span>
+</td>
+<td class="py-3">
+<div class="w-28">
+<div class="flex justify-between text-[11px] mb-1">
+<span class="font-semibold text-on-surface">320</span>
+<span class="text-outline-variant">/ 800</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full rounded-full" style="width: 40%"></div>
+</div>
+</div>
+</td>
+<td class="py-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-50 text-amber-800 border border-amber-200">
+<span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> Selling Fast
+                        </span>
+</td>
+<td class="py-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1 rounded-lg text-outline-variant hover:text-primary hover:bg-surface-container transition-colors" onclick="inspectEvent('Ethio Cultural Nights')">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1 rounded-lg text-outline-variant hover:text-rose-600 hover:bg-rose-50 transition-colors" onclick="openCancelModal('Ethio Cultural Nights', 320)">
+<span class="material-symbols-outlined text-base">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Event Row 4 -->
+<tr class="hover:bg-surface-container-low/50 transition-colors group">
+<td class="py-3">
+<div class="flex items-center gap-3">
+<img class="w-10 h-10 rounded-xl object-cover border border-outline-variant/20 shrink-0" data-alt="An electric EDM neon light music concert arena stage with glowing laser beams, smoke haze, and a crowd cheering with hands raised in euphoria." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtmBsjlzNpt-W9hofSf6mooHzHiPkGsiJd6QEf3j5pVTnVX8VXg23PDaq8jE6yDkUCq7caEAgyu1TNnJFWqvy26jMnM7kHkSlcfKKoqdqsbOENCMvrNxH-tWpn8re2gEsQGAtDd50MElo8s5yHFFfzen4zRb0YnFSbNqHatSAKfq90oHCavP7Lp3fJxQiLn6CgN-4Sp0F4A2Knkh8lN6WRUkszLbsu5-Hbwg-FyQaKVNOYuvkqoQ4uIA"/>
+<div>
+<span class="font-bold text-on-surface group-hover:text-primary transition-colors block">Gondar Electro Rave</span>
+<span class="text-[11px] text-outline-variant">by Pulse Events Ethiopia</span>
+</div>
+</div>
+</td>
+<td class="py-3">
+<span class="font-semibold text-on-surface block">Nov 20, 2025</span>
+<span class="text-[11px] text-outline-variant">Goha Hilltop Grounds</span>
+</td>
+<td class="py-3">
+<div class="w-28">
+<div class="flex justify-between text-[11px] mb-1">
+<span class="font-semibold text-on-surface">1,420</span>
+<span class="text-outline-variant">/ 2,500</span>
+</div>
+<div class="w-full h-1.5 bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 56%"></div>
+</div>
+</div>
+</td>
+<td class="py-3">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Live
+                        </span>
+</td>
+<td class="py-3 text-right">
+<div class="inline-flex items-center gap-1">
+<button class="p-1 rounded-lg text-outline-variant hover:text-primary hover:bg-surface-container transition-colors" onclick="inspectEvent('Gondar Electro Rave')">
+<span class="material-symbols-outlined text-base">visibility</span>
+</button>
+<button class="p-1 rounded-lg text-outline-variant hover:text-rose-600 hover:bg-rose-50 transition-colors" onclick="openCancelModal('Gondar Electro Rave', 1420)">
+<span class="material-symbols-outlined text-base">cancel</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Footer summary indicator inside table card -->
+<div class="pt-4 mt-2 border-t border-outline-variant/20 flex items-center justify-between text-xs text-outline-variant">
+<span>Showing 4 of 184 active events</span>
+<span class="text-primary font-semibold">Real-time sync enabled</span>
+</div>
+</div>
+<!-- RIGHT: Live Bookings Stream (5 cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest rounded-2xl border border-outline-variant/30 shadow-sm p-5 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Recent Bookings Stream</h2>
+</div>
+<span class="text-[11px] font-bold text-on-surface-variant bg-surface-container px-2.5 py-1 rounded-full">telebirr / Chapa / CBE</span>
+</div>
+<!-- Stream items -->
+<div class="space-y-3">
+<!-- Booking 1 -->
+<div class="p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between border border-outline-variant/10">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary/10 text-primary font-bold flex items-center justify-center text-xs">
+                      BT
+                    </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-xs text-on-surface">Bereket Tadesse</span>
+<span class="text-[10px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-800 font-semibold">telebirr</span>
+</div>
+<p class="text-[11px] text-outline-variant">Addis Soundwave • 2x VIP Pass</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-numeric-data text-numeric-data font-bold text-on-surface block">3,600 ETB</span>
+<span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">Confirmed</span>
+</div>
+</div>
+<!-- Booking 2 -->
+<div class="p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between border border-outline-variant/10">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary/10 text-secondary font-bold flex items-center justify-center text-xs">
+                      LM
+                    </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-xs text-on-surface">Lensa Mengistu</span>
+<span class="text-[10px] px-1.5 py-0.2 rounded bg-emerald-100 text-emerald-800 font-semibold">Chapa</span>
+</div>
+<p class="text-[11px] text-outline-variant">Africa Fintech • 1x Delegate</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-numeric-data text-numeric-data font-bold text-on-surface block">5,000 ETB</span>
+<span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">Confirmed</span>
+</div>
+</div>
+<!-- Booking 3 -->
+<div class="p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between border border-outline-variant/10">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-amber-500/10 text-amber-700 font-bold flex items-center justify-center text-xs">
+                      DA
+                    </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-xs text-on-surface">Dawit Alemu</span>
+<span class="text-[10px] px-1.5 py-0.2 rounded bg-amber-100 text-amber-900 font-semibold">CBE Birr</span>
+</div>
+<p class="text-[11px] text-outline-variant">Ethio Cultural Nights • 3x Standard</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-numeric-data text-numeric-data font-bold text-on-surface block">1,800 ETB</span>
+<span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">Paid</span>
+</div>
+</div>
+<!-- Booking 4 -->
+<div class="p-3 rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between border border-outline-variant/10">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-rose-500/10 text-rose-700 font-bold flex items-center justify-center text-xs">
+                      SZ
+                    </div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-bold text-xs text-on-surface">Selamawit Zewdu</span>
+<span class="text-[10px] px-1.5 py-0.2 rounded bg-indigo-100 text-indigo-800 font-semibold">telebirr</span>
+</div>
+<p class="text-[11px] text-outline-variant">Gondar Electro • 2x Early Bird</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-numeric-data text-numeric-data font-bold text-on-surface block">2,400 ETB</span>
+<span class="text-[10px] text-emerald-600 font-bold bg-emerald-50 px-1.5 py-0.5 rounded">Confirmed</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer summary inside stream card -->
+<div class="pt-4 mt-3 border-t border-outline-variant/20 flex items-center justify-between">
+<span class="text-xs text-outline-variant font-medium">99.4% Payment Webhook Success</span>
+<button class="text-xs font-bold text-primary hover:underline" onclick="switchView('bookings')">
+                View Ledger
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== VIEW 2: USERS LIST WITH SLIDE-OVER DRAWER ==================== -->
+<section class="hidden space-y-6" id="view-users">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-on-surface">Registered User Directory</h1>
+<p class="text-on-surface-variant text-sm">Review 48,290 customer accounts, organizers, and security verification levels.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 rounded-xl bg-white border border-outline-variant/40 text-on-surface font-semibold text-xs flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-sm">filter_alt</span> Filter Tier
+            </button>
+<button class="px-4 py-2 rounded-xl bg-primary text-white font-semibold text-xs flex items-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-sm">person_add</span> Export CSV
+            </button>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/30 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container-low text-[11px] font-bold uppercase tracking-wider text-outline border-b border-outline-variant/20">
+<th class="p-4">User</th>
+<th class="p-4">Phone &amp; National ID</th>
+<th class="p-4">Role</th>
+<th class="p-4">Tickets Purchased</th>
+<th class="p-4">Total Spent (ETB)</th>
+<th class="p-4">Status</th>
+<th class="p-4 text-right">Action</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10 text-xs">
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-primary/20 text-primary font-bold flex items-center justify-center">BT</div>
+<div>
+<span class="font-bold text-on-surface block">Bereket Tadesse</span>
+<span class="text-outline-variant">bereket.t@gmail.com</span>
+</div>
+</div>
+</td>
+<td class="p-4 font-mono text-outline">+251 91 123 4567<br/><span class="text-[10px] text-emerald-700">Fayda ID Verified</span></td>
+<td class="p-4"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-800 font-bold text-[10px]">Attendee</span></td>
+<td class="p-4 font-semibold">14 tickets</td>
+<td class="p-4 font-bold font-numeric-data">18,500 ETB</td>
+<td class="p-4"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold">Active</span></td>
+<td class="p-4 text-right">
+<button class="px-3 py-1 rounded-lg bg-surface-container hover:bg-primary hover:text-white font-semibold text-xs transition-colors" onclick="openUserDrawer('Bereket Tadesse', '+251 91 123 4567', 'bereket.t@gmail.com', '18,500 ETB', 14)">
+                      Inspect
+                    </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-secondary/20 text-secondary font-bold flex items-center justify-center">HA</div>
+<div>
+<span class="font-bold text-on-surface block">Hannah Assefa</span>
+<span class="text-outline-variant">hannah@balagerumedia.com</span>
+</div>
+</div>
+</td>
+<td class="p-4 font-mono text-outline">+251 92 888 9900<br/><span class="text-[10px] text-primary">Organizer License #9021</span></td>
+<td class="p-4"><span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 font-bold text-[10px]">Organizer</span></td>
+<td class="p-4 font-semibold">12 events hosted</td>
+<td class="p-4 font-bold font-numeric-data">14,200,000 ETB (Payout)</td>
+<td class="p-4"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold">Verified Partner</span></td>
+<td class="p-4 text-right">
+<button class="px-3 py-1 rounded-lg bg-surface-container hover:bg-primary hover:text-white font-semibold text-xs transition-colors" onclick="openUserDrawer('Hannah Assefa', '+251 92 888 9900', 'hannah@balagerumedia.com', '14,200,000 ETB', 12)">
+                      Inspect
+                    </button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="p-4">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-rose-500/20 text-rose-700 font-bold flex items-center justify-center">KB</div>
+<div>
+<span class="font-bold text-on-surface block">Kassahun Bekele</span>
+<span class="text-outline-variant">kassahun.b@ethionet.et</span>
+</div>
+</div>
+</td>
+<td class="p-4 font-mono text-outline">+251 94 333 1122<br/><span class="text-[10px] text-amber-700">Flagged Chargeback</span></td>
+<td class="p-4"><span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-800 font-bold text-[10px]">Attendee</span></td>
+<td class="p-4 font-semibold">2 tickets</td>
+<td class="p-4 font-bold font-numeric-data">2,400 ETB</td>
+<td class="p-4"><span class="px-2 py-0.5 rounded-full bg-amber-50 text-amber-800 font-bold">Suspended</span></td>
+<td class="p-4 text-right">
+<button class="px-3 py-1 rounded-lg bg-surface-container hover:bg-primary hover:text-white font-semibold text-xs transition-colors" onclick="openUserDrawer('Kassahun Bekele', '+251 94 333 1122', 'kassahun.b@ethionet.et', '2,400 ETB', 2)">
+                      Inspect
+                    </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ==================== VIEW 3: EVENTS MANAGEMENT ==================== -->
+<section class="hidden space-y-6" id="view-events">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-on-surface">Event Moderation &amp; Inventory</h1>
+<p class="text-on-surface-variant text-sm">342 registered events. 28 submissions pending compliance approval.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2.5 rounded-xl bg-amber-500 text-white font-semibold text-xs flex items-center gap-1.5 shadow-md shadow-amber-500/20 hover:bg-amber-600 transition-all" onclick="openApprovalModal()">
+<span class="material-symbols-outlined text-sm">playlist_add_check</span> Review Pending Queue (28)
+            </button>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="p-4 rounded-xl bg-white border border-outline-variant/30 shadow-sm flex items-center justify-between">
+<div>
+<span class="text-xs text-outline font-semibold">Active Concerts</span>
+<p class="font-headline-md text-headline-md font-bold text-on-surface">118</p>
+</div>
+<span class="material-symbols-outlined text-3xl text-primary">music_note</span>
+</div>
+<div class="p-4 rounded-xl bg-white border border-outline-variant/30 shadow-sm flex items-center justify-between">
+<div>
+<span class="text-xs text-outline font-semibold">Summits &amp; Expos</span>
+<p class="font-headline-md text-headline-md font-bold text-on-surface">42</p>
+</div>
+<span class="material-symbols-outlined text-3xl text-secondary">business_center</span>
+</div>
+<div class="p-4 rounded-xl bg-white border border-outline-variant/30 shadow-sm flex items-center justify-between">
+<div>
+<span class="text-xs text-outline font-semibold">Community &amp; Cultural</span>
+<p class="font-headline-md text-headline-md font-bold text-on-surface">24</p>
+</div>
+<span class="material-symbols-outlined text-3xl text-amber-500">theater_comedy</span>
+</div>
+</div>
+<div class="bg-white rounded-2xl border border-outline-variant/30 shadow-sm p-5">
+<h3 class="font-bold text-sm text-on-surface mb-3">Live Nationwide Roster</h3>
+<p class="text-xs text-outline-variant mb-4">Click "Inspect" on any event to preview venue seating quotas, ticket classes, and security checkpoints.</p>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+<!-- Event Card 1 -->
+<div class="p-4 rounded-xl border border-outline-variant/30 hover:border-primary/50 transition-all space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800">Live Ticket Sales</span>
+<span class="font-bold text-xs text-primary">85% Sold</span>
+</div>
+<h4 class="font-bold text-sm text-on-surface">Addis Soundwave Fest 2025</h4>
+<p class="text-xs text-outline-variant">Millennium Hall • Addis Ababa</p>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between text-xs">
+<span class="font-bold">4,280 / 5,000 passes</span>
+<button class="text-primary font-bold hover:underline" onclick="inspectEvent('Addis Soundwave Fest 2025')">Manage Event</button>
+</div>
+</div>
+<!-- Event Card 2 -->
+<div class="p-4 rounded-xl border border-outline-variant/30 hover:border-primary/50 transition-all space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-rose-100 text-rose-800">Sold Out</span>
+<span class="font-bold text-xs text-secondary">100% Sold</span>
+</div>
+<h4 class="font-bold text-sm text-on-surface">Africa Fintech Summit</h4>
+<p class="text-xs text-outline-variant">Skylight Hotel • Grand Ballroom</p>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between text-xs">
+<span class="font-bold">1,200 / 1,200 passes</span>
+<button class="text-primary font-bold hover:underline" onclick="inspectEvent('Africa Fintech Summit')">Manage Event</button>
+</div>
+</div>
+<!-- Event Card 3 -->
+<div class="p-4 rounded-xl border border-outline-variant/30 hover:border-primary/50 transition-all space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-amber-100 text-amber-800">Selling Fast</span>
+<span class="font-bold text-xs text-amber-600">40% Sold</span>
+</div>
+<h4 class="font-bold text-sm text-on-surface">Ethio Cultural Nights</h4>
+<p class="text-xs text-outline-variant">Ghion Peacock Grounds</p>
+<div class="pt-2 border-t border-outline-variant/20 flex items-center justify-between text-xs">
+<span class="font-bold">320 / 800 passes</span>
+<button class="text-primary font-bold hover:underline" onclick="inspectEvent('Ethio Cultural Nights')">Manage Event</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== VIEW 4: BOOKINGS FULL VIEW ==================== -->
+<section class="hidden space-y-6" id="view-bookings">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-on-surface">Transactional Bookings Ledger</h1>
+<p class="text-on-surface-variant text-sm">24,815 bookings total. Live synchronisation with telebirr &amp; Chapa merchant APIs.</p>
+</div>
+<button class="px-4 py-2 bg-primary text-white rounded-xl text-xs font-semibold shadow-sm">Export Financial Ledger</button>
+</div>
+<div class="bg-white rounded-2xl border border-outline-variant/30 shadow-sm overflow-hidden">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse text-xs">
+<thead>
+<tr class="bg-surface-container-low text-[11px] font-bold uppercase tracking-wider text-outline border-b border-outline-variant/20">
+<th class="p-4">Booking Ref</th>
+<th class="p-4">Customer</th>
+<th class="p-4">Event</th>
+<th class="p-4">Payment Method</th>
+<th class="p-4">Tickets</th>
+<th class="p-4">Amount</th>
+<th class="p-4">Status</th>
+<th class="p-4 text-right">Details</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant/10">
+<tr class="hover:bg-surface-container-low/40">
+<td class="p-4 font-mono font-bold text-primary">#TKH-9921</td>
+<td class="p-4 font-semibold">Bereket Tadesse</td>
+<td class="p-4">Addis Soundwave Fest</td>
+<td class="p-4"><span class="px-2 py-0.5 rounded bg-indigo-50 text-indigo-700 font-bold">telebirr</span></td>
+<td class="p-4">2x VIP</td>
+<td class="p-4 font-bold font-numeric-data">3,600 ETB</td>
+<td class="p-4"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold">Confirmed</span></td>
+<td class="p-4 text-right"><button class="text-primary font-bold hover:underline">View QR Pass</button></td>
+</tr>
+<tr class="hover:bg-surface-container-low/40">
+<td class="p-4 font-mono font-bold text-primary">#TKH-9920</td>
+<td class="p-4 font-semibold">Lensa Mengistu</td>
+<td class="p-4">Africa Fintech Summit</td>
+<td class="p-4"><span class="px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 font-bold">Chapa</span></td>
+<td class="p-4">1x Delegate</td>
+<td class="p-4 font-bold font-numeric-data">5,000 ETB</td>
+<td class="p-4"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold">Confirmed</span></td>
+<td class="p-4 text-right"><button class="text-primary font-bold hover:underline">View QR Pass</button></td>
+</tr>
+<tr class="hover:bg-surface-container-low/40">
+<td class="p-4 font-mono font-bold text-primary">#TKH-9919</td>
+<td class="p-4 font-semibold">Dawit Alemu</td>
+<td class="p-4">Ethio Cultural Nights</td>
+<td class="p-4"><span class="px-2 py-0.5 rounded bg-amber-50 text-amber-800 font-bold">CBE Birr</span></td>
+<td class="p-4">3x Standard</td>
+<td class="p-4 font-bold font-numeric-data">1,800 ETB</td>
+<td class="p-4"><span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 font-bold">Paid</span></td>
+<td class="p-4 text-right"><button class="text-primary font-bold hover:underline">View QR Pass</button></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<!-- ==================== VIEW 5: PAYMENTS & REVENUE AUDIT ==================== -->
+<section class="hidden space-y-6" id="view-payments">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-on-surface">Payment Gateways &amp; Disbursals</h1>
+<p class="text-on-surface-variant text-sm">34,820,000 ETB Total Gross Volume audited via bank settlements.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200">All 3 Gateways Healthy</span>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<div class="bg-white p-5 rounded-2xl border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-bold text-indigo-700">telebirr (Ethio Telecom)</span>
+<span class="material-symbols-outlined text-indigo-600">smartphone</span>
+</div>
+<p class="font-headline-md text-headline-md font-extrabold text-on-surface">22,633,000 ETB</p>
+<p class="text-xs text-outline-variant">65% market share of all ticket purchases</p>
+<div class="pt-2 border-t border-outline-variant/20 flex justify-between text-xs">
+<span>Success Rate</span>
+<span class="font-bold text-emerald-600">99.7%</span>
+</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-bold text-emerald-700">Chapa Direct Checkout</span>
+<span class="material-symbols-outlined text-emerald-600">credit_card</span>
+</div>
+<p class="font-headline-md text-headline-md font-extrabold text-on-surface">8,705,000 ETB</p>
+<p class="text-xs text-outline-variant">25% market share (Visa, Mastercard, Domestic)</p>
+<div class="pt-2 border-t border-outline-variant/20 flex justify-between text-xs">
+<span>Success Rate</span>
+<span class="font-bold text-emerald-600">98.9%</span>
+</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-outline-variant/30 shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<span class="font-bold text-amber-800">CBE Birr API</span>
+<span class="material-symbols-outlined text-amber-700">account_balance</span>
+</div>
+<p class="font-headline-md text-headline-md font-extrabold text-on-surface">3,482,000 ETB</p>
+<p class="text-xs text-outline-variant">10% market share via Commercial Bank of Ethiopia</p>
+<div class="pt-2 border-t border-outline-variant/20 flex justify-between text-xs">
+<span>Success Rate</span>
+<span class="font-bold text-emerald-600">99.2%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== VIEW 6: REFUNDS PROCESSING ==================== -->
+<section class="hidden space-y-6" id="view-refunds">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-on-surface">Refunds &amp; Chargebacks</h1>
+<p class="text-on-surface-variant text-sm">Automated reverse escrow processing and dispute resolution center.</p>
+</div>
+<span class="px-3 py-1.5 rounded-full bg-rose-50 text-rose-800 text-xs font-bold border border-rose-200">14 pending approvals</span>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-outline-variant/30 shadow-sm">
+<p class="text-xs text-outline-variant mb-4">Refund requests trigger direct reverse credits to customer telebirr/Chapa accounts once Super Admin authorizes.</p>
+<div class="space-y-3">
+<div class="p-4 rounded-xl border border-outline-variant/20 flex items-center justify-between bg-surface-container-low/30">
+<div class="space-y-1">
+<span class="text-xs font-bold text-on-surface">Dispute #RF-3091 • Gondar Electro Rave (1 ticket)</span>
+<p class="text-xs text-outline-variant">Requester: Abebe Bikila (telebirr ID: +251 91 199 0011) • Reason: Organizer rescheduled date</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="font-bold text-sm text-on-surface">1,200 ETB</span>
+<button class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-xs">Authorize Refund</button>
+<button class="px-3 py-1.5 rounded-lg bg-slate-200 text-slate-800 font-bold text-xs">Decline</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== VIEW 7: GATE CHECK-IN SCANNER ==================== -->
+<section class="hidden space-y-6" id="view-gate-checkin">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-on-surface">Gate Access Control &amp; Live Validator</h1>
+<p class="text-on-surface-variant text-sm">Real-time turnstile verification station with QR validator &amp; anti-passback security.</p>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-xs font-bold text-emerald-800">Scanner Engine Active</span>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Live QR Simulator -->
+<div class="lg:col-span-6 bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col items-center text-center justify-center space-y-4">
+<div class="w-48 h-48 rounded-2xl bg-surface-container-high/60 border-2 border-dashed border-primary/40 flex flex-col items-center justify-center p-4 relative group">
+<span class="material-symbols-outlined text-6xl text-primary animate-pulse">qr_code_scanner</span>
+<p class="text-[11px] font-bold text-on-surface-variant mt-2">Hold Attendee QR Pass Here</p>
+<!-- Scan laser simulator -->
+<div class="absolute left-0 right-0 top-1/2 h-0.5 bg-rose-500 shadow-sm shadow-rose-500 animate-bounce"></div>
+</div>
+<div class="w-full max-w-sm">
+<label class="block text-left text-xs font-bold text-outline-variant mb-1">Manual Barcode / Ticket ID Override:</label>
+<div class="flex gap-2">
+<input class="flex-1 text-xs font-mono py-2 px-3 border border-outline-variant/40 rounded-xl" id="manual-ticket-id" type="text" value="TKH-PASS-9921-VIP"/>
+<button class="px-4 py-2 rounded-xl bg-primary text-white text-xs font-bold shadow-md" onclick="simulateTicketScan()">Validate</button>
+</div>
+</div>
+<div class="w-full max-w-sm p-3 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs font-bold flex items-center justify-center gap-2" id="scan-feedback">
+<span class="material-symbols-outlined text-lg text-emerald-600">verified</span>
+<span>Ticket Valid: Bereket Tadesse (VIP Admission)</span>
+</div>
+</div>
+<!-- Live Gate Turnstile Stats -->
+<div class="lg:col-span-6 bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-4">
+<h3 class="font-bold text-sm text-on-surface">Millennium Hall Entrance Live Flow</h3>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-outline-variant">Total Scanned In</span>
+<p class="font-headline-md text-headline-md font-bold text-on-surface">3,240 <span class="text-xs text-outline font-normal">/ 5,000</span></p>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-outline-variant">Duplicate Rejection (Anti-Passback)</span>
+<p class="font-headline-md text-headline-md font-bold text-rose-600">4 attempts</p>
+</div>
+</div>
+<h4 class="font-bold text-xs text-outline-variant uppercase tracking-wider pt-2">Recent Scan Log</h4>
+<div class="space-y-2 text-xs">
+<div class="p-2 rounded-lg bg-emerald-50/60 flex items-center justify-between border border-emerald-100">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600 text-base">check_circle</span>
+<span class="font-semibold">Gate 02 - Bereket Tadesse</span>
+</div>
+<span class="text-[10px] text-outline-variant">Just now</span>
+</div>
+<div class="p-2 rounded-lg bg-emerald-50/60 flex items-center justify-between border border-emerald-100">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-emerald-600 text-base">check_circle</span>
+<span class="font-semibold">Gate 01 - Sara Mengistu</span>
+</div>
+<span class="text-[10px] text-outline-variant">2 mins ago</span>
+</div>
+<div class="p-2 rounded-lg bg-rose-50/60 flex items-center justify-between border border-rose-100">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-rose-600 text-base">block</span>
+<span class="font-semibold text-rose-900">Gate 04 - Duplicate Pass #TKH-8812</span>
+</div>
+<span class="text-[10px] text-rose-700 font-bold">REJECTED</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ==================== VIEW 8: ANALYTICS ==================== -->
+<section class="hidden space-y-6" id="view-analytics">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-extrabold text-on-surface">Platform Growth Analytics</h1>
+<p class="text-on-surface-variant text-sm">Conversion rates, ticket sales velocity, and regional demand forecasting.</p>
+</div>
+<button class="px-3.5 py-2 rounded-xl bg-white border border-outline-variant/40 text-xs font-bold">Download PDF Executive Deck</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="bg-white p-5 rounded-2xl border border-outline-variant/30 shadow-sm space-y-3">
+<h3 class="font-bold text-sm text-on-surface">Hourly Ticket Velocity (Millennium Hall)</h3>
+<div class="h-44 flex items-end gap-2 pt-6 pb-2">
+<div class="flex-1 bg-primary/20 hover:bg-primary h-[30%] rounded-t transition-all" title="10:00 AM"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary h-[45%] rounded-t transition-all" title="11:00 AM"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary h-[60%] rounded-t transition-all" title="12:00 PM"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary h-[85%] rounded-t transition-all" title="01:00 PM"></div>
+<div class="flex-1 bg-primary hover:bg-primary h-[100%] rounded-t transition-all" title="02:00 PM Peak"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary h-[70%] rounded-t transition-all" title="03:00 PM"></div>
+<div class="flex-1 bg-primary/20 hover:bg-primary h-[50%] rounded-t transition-all" title="04:00 PM"></div>
+</div>
+<div class="flex justify-between text-[11px] text-outline-variant">
+<span>10:00 AM</span>
+<span>12:00 PM</span>
+<span class="font-bold text-primary">02:00 PM Peak</span>
+<span>04:00 PM</span>
+</div>
+</div>
+<div class="bg-white p-5 rounded-2xl border border-outline-variant/30 shadow-sm space-y-3">
+<h3 class="font-bold text-sm text-on-surface">Geographic Distribution</h3>
+<div class="space-y-3 pt-2">
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-semibold text-on-surface">Addis Ababa</span>
+<span class="font-bold">78%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-primary h-full rounded-full" style="width: 78%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-semibold text-on-surface">Hawassa</span>
+<span class="font-bold">12%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full" style="width: 12%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-semibold text-on-surface">Bahir Dar &amp; Gondar</span>
+<span class="font-bold">10%</span>
+</div>
+<div class="h-2 w-full bg-surface-container-high rounded-full overflow-hidden">
+<div class="bg-amber-500 h-full rounded-full" style="width: 10%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- ==================== MODAL 1: EVENT CANCELLATION WARNING OVERLAY ==================== -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200" id="cancel-modal">
+<div class="bg-white rounded-3xl max-w-md w-full p-6 shadow-2xl border border-rose-200 space-y-4">
+<div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mx-auto">
+<span class="material-symbols-outlined text-3xl">warning</span>
+</div>
+<div class="text-center space-y-2">
+<h3 class="font-headline-sm text-headline-sm font-extrabold text-on-surface">Cancel Event?</h3>
+<p class="text-xs text-on-surface-variant leading-relaxed">
+          Cancellation will permanently stop ticket sales, initiate <span class="font-bold text-rose-700">automated reverse refund processing</span>, and notify all <span class="font-bold text-on-surface" id="modal-ticket-holders-count">1,420 ticket holders</span> via SMS and email.
+        </p>
+</div>
+<div class="p-3 rounded-xl bg-rose-50 border border-rose-200 text-xs text-rose-900 space-y-1">
+<div class="flex items-center justify-between font-bold">
+<span id="modal-event-name">Addis Soundwave Fest</span>
+<span class="text-rose-700">IRREVERSIBLE</span>
+</div>
+<p class="text-[11px] text-rose-800">Organizers escrow balance will be locked immediately for disallowance check.</p>
+</div>
+<div class="flex gap-3 pt-2">
+<button class="flex-1 py-2.5 rounded-xl border border-outline-variant text-on-surface font-semibold text-xs hover:bg-surface-container transition-colors" onclick="closeCancelModal()">
+          Keep Event
+        </button>
+<button class="flex-1 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-xs shadow-md shadow-rose-600/30 transition-all" onclick="confirmCancellation()">
+          Confirm Cancellation
+        </button>
+</div>
+</div>
+</div>
+<!-- ==================== MODAL 2: EVENT APPROVAL QUEUE ==================== -->
+<div class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200" id="approval-modal">
+<div class="bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl border border-outline-variant/30 space-y-4">
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Pending Event Approvals</h3>
+<p class="text-xs text-outline-variant">28 event submissions awaiting verification</p>
+</div>
+<button class="p-1.5 rounded-xl text-outline-variant hover:text-on-surface hover:bg-surface-container" onclick="closeApprovalModal()">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<div class="space-y-3 max-h-80 overflow-y-auto custom-scrollbar pr-1">
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex items-center justify-between">
+<div>
+<span class="font-bold text-xs text-on-surface block">Addis International Film Gala</span>
+<span class="text-[11px] text-outline-variant">National Theatre • Host: Ethiopian Cinema Guild</span>
+<div class="mt-1 flex items-center gap-2">
+<span class="text-[10px] bg-amber-100 text-amber-900 px-1.5 py-0.2 rounded font-bold">Venue Permit Verified</span>
+<span class="text-[10px] text-outline">Target: 600 seats</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-700" onclick="approveEvent('Addis International Film Gala')">Approve</button>
+<button class="px-3 py-1.5 rounded-lg bg-slate-200 text-slate-800 font-bold text-xs hover:bg-slate-300">Reject</button>
+</div>
+</div>
+<div class="p-3.5 rounded-xl bg-surface-container-low border border-outline-variant/20 flex items-center justify-between">
+<div>
+<span class="font-bold text-xs text-on-surface block">Hawassa Lake Marathon 2025</span>
+<span class="text-[11px] text-outline-variant">Hawassa Stadium • Host: Southern Athletics Assoc.</span>
+<div class="mt-1 flex items-center gap-2">
+<span class="text-[10px] bg-emerald-100 text-emerald-900 px-1.5 py-0.2 rounded font-bold">Medical Clearance Signed</span>
+<span class="text-[10px] text-outline">Target: 3,000 runners</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-lg bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-700" onclick="approveEvent('Hawassa Lake Marathon 2025')">Approve</button>
+<button class="px-3 py-1.5 rounded-lg bg-slate-200 text-slate-800 font-bold text-xs hover:bg-slate-300">Reject</button>
+</div>
+</div>
+</div>
+<div class="pt-2 text-right">
+<button class="px-4 py-2 rounded-xl bg-surface-container text-on-surface font-semibold text-xs" onclick="closeApprovalModal()">Dismiss</button>
+</div>
+</div>
+</div>
+<!-- ==================== USER DETAILS SLIDE-OVER DRAWER ==================== -->
+<div class="hidden fixed inset-0 z-50 flex justify-end bg-black/40 backdrop-blur-xs transition-opacity" id="user-drawer">
+<div class="w-full max-w-md bg-white h-full shadow-2xl p-6 flex flex-col justify-between overflow-y-auto custom-scrollbar animate-in slide-in-from-right duration-200">
+<div class="space-y-5">
+<div class="flex items-center justify-between pb-3 border-b border-outline-variant/20">
+<span class="text-xs font-bold uppercase tracking-wider text-outline-variant">User Profile Inspector</span>
+<button class="p-1 rounded-lg text-outline-variant hover:text-on-surface" onclick="closeUserDrawer()">
+<span class="material-symbols-outlined text-xl">close</span>
+</button>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-14 h-14 rounded-2xl bg-gradient-to-tr from-primary to-secondary text-white font-extrabold flex items-center justify-center text-lg">
+            US
+          </div>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface" id="drawer-user-name">Bereket Tadesse</h3>
+<p class="text-xs font-mono text-outline" id="drawer-user-phone">+251 91 123 4567</p>
+<span class="text-[10px] bg-emerald-50 text-emerald-700 font-bold px-2 py-0.5 rounded-full mt-1 inline-block">KYC Level 2 Verified</span>
+</div>
+</div>
+<div class="space-y-3 pt-2">
+<div class="p-3 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-outline-variant">Email Address</span>
+<p class="text-xs font-bold text-on-surface" id="drawer-user-email">bereket.t@gmail.com</p>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-outline-variant">Lifetime Spend</span>
+<p class="font-bold text-sm text-on-surface" id="drawer-user-spend">18,500 ETB</p>
+</div>
+<div class="p-3 rounded-xl bg-surface-container-low">
+<span class="text-[11px] text-outline-variant">Total Passes</span>
+<p class="font-bold text-sm text-on-surface" id="drawer-user-tickets">14 tickets</p>
+</div>
+</div>
+</div>
+<div class="space-y-2 pt-2">
+<h4 class="text-xs font-bold uppercase tracking-wider text-outline-variant">Security &amp; Compliance Actions</h4>
+<button class="w-full py-2.5 px-3 rounded-xl border border-outline-variant/40 hover:bg-surface-container text-xs font-semibold text-on-surface flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm text-primary">key</span> Force Password &amp; 2FA Reset
+          </button>
+<button class="w-full py-2.5 px-3 rounded-xl border border-rose-200 bg-rose-50/50 hover:bg-rose-100 text-xs font-bold text-rose-800 flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-sm text-rose-600">block</span> Freeze Account Transactions
+          </button>
+</div>
+</div>
+<div class="pt-6 border-t border-outline-variant/20">
+<button class="w-full py-2.5 rounded-xl bg-surface-container hover:bg-surface-container-high text-xs font-bold text-on-surface" onclick="closeUserDrawer()">
+          Close Inspector
+        </button>
+</div>
+</div>
+</div>
+<!-- ==================== JAVASCRIPT LOGIC ==================== -->
+<script>
+    // Navigation Switching Logic
+    const views = ['dashboard', 'users', 'events', 'bookings', 'payments', 'refunds', 'gate-checkin', 'analytics'];
+
+    function switchView(target) {
+      views.forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        const btn = document.getElementById(`nav-${v}`);
+        if (el) el.classList.add('hidden');
+        if (btn) {
+          btn.className = 'w-full flex items-center justify-between px-space-md py-space-sm rounded-xl text-outline-variant hover:text-white hover:bg-white/5 font-medium transition-all duration-150';
+        }
+      });
+
+      const activeEl = document.getElementById(`view-${target}`);
+      const activeBtn = document.getElementById(`nav-${target}`);
+      if (activeEl) activeEl.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.className = 'w-full flex items-center justify-between px-space-md py-space-sm rounded-xl bg-primary text-on-primary font-semibold transition-all duration-150';
+      }
+
+      // Update header breadcrumb title
+      const titleMap = {
+        'dashboard': 'Super Admin Console',
+        'users': 'User Management & KYC Directory',
+        'events': 'Events & Inventory Review',
+        'bookings': 'Live Transactional Ledger',
+        'payments': 'Payment Gateway Disbursals',
+        'refunds': 'Automated Refunds Escrow',
+        'gate-checkin': 'Turnstile Access Scanner',
+        'analytics': 'Ecosystem Growth Analytics'
+      };
+      document.getElementById('current-view-title').innerText = titleMap[target] || 'Super Admin Console';
+    }
+
+    // Notifications dropdown toggle
+    function toggleNotifications() {
+      const dropdown = document.getElementById('notif-dropdown');
+      dropdown.classList.toggle('hidden');
+    }
+
+    // Modal: Cancellation Warning
+    function openCancelModal(eventName, ticketHolders) {
+      document.getElementById('modal-event-name').innerText = eventName;
+      document.getElementById('modal-ticket-holders-count').innerText = `${ticketHolders.toLocaleString()} ticket holders`;
+      document.getElementById('cancel-modal').classList.remove('hidden');
+    }
+
+    function closeCancelModal() {
+      document.getElementById('cancel-modal').classList.add('hidden');
+    }
+
+    function confirmCancellation() {
+      alert('Event cancellation executed. Refund sequence queued and notifications dispatched.');
+      closeCancelModal();
+    }
+
+    // Modal: Pending Approval Queue
+    function openApprovalModal() {
+      document.getElementById('approval-modal').classList.remove('hidden');
+    }
+
+    function closeApprovalModal() {
+      document.getElementById('approval-modal').classList.add('hidden');
+    }
+
+    function approveEvent(name) {
+      alert(`Event "${name}" has been officially approved and published to the live TiketHub discovery feed.`);
+      closeApprovalModal();
+    }
+
+    function triggerApprovalFlow() {
+      openApprovalModal();
+    }
+
+    // Drawer: User Inspector
+    function openUserDrawer(name, phone, email, spend, tickets) {
+      document.getElementById('drawer-user-name').innerText = name;
+      document.getElementById('drawer-user-phone').innerText = phone;
+      document.getElementById('drawer-user-email').innerText = email;
+      document.getElementById('drawer-user-spend').innerText = spend;
+      document.getElementById('drawer-user-tickets').innerText = `${tickets} tickets`;
+      document.getElementById('user-drawer').classList.remove('hidden');
+    }
+
+    function closeUserDrawer() {
+      document.getElementById('user-drawer').classList.add('hidden');
+    }
+
+    // Gate Scanner Simulator
+    function simulateTicketScan() {
+      const id = document.getElementById('manual-ticket-id').value;
+      const feedback = document.getElementById('scan-feedback');
+      feedback.innerHTML = `
+        <span class="material-symbols-outlined text-lg text-emerald-600">verified</span>
+        <span>Ticket Valid: Pass ${id} Authorized!</span>
+      `;
+      feedback.className = "w-full max-w-sm p-3 rounded-xl bg-emerald-50 border border-emerald-300 text-emerald-900 text-xs font-bold flex items-center justify-center gap-2 animate-pulse";
+      setTimeout(() => {
+        feedback.classList.remove('animate-pulse');
+      }, 1000);
+    }
+
+    function inspectEvent(name) {
+      switchView('events');
+    }
+
+    // Close notifications when clicking outside
+    document.addEventListener('click', (e) => {
+      const notifBtn = document.getElementById('notif-btn');
+      const dropdown = document.getElementById('notif-dropdown');
+      if (notifBtn && dropdown && !notifBtn.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.add('hidden');
+      }
+    });
+  </script>
+</body></html>
