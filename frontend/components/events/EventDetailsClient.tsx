@@ -510,6 +510,10 @@ export default function EventDetailsClient({ eventId }: Props) {
   const formattedDate = formatEventDate(event.event_date);
   const formattedTime = formatEventTime(event.event_date);
   const organizerName = event.organizer?.name || 'TiketHub Verified Host';
+  const isOrganizerOrAdmin = Boolean(
+    user && (user.role === 'organizer' || user.role === 'super-admin' || (user.role as string) === 'admin')
+  );
+
 
   return (
     <div className="bg-[#faf8ff] text-[#131b2e] min-h-screen flex flex-col font-sans selection:bg-[#4f46e5] selection:text-white">
@@ -544,18 +548,20 @@ export default function EventDetailsClient({ eventId }: Props) {
               >
                 {t('nav.myBookings')}
               </Link>
-              <Link
-                href={
-                  user?.role === 'organizer'
-                    ? '/organizer/dashboard'
-                    : user?.role === 'super-admin'
-                    ? '/admin'
-                    : '/my-bookings'
-                }
-                className="text-[#464555] font-medium hover:text-[#3525cd] text-[15px] transition-colors"
-              >
-                {t('nav.organizerHub')}
-              </Link>
+              {(!user || isOrganizerOrAdmin) && (
+                <Link
+                  href={
+                    user?.role === 'organizer'
+                      ? '/organizer/dashboard'
+                      : isOrganizerOrAdmin
+                      ? '/admin'
+                      : '/login'
+                  }
+                  className="text-[#464555] font-medium hover:text-[#3525cd] text-[15px] transition-colors"
+                >
+                  {t('nav.organizerHub')}
+                </Link>
+              )}
             </nav>
           </div>
 
@@ -617,20 +623,22 @@ export default function EventDetailsClient({ eventId }: Props) {
                 <span className="material-symbols-outlined text-[20px] text-slate-400">confirmation_number</span>
                 {t('nav.myBookings')}
               </Link>
-              <Link
-                href={
-                  user?.role === 'organizer'
-                    ? '/organizer/dashboard'
-                    : user?.role === 'super-admin'
-                    ? '/admin'
-                    : '/my-bookings'
-                }
-                onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-slate-50 text-[14px] transition-colors"
-              >
-                <span className="material-symbols-outlined text-[20px] text-slate-400">hub</span>
-                {t('nav.organizerHub')}
-              </Link>
+              {(!user || isOrganizerOrAdmin) && (
+                <Link
+                  href={
+                    user?.role === 'organizer'
+                      ? '/organizer/dashboard'
+                      : isOrganizerOrAdmin
+                      ? '/admin'
+                      : '/login'
+                  }
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-medium text-slate-700 hover:bg-slate-50 text-[14px] transition-colors"
+                >
+                  <span className="material-symbols-outlined text-[20px] text-slate-400">hub</span>
+                  {t('nav.organizerHub')}
+                </Link>
+              )}
 
               {user ? (
                 <div className="mt-2 pt-3 border-t border-slate-100 flex flex-col gap-2">

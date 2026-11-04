@@ -120,6 +120,10 @@ export default function HomePage() {
     setDateFilter('all');
   }
 
+  const isOrganizerOrAdmin = Boolean(
+    user && (user.role === 'organizer' || user.role === 'super-admin' || (user.role as string) === 'admin')
+  );
+
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSearch(searchInput.trim());
@@ -163,18 +167,20 @@ export default function HomePage() {
               >
                 {t('nav.myBookings')}
               </Link>
-              <Link
-                href={
-                  user?.role === 'organizer'
-                    ? '/organizer/dashboard'
-                    : user?.role === 'super-admin'
-                    ? '/admin'
-                    : '/login'
-                }
-                className="text-slate-600 font-medium hover:text-[#3525cd] text-[14px] transition-colors duration-150"
-              >
-                {t('nav.organizerHub')}
-              </Link>
+              {(!user || isOrganizerOrAdmin) && (
+                <Link
+                  href={
+                    user?.role === 'organizer'
+                      ? '/organizer/dashboard'
+                      : isOrganizerOrAdmin
+                      ? '/admin'
+                      : '/login'
+                  }
+                  className="text-slate-600 font-medium hover:text-[#3525cd] text-[14px] transition-colors duration-150"
+                >
+                  {t('nav.organizerHub')}
+                </Link>
+              )}
             </nav>
           </div>
 
@@ -205,21 +211,18 @@ export default function HomePage() {
               <span className="material-symbols-outlined text-[22px]">confirmation_number</span>
             </Link>
 
-            <div className="h-5 w-px bg-slate-200 mx-1 hidden sm:block" />
-
-            {/* Create Event CTA */}
-            <Link
-              href={
-                user?.role === 'organizer'
-                  ? '/organizer/events/create'
-                  : user?.role === 'super-admin'
-                  ? '/admin'
-                  : '/login'
-              }
-              className="hidden lg:inline-flex items-center justify-center text-[13px] font-semibold px-3.5 py-2 rounded-xl text-[#3525cd] border border-[#3525cd]/20 hover:bg-[#3525cd]/5 transition-colors duration-150 active:scale-95"
-            >
-              {t('nav.createEvent')}
-            </Link>
+            {/* Create Event CTA - Only visible to organizer or admin */}
+            {isOrganizerOrAdmin && (
+              <>
+                <div className="h-5 w-px bg-slate-200 mx-1 hidden sm:block" />
+                <Link
+                  href={user?.role === 'organizer' ? '/organizer/events/create' : '/admin'}
+                  className="hidden lg:inline-flex items-center justify-center text-[13px] font-semibold px-3.5 py-2 rounded-xl text-[#3525cd] border border-[#3525cd]/20 hover:bg-[#3525cd]/5 transition-colors duration-150 active:scale-95"
+                >
+                  {t('nav.createEvent')}
+                </Link>
+              </>
+            )}
 
             {/* Auth Profile / Sign In */}
             {user ? (
@@ -308,19 +311,21 @@ export default function HomePage() {
               >
                 {t('nav.myBookings')}
               </Link>
-              <Link
-                href={
-                  user?.role === 'organizer'
-                    ? '/organizer/dashboard'
-                    : user?.role === 'super-admin'
-                    ? '/admin'
-                    : '/login'
-                }
-                className="text-slate-700 font-medium py-2 px-3 rounded-lg hover:bg-slate-50 text-[14px]"
-                onClick={() => setMobileNavOpen(false)}
-              >
-                {t('nav.organizerHub')}
-              </Link>
+              {(!user || isOrganizerOrAdmin) && (
+                <Link
+                  href={
+                    user?.role === 'organizer'
+                      ? '/organizer/dashboard'
+                      : isOrganizerOrAdmin
+                      ? '/admin'
+                      : '/login'
+                  }
+                  className="text-slate-700 font-medium py-2 px-3 rounded-lg hover:bg-slate-50 text-[14px]"
+                  onClick={() => setMobileNavOpen(false)}
+                >
+                  {t('nav.organizerHub')}
+                </Link>
+              )}
               {user && (
                 <Link
                   href="/notifications"
@@ -330,9 +335,9 @@ export default function HomePage() {
                   {t('nav.notifications')}
                 </Link>
               )}
-              {user && (user.role === 'organizer' || user.role === 'super-admin') && (
+              {isOrganizerOrAdmin && (
                 <Link
-                  href={user.role === 'organizer' ? '/organizer/events/create' : '/admin'}
+                  href={user?.role === 'organizer' ? '/organizer/events/create' : '/admin'}
                   className="text-[#3525cd] font-semibold py-2 px-3 rounded-lg hover:bg-[#3525cd]/5 text-[14px] flex items-center gap-1.5"
                   onClick={() => setMobileNavOpen(false)}
                 >
