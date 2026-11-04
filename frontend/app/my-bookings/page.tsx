@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState, useCallback } from 'react';
 import Link from 'next/link';
@@ -7,7 +7,6 @@ import { useTranslation } from '@/lib/i18n';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import {
   getStoredAuth,
-  logoutUser,
   fetchMyBookings,
   cancelBooking,
   requestRefund,
@@ -15,6 +14,7 @@ import {
   fetchPaymentStatus,
 } from '@/lib/api';
 import NotificationBell from '@/components/NotificationBell';
+import UserProfileDropdown from '@/components/UserProfileDropdown';
 import type { AuthUser } from '@/types/auth';
 import type { BookingItem, TicketItem } from '@/types/booking';
 
@@ -67,11 +67,6 @@ export default function MyBookingsPage() {
       setLoading(false);
     }
   }, []);
-
-  async function handleLogout() {
-    await logoutUser();
-    router.push('/login');
-  }
 
   async function handleCancelReservation(bookingId: number) {
     if (!window.confirm('Are you sure you want to cancel this reservation? The reserved tickets will be returned to event stock.')) {
@@ -261,17 +256,7 @@ export default function MyBookingsPage() {
         <div className="flex items-center gap-2 sm:gap-4">
           <LanguageSwitcher variant="pill" />
           <NotificationBell />
-          <div className="text-right hidden sm:block">
-            <div className="text-[13px] font-bold text-[#131b2e]">{user?.name}</div>
-            <div className="text-[11px] text-slate-500">{user?.email}</div>
-          </div>
-          <button
-            onClick={handleLogout}
-            className="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[12px] sm:text-[13px] font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer"
-          >
-            <span className="material-symbols-outlined text-[18px]">logout</span>
-            <span className="hidden sm:inline">{t('nav.logout')}</span>
-          </button>
+          {user && <UserProfileDropdown user={user} />}
         </div>
       </header>
 

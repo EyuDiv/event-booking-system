@@ -1,12 +1,13 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from '@/lib/i18n';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
-import { getStoredAuth, logoutUser, fetchOrganizerAnalytics, OrganizerAnalyticsResponse } from '@/lib/api';
+import { getStoredAuth, fetchOrganizerAnalytics, OrganizerAnalyticsResponse } from '@/lib/api';
 import NotificationBell from '@/components/NotificationBell';
+import UserProfileDropdown from '@/components/UserProfileDropdown';
 import type { AuthUser } from '@/types/auth';
 
 export default function OrganizerDashboard() {
@@ -38,11 +39,6 @@ export default function OrganizerDashboard() {
       });
   }, [router]);
 
-  async function handleLogout() {
-    await logoutUser();
-    router.push('/login');
-  }
-
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#faf8ff]">
@@ -68,18 +64,7 @@ export default function OrganizerDashboard() {
         <div className="flex items-center gap-2 sm:gap-4">
           <LanguageSwitcher variant="pill" />
           <NotificationBell />
-          <div className="text-right hidden sm:block">
-            <div className="text-[13px] font-bold text-[#131b2e]">{user?.name}</div>
-            <div className="text-[11px] text-slate-500">{user?.email}</div>
-          </div>
-          <button
-            id="logout-btn"
-            onClick={handleLogout}
-            className="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[12px] sm:text-[13px] font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer"
-          >
-            <span className="material-symbols-outlined text-[18px]">logout</span>
-            <span className="hidden sm:inline">{t('nav.logout')}</span>
-          </button>
+          {user && <UserProfileDropdown user={user} />}
         </div>
       </header>
 

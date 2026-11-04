@@ -1,10 +1,11 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { getStoredAuth, logoutUser, createOrganizerEvent } from '@/lib/api';
+import { getStoredAuth, createOrganizerEvent } from '@/lib/api';
 import type { AuthUser } from '@/types/auth';
+import UserProfileDropdown from '@/components/UserProfileDropdown';
 import type { ApiError } from '@/types/auth';
 import type { OrganizerEventPayload } from '@/lib/api';
 
@@ -180,11 +181,6 @@ export default function CreateEventPage() {
     }
   }
 
-  async function handleLogout() {
-    await logoutUser();
-    router.push('/login');
-  }
-
   return (
     <div className="min-h-screen bg-[#faf8ff] flex flex-col">
       {/* Header */}
@@ -199,18 +195,7 @@ export default function CreateEventPage() {
           </span>
         </div>
         <div className="flex items-center gap-2 sm:gap-3">
-          <div className="text-right hidden sm:block">
-            <div className="text-[13px] font-bold text-[#131b2e]">{user?.name}</div>
-            <div className="text-[11px] text-slate-500">{user?.email}</div>
-          </div>
-          <button
-            id="logout-btn"
-            onClick={handleLogout}
-            className="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[12px] sm:text-[13px] font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer"
-          >
-            <span className="material-symbols-outlined text-[18px]">logout</span>
-            <span className="hidden sm:inline">Logout</span>
-          </button>
+          {user && <UserProfileDropdown user={user} />}
         </div>
       </header>
 

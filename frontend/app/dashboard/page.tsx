@@ -1,9 +1,10 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { getStoredAuth, logoutUser } from '@/lib/api';
+import { getStoredAuth } from '@/lib/api';
 import NotificationBell from '@/components/NotificationBell';
+import UserProfileDropdown from '@/components/UserProfileDropdown';
 import { useTranslation } from '@/lib/i18n';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import type { AuthUser } from '@/types/auth';
@@ -23,11 +24,6 @@ export default function CustomerDashboard() {
     setUser(authUser);
     setLoading(false);
   }, [router]);
-
-  async function handleLogout() {
-    await logoutUser();
-    router.push('/login');
-  }
 
   if (loading) {
     return (
@@ -54,18 +50,7 @@ export default function CustomerDashboard() {
         <div className="flex items-center gap-2 sm:gap-4">
           <LanguageSwitcher variant="pill" />
           <NotificationBell />
-          <div className="text-right hidden sm:block">
-            <div className="text-[13px] font-bold text-[#131b2e]">{user?.name}</div>
-            <div className="text-[11px] text-slate-500">{user?.email}</div>
-          </div>
-          <button
-            id="logout-btn"
-            onClick={handleLogout}
-            className="px-3.5 py-2 rounded-xl text-[13px] font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer"
-          >
-            <span className="material-symbols-outlined text-[18px]">logout</span>
-            {t('nav.logout')}
-          </button>
+          {user && <UserProfileDropdown user={user} />}
         </div>
       </header>
 

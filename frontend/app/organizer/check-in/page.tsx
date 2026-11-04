@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState, useRef, useCallback } from 'react';
 import Link from 'next/link';
@@ -7,6 +7,7 @@ import { useTranslation } from '@/lib/i18n';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { getStoredAuth, logoutUser, validateTicketToken, checkinTicket } from '@/lib/api';
 import type { AuthUser } from '@/types/auth';
+import UserProfileDropdown from '@/components/UserProfileDropdown';
 import type { ValidatedTicket } from '@/types/booking';
 import { Html5Qrcode } from 'html5-qrcode';
 
@@ -45,11 +46,6 @@ export default function OrganizerCheckInPage() {
     setUser(authUser);
     setLoadingAuth(false);
   }, [router]);
-
-  async function handleLogout() {
-    await logoutUser();
-    router.push('/login');
-  }
 
   // Handle Token Validation
   const processValidation = useCallback(async (tokenToValidate: string) => {
@@ -195,9 +191,7 @@ export default function OrganizerCheckInPage() {
             <span className="material-symbols-outlined text-[#3525cd] text-[28px]">confirmation_number</span>
             <span className="text-[20px] font-extrabold text-[#131b2e]">TiketHub</span>
           </Link>
-          <button onClick={handleLogout} className="text-xs font-semibold text-slate-600 hover:text-slate-900">
-            Sign In with Different Account
-          </button>
+          {user && <UserProfileDropdown user={user} />}
         </header>
 
         <main className="max-w-lg mx-auto w-full p-6 my-auto">
@@ -218,8 +212,12 @@ export default function OrganizerCheckInPage() {
                 Go to My Bookings
               </Link>
               <button
-                onClick={handleLogout}
-                className="w-full py-3 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-sm transition-colors"
+                type="button"
+                onClick={async () => {
+                  await logoutUser();
+                  router.push('/login');
+                }}
+                className="w-full py-3 rounded-xl border border-slate-300 hover:bg-slate-50 text-slate-700 font-semibold text-sm transition-colors cursor-pointer"
               >
                 Switch Account / Sign Out
               </button>
@@ -248,20 +246,11 @@ export default function OrganizerCheckInPage() {
 
         <div className="flex items-center gap-2 sm:gap-4">
           <LanguageSwitcher variant="pill" />
-          <div className="hidden sm:flex items-center gap-2 text-[12px] text-slate-400">
-            <span>Staff: <strong className="text-white">{user?.name}</strong></span>
-            <span>({user?.role})</span>
-          </div>
+          
           <div className="px-2.5 sm:px-3 py-1 rounded-xl bg-slate-900 border border-slate-800 text-[11px] sm:text-[12px] font-mono text-[#6ffbbe]">
             Admitted: <strong>{sessionCheckinCount}</strong>
           </div>
-          <button
-            onClick={handleLogout}
-            className="px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 text-xs font-semibold transition-colors flex items-center gap-1 cursor-pointer border border-slate-800"
-          >
-            <span className="material-symbols-outlined text-[15px]">logout</span>
-            <span className="hidden sm:inline">{t('nav.logout')}</span>
-          </button>
+          {user && <UserProfileDropdown user={user} />}
         </div>
       </header>
 

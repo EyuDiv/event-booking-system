@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTranslation } from '@/lib/i18n';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import UserProfileDropdown from '@/components/UserProfileDropdown';
 import {
   fetchEventById,
   createBooking,
@@ -563,21 +564,7 @@ export default function EventDetailsClient({ eventId }: Props) {
             <LanguageSwitcher variant="pill" />
 
             {user ? (
-              <div className="flex items-center gap-2 sm:gap-3">
-                <span className="hidden sm:inline text-[13px] text-[#464555]">
-                  Hi, <strong className="text-[#131b2e]">{user.name}</strong>
-                </span>
-                <button
-                  onClick={async () => {
-                    await logoutUser();
-                    setUser(null);
-                    router.refresh();
-                  }}
-                  className="hidden sm:inline-flex px-3 py-1.5 rounded-lg border border-[#c7c4d8]/40 hover:bg-[#f2f3ff] text-[13px] font-semibold text-[#464555] transition-colors"
-                >
-                  {t('nav.logout')}
-                </button>
-              </div>
+              <UserProfileDropdown user={user} />
             ) : (
               <div className="hidden sm:flex items-center gap-2">
                 <Link

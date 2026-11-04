@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useRouter, useParams } from 'next/navigation';
 import {
   getStoredAuth,
-  logoutUser,
   fetchOrganizerEventBookings,
 } from '@/lib/api';
 import type {
@@ -16,6 +15,7 @@ import type {
 } from '@/lib/api';
 import type { EventItem } from '@/types/event';
 import type { AuthUser } from '@/types/auth';
+import UserProfileDropdown from '@/components/UserProfileDropdown';
 import type { ApiError } from '@/types/auth';
 
 // ─── Badges ───────────────────────────────────────────────────────────────────
@@ -405,11 +405,6 @@ export default function OrganizerEventBookingsPage() {
     };
   }
 
-  async function handleLogout() {
-    await logoutUser();
-    router.push('/login');
-  }
-
   const fmtEventDate = (d: string) =>
     new Date(d).toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -449,18 +444,7 @@ export default function OrganizerEventBookingsPage() {
           </span>
         </div>
         <div className="flex items-center gap-2 sm:gap-3">
-          <div className="text-right hidden sm:block">
-            <div className="text-[13px] font-bold text-[#131b2e]">{user?.name}</div>
-            <div className="text-[11px] text-slate-500">{user?.email}</div>
-          </div>
-          <button
-            id="logout-btn"
-            onClick={handleLogout}
-            className="px-3 sm:px-3.5 py-1.5 sm:py-2 rounded-xl text-[12px] sm:text-[13px] font-semibold text-slate-700 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center gap-1.5 cursor-pointer"
-          >
-            <span className="material-symbols-outlined text-[18px]">logout</span>
-            <span className="hidden sm:inline">Logout</span>
-          </button>
+          {user && <UserProfileDropdown user={user} />}
         </div>
       </header>
 

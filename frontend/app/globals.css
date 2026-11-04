@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
   --font-sans: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, sans-serif;
 
@@ -78,6 +80,198 @@ body {
   color: #131b2e;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* ==========================================================================
+   TIKETHUB GLOBAL DARK THEME ENGINE
+   Transforms all surfaces, cards, headers, inputs, dropdowns, and borders
+   across the entire platform when dark mode is enabled.
+   ========================================================================== */
+
+html.dark {
+  color-scheme: dark;
+
+  --color-surface: #0b0f19;
+  --color-surface-container-lowest: #111827;
+  --color-surface-container-low: #1e293b;
+  --color-surface-container: #1e293b;
+  --color-surface-container-high: #334155;
+  --color-surface-container-highest: #475569;
+  --color-on-surface: #f8fafc;
+  --color-on-surface-variant: #94a3b8;
+  --color-outline: #64748b;
+  --color-outline-variant: #334155;
+  --color-background: #0b0f19;
+  --color-on-background: #f8fafc;
+}
+
+html.dark body {
+  background-color: #0b0f19 !important;
+  color: #f1f5f9 !important;
+}
+
+/* 1. Page Backgrounds & Canvas */
+html.dark .bg-\[\#faf8ff\],
+html.dark [class*="bg-[#faf8ff]"],
+html.dark .bg-surface,
+html.dark main {
+  background-color: #0b0f19 !important;
+}
+
+/* 2. Elevated Cards, Modals, Popovers & Panels */
+html.dark .bg-white {
+  background-color: #131b2e !important;
+}
+
+/* Glassmorphism Header */
+html.dark header.bg-white,
+html.dark header[class*="bg-white"],
+html.dark .bg-white\/95,
+html.dark .bg-white\/90 {
+  background-color: rgba(15, 23, 42, 0.95) !important;
+  backdrop-filter: blur(12px) !important;
+  border-color: #1e293b !important;
+}
+
+/* Subtle & Secondary Container Surfaces */
+html.dark .bg-slate-50,
+html.dark [class*="bg-slate-50"],
+html.dark .bg-gray-50,
+html.dark [class*="bg-gray-50"],
+html.dark .bg-slate-100,
+html.dark [class*="bg-slate-100"],
+html.dark .bg-gray-100,
+html.dark [class*="bg-gray-100"],
+html.dark .bg-\[\#f2f3ff\],
+html.dark [class*="bg-[#f2f3ff]"],
+html.dark .bg-\[\#f8f9ff\],
+html.dark [class*="bg-[#f8f9ff]"],
+html.dark .bg-slate-50\/50 {
+  background-color: #1a233a !important;
+}
+
+/* 3. Typography Adaptations */
+html.dark .text-\[\#131b2e\],
+html.dark [class*="text-[#131b2e]"],
+html.dark .text-slate-900,
+html.dark [class*="text-slate-900"],
+html.dark .text-slate-800,
+html.dark [class*="text-slate-800"],
+html.dark .text-gray-900,
+html.dark [class*="text-gray-900"],
+html.dark .text-gray-800,
+html.dark [class*="text-gray-800"] {
+  color: #f8fafc !important;
+}
+
+html.dark .text-\[\#464555\],
+html.dark [class*="text-[#464555]"],
+html.dark .text-slate-700,
+html.dark [class*="text-slate-700"],
+html.dark .text-slate-600,
+html.dark [class*="text-slate-600"],
+html.dark .text-gray-700,
+html.dark [class*="text-gray-700"],
+html.dark .text-gray-600,
+html.dark [class*="text-gray-600"] {
+  color: #cbd5e1 !important;
+}
+
+html.dark .text-slate-500,
+html.dark [class*="text-slate-500"],
+html.dark .text-gray-500,
+html.dark [class*="text-gray-500"] {
+  color: #94a3b8 !important;
+}
+
+/* Brand Indigo readable accent on dark */
+html.dark .text-\[\#3525cd\],
+html.dark [class*="text-[#3525cd]"],
+html.dark a.text-\[\#3525cd\] {
+  color: #818cf8 !important;
+}
+
+html.dark .material-symbols-outlined.text-\[\#3525cd\] {
+  color: #818cf8 !important;
+}
+
+html.dark .after\:bg-\[\#3525cd\]::after {
+  background-color: #818cf8 !important;
+}
+
+/* Brand Purple readable accent on dark */
+html.dark .text-\[\#712ae2\],
+html.dark [class*="text-[#712ae2]"] {
+  color: #c084fc !important;
+}
+
+html.dark .material-symbols-outlined.text-\[\#712ae2\] {
+  color: #c084fc !important;
+}
+
+/* 4. Borders & Dividers */
+html.dark .border-slate-100,
+html.dark .border-slate-200,
+html.dark .border-slate-200\/80,
+html.dark .border-slate-300,
+html.dark .border-gray-100,
+html.dark .border-gray-200,
+html.dark .border-b-slate-100,
+html.dark .border-b-slate-200,
+html.dark .border-t-slate-100,
+html.dark .border-t-slate-200,
+html.dark [class*="border-slate-100"],
+html.dark [class*="border-slate-200"] {
+  border-color: #1e293b !important;
+}
+
+/* 5. Search Bar & Inputs */
+html.dark input:not([type="checkbox"]):not([type="radio"]),
+html.dark select,
+html.dark textarea {
+  color: #f8fafc !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #64748b !important;
+}
+
+html.dark select option {
+  background-color: #131b2e !important;
+  color: #f8fafc !important;
+}
+
+/* 6. Hover States */
+html.dark .hover\:bg-slate-50:hover,
+html.dark .hover\:bg-slate-100:hover,
+html.dark .hover\:bg-gray-50:hover,
+html.dark .hover\:bg-gray-100:hover {
+  background-color: #1e293b !important;
+}
+
+/* 7. Footer */
+html.dark footer {
+  background-color: #0b0f19 !important;
+  border-color: #1e293b !important;
+}
+
+html.dark footer .text-slate-500 {
+  color: #94a3b8 !important;
+}
+
+html.dark footer .text-slate-600 {
+  color: #cbd5e1 !important;
+}
+
+/* 8. Shadows in Dark Mode */
+html.dark .tier-1-shadow,
+html.dark .tier-2-shadow,
+html.dark .tier-3-shadow,
+html.dark .shadow-xl,
+html.dark .shadow-2xl {
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6) !important;
 }
 
 .material-symbols-outlined {

@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import EventCard from '@/components/home/EventCard';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import UserProfileDropdown from '@/components/UserProfileDropdown';
 import { useTranslation } from '@/lib/i18n';
 import { fetchEvents, getStoredAuth, logoutUser } from '@/lib/api';
 import type { AuthUser, ApiError } from '@/types/auth';
@@ -222,25 +223,7 @@ export default function HomePage() {
 
             {/* Auth Profile / Sign In */}
             {user ? (
-              <div className="flex items-center gap-2 sm:gap-3">
-                <div className="hidden sm:block text-right">
-                  <div className="text-[13px] font-bold text-[#131b2e] leading-tight" id="user-display-name">
-                    {user.name}
-                  </div>
-                  <div className="text-[11px] font-medium text-slate-500 capitalize" id="user-display-role">
-                    {user.role}
-                  </div>
-                </div>
-                <button
-                  id="logout-btn"
-                  type="button"
-                  onClick={handleLogout}
-                  className="hidden sm:inline-flex items-center justify-center text-[13px] font-semibold px-3.5 py-2 rounded-xl bg-slate-100 text-slate-700 hover:bg-slate-200 transition-all duration-150 active:scale-95 cursor-pointer"
-                >
-                  <span className="material-symbols-outlined text-[16px] mr-1">logout</span>
-                  {t('nav.logout')}
-                </button>
-              </div>
+              <UserProfileDropdown user={user} />
             ) : (
               <Link
                 id="signin-btn"

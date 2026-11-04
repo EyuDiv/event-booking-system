@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
@@ -599,7 +599,7 @@ export default function LoginForm() {
                 </div>
               )}
 
-              <form onSubmit={handleLoginSubmit} className="space-y-4" noValidate>
+              <form onSubmit={handleLoginSubmit} className="space-y-4" noValidate autoComplete="off">
                 {/* Email Input */}
                 <div>
                   <label
@@ -613,9 +613,8 @@ export default function LoginForm() {
                       mail
                     </span>
                     <input
-                      id="login-email"
-                      type="email"
-                      required
+                      
+                      autoComplete="username"
                       placeholder={t('auth.emailPlaceholder')}
                       value={loginEmail}
                       disabled={loading}
@@ -663,9 +662,8 @@ export default function LoginForm() {
                       lock
                     </span>
                     <input
-                      id="login-password"
-                      type={showLoginPassword ? 'text' : 'password'}
-                      required
+                      
+                      autoComplete="current-password"
                       placeholder="••••••••••••"
                       value={loginPassword}
                       disabled={loading}
@@ -791,7 +789,7 @@ export default function LoginForm() {
                 </div>
               )}
 
-              <form onSubmit={handleRegisterSubmit} className="space-y-4" noValidate>
+              <form onSubmit={handleRegisterSubmit} className="space-y-4" noValidate autoComplete="off">
                 {/* Account Role Selection Radio Cards */}
                 <div className="space-y-1.5">
                   <label className="block text-[13px] font-semibold text-[#131b2e]">
@@ -884,6 +882,7 @@ export default function LoginForm() {
                     <input
                       id="reg-fullname"
                       type="text"
+                      autoComplete="new-password"
                       placeholder="e.g. Dawit Bekele"
                       value={regFullName}
                       disabled={regLoading}
@@ -918,6 +917,7 @@ export default function LoginForm() {
                     <input
                       id="reg-email"
                       type="email"
+                      autoComplete="new-password"
                       placeholder="name@example.com"
                       value={regEmail}
                       disabled={regLoading}
@@ -950,8 +950,8 @@ export default function LoginForm() {
                       lock
                     </span>
                     <input
-                      id="reg-password"
-                      type={showRegPassword ? 'text' : 'password'}
+                      
+                      autoComplete="new-password"
                       placeholder="Create a secure password"
                       value={regPassword}
                       disabled={regLoading}
@@ -1020,8 +1020,8 @@ export default function LoginForm() {
                       lock_reset
                     </span>
                     <input
-                      id="reg-password-confirmation"
-                      type={showRegPasswordConfirm ? 'text' : 'password'}
+                      
+                      autoComplete="new-password"
                       placeholder="Repeat your password"
                       value={regPasswordConfirmation}
                       disabled={regLoading}

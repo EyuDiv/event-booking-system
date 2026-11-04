@@ -7,6 +7,7 @@ import { getStoredAuth, logoutUser } from '@/lib/api';
 import type { AuthUser } from '@/types/auth';
 import { useTranslation } from '@/lib/i18n';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
+import UserProfileDropdown from '@/components/UserProfileDropdown';
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -359,16 +360,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
 
             <div className="h-6 w-px bg-outline-variant/40 mx-1 hidden sm:block"></div>
 
-            {/* Role Pill */}
-            <div className="flex items-center gap-2.5 pl-1 sm:pl-2">
-              <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-secondary text-white font-bold flex items-center justify-center text-xs shadow-md shrink-0">
-                {userInitials}
-              </div>
-              <div className="hidden lg:flex flex-col justify-center text-left">
-                <span className="block text-xs font-bold leading-tight text-on-surface">{t('header.superAdmin')}</span>
-                <span className="text-[11px] text-outline-variant leading-tight">{t('header.locationTime')}</span>
-              </div>
-            </div>
+            {/* User Profile & Settings Dropdown */}
+            {user && <UserProfileDropdown user={user} />}
           </div>
         </header>
 
