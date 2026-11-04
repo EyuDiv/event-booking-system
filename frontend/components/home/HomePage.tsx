@@ -120,10 +120,6 @@ export default function HomePage() {
     setDateFilter('all');
   }
 
-  const isOrganizerOrAdmin = Boolean(
-    user && (user.role === 'organizer' || user.role === 'super-admin' || (user.role as string) === 'admin')
-  );
-
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSearch(searchInput.trim());
@@ -132,6 +128,10 @@ export default function HomePage() {
       grid.scrollIntoView({ behavior: 'smooth' });
     }
   };
+
+  const isOrganizerOrAdmin = Boolean(
+    user && (user.role === 'organizer' || user.role === 'super-admin' || (user.role as string) === 'admin')
+  );
 
   return (
     <div className="bg-[#faf8ff] text-[#131b2e] min-h-screen flex flex-col font-sans">

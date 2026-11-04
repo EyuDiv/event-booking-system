@@ -96,3 +96,4 @@ export default function EventsCreatePage() {
 
   return null;
 }
+
