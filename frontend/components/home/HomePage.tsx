@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Link from 'next/link';
@@ -22,12 +22,62 @@ const STITCH_CATEGORIES = [
 
 const ETHIOPIA_LOCATIONS = [
   { key: 'all', label: 'All Locations' },
+  { key: 'Dessie', label: 'Dessie' },
   { key: 'Addis Ababa', label: 'Addis Ababa' },
   { key: 'Hawassa', label: 'Hawassa' },
   { key: 'Bahir Dar', label: 'Bahir Dar' },
   { key: 'Bishoftu', label: 'Bishoftu' },
   { key: 'Dire Dawa', label: 'Dire Dawa' },
 ] as const;
+
+
+const MOCK_DESSIE_EVENTS: EventItem[] = [
+  {
+    id: 9001,
+    title: 'Cultural Music Night â€” Dessie',
+    category: 'Music',
+    location: 'Piazza, Dessie',
+    event_date: '2026-11-24T18:00:00',
+    ticket_price: '0',
+    total_tickets: 200,
+    available_tickets: 150,
+    status: 'active',
+    image_url: null,
+    description: 'An unforgettable night of traditional and modern Ethiopian music at Piazza, Dessie.',
+    organizer_id: 1,
+    organizer: { id: 1, name: 'Dessie Arts Hub', email: 'arts@dessie.et' },
+  },
+  {
+    id: 9002,
+    title: 'Tech Meetup @ Wollo University',
+    category: 'Technology',
+    location: 'Wollo University, Dessie',
+    event_date: '2026-11-30T09:00:00',
+    ticket_price: '50',
+    total_tickets: 100,
+    available_tickets: 60,
+    status: 'active',
+    image_url: null,
+    description: 'Connect with developers, students, and innovators at Wollo University.',
+    organizer_id: 2,
+    organizer: { id: 2, name: 'Wollo Tech Society', email: 'tech@wollo.et' },
+  },
+  {
+    id: 9003,
+    title: 'Dessie Local Food Festival 2026',
+    category: 'Food & Drinks',
+    location: 'Main Square, Dessie',
+    event_date: '2026-12-05T11:00:00',
+    ticket_price: '100',
+    total_tickets: 500,
+    available_tickets: 320,
+    status: 'active',
+    image_url: null,
+    description: 'Celebrate the rich culinary heritage of Dessie with food, music, and culture.',
+    organizer_id: 3,
+    organizer: { id: 3, name: 'Dessie Tourism Bureau', email: 'tourism@dessie.et' },
+  },
+];
 
 export default function HomePage() {
   const router = useRouter();
@@ -135,7 +185,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-[#f8fafc] text-[#0f172a] min-h-screen flex flex-col font-sans">
-      {/* ── 1. Modern Glassmorphic Top Navigation ────────────────────────────────────────── */}
+      {/* â”€â”€ 1. Modern Glassmorphic Top Navigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 shadow-xs transition-colors duration-200">
         <div className="max-w-[80rem] mx-auto px-4 sm:px-6 flex justify-between items-center h-16 w-full gap-4">
           {/* Brand & Main Nav Links */}
@@ -354,102 +404,114 @@ export default function HomePage() {
         )}
       </header>
 
-      {/* ── Main Content ─────────────────────────────────────────────────────── */}
+      {/* â”€â”€ Main Content â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <main className="flex-grow">
-        {/* ── 2. Hero Section: Refined Deep Midnight Aesthetic (Eventbrite / Airbnb inspired) ───────────────────────── */}
-        <section className="max-w-[80rem] mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-8">
-          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] px-6 py-12 sm:px-12 sm:py-16 md:py-20 text-white shadow-xl border border-slate-800">
-            {/* Ambient Background Accents */}
-            <div className="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-[#f97316]/15 blur-3xl pointer-events-none" />
-            <div className="absolute left-1/4 bottom-0 w-72 h-72 rounded-full bg-[#ea580c]/10 blur-2xl pointer-events-none" />
+        {/* â”€â”€ 2. Hero Section: Refined Deep Midnight Aesthetic (Eventbrite / Airbnb inspired) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        <section className="max-w-[80rem] mx-auto px-4 sm:px-6 pt-5 sm:pt-6 pb-0">
+          <div className="relative rounded-3xl overflow-hidden bg-[#0f172a] px-6 py-10 sm:px-10 sm:py-14 md:py-16 text-white border border-slate-800/80">
+            {/* Radial Glow â€” coral top-right */}
+            <div className="absolute top-0 right-0 w-[480px] h-[480px] bg-[#f97316]/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3 pointer-events-none" />
+            {/* Indigo glow â€” bottom-left */}
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo-900/25 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+            {/* Subtle dot-grid overlay */}
+            <div
+              className="absolute inset-0 opacity-[0.04] pointer-events-none"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle, #ffffff 1px, transparent 1px)',
+                backgroundSize: '28px 28px',
+              }}
+            />
 
             <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center">
-              {/* Badge with Vibrant Coral Fire Icon */}
+              {/* Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-orange-200 text-[13px] font-semibold mb-5 shadow-xs">
                 <span className="material-symbols-outlined text-[#f97316] text-[18px]">local_fire_department</span>
                 <span>{t('customer.heroBadge')}</span>
               </div>
 
-              {/* Main Headline with Tight Modern Typography */}
-              <h1 className="text-[34px] sm:text-[44px] md:text-[52px] font-extrabold tracking-tight leading-[1.15] mb-4 text-white">
+              {/* Main Headline */}
+              <h1 className="text-[32px] sm:text-[42px] md:text-[50px] font-extrabold tracking-tight leading-[1.15] mb-4 text-white">
                 {t('customer.heroTitle')}
               </h1>
 
               {/* Supporting Subtitle */}
-              <p className="text-[15px] sm:text-[17px] leading-relaxed text-slate-300 max-w-2xl mb-8">
+              <p className="text-[14px] sm:text-[16px] leading-relaxed text-slate-300 max-w-xl mb-10">
                 {t('customer.heroSubtitle')}
               </p>
 
-              {/* ── 3. Modern High-End Search Bar ─────────────────────────── */}
-              <form
-                onSubmit={handleSearchSubmit}
-                className="w-full max-w-4xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl shadow-black/25 p-2.5 sm:p-3 text-slate-800 dark:text-slate-100 border border-slate-200/90 dark:border-slate-800 grid grid-cols-1 md:grid-cols-12 gap-2 sm:gap-3 items-center"
-              >
-                {/* 1. Keyword Search */}
-                <div className="md:col-span-4 flex items-center gap-2.5 px-3 py-2 bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100/80 dark:hover:bg-slate-800 rounded-xl transition-colors border border-slate-200/70 dark:border-slate-700/70">
-                  <span className="material-symbols-outlined text-[#f97316] text-[20px] shrink-0">search</span>
-                  <input
-                    id="home-search-input"
-                    type="text"
-                    value={searchInput}
-                    onChange={(e) => setSearchInput(e.target.value)}
-                    placeholder={t('customer.searchEventsPlaceholder')}
-                    className="w-full bg-transparent text-[13px] font-medium text-[#0f172a] dark:text-white placeholder:text-slate-400 outline-none"
-                  />
-                </div>
+              {/* â”€â”€ 3. Unified Pill Search Bar â€” floats at bottom of hero â”€â”€â”€ */}
+              <div className="relative w-full max-w-4xl -mb-7 sm:-mb-8 z-10">
+                <form
+                  onSubmit={handleSearchSubmit}
+                  className="bg-white dark:bg-slate-900 rounded-2xl shadow-2xl shadow-black/30 border border-slate-200/80 dark:border-slate-800 overflow-hidden"
+                >
+                  <div className="flex flex-col md:flex-row">
+                    {/* 1. Keyword Search */}
+                    <div className="flex items-center gap-3 px-4 py-3.5 md:flex-1 border-b md:border-b-0 md:border-r border-slate-100 dark:border-slate-800">
+                      <span className="material-symbols-outlined text-[#f97316] text-[20px] shrink-0">search</span>
+                      <input
+                        id="home-search-input"
+                        type="text"
+                        value={searchInput}
+                        onChange={(e) => setSearchInput(e.target.value)}
+                        placeholder={t('customer.searchEventsPlaceholder')}
+                        className="w-full bg-transparent text-[13px] font-medium text-[#0f172a] dark:text-white placeholder:text-slate-400 outline-none"
+                      />
+                    </div>
 
-                {/* 2. Date Filter */}
-                <div className="md:col-span-3 flex items-center gap-2 px-3 py-2 bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100/80 dark:hover:bg-slate-800 rounded-xl transition-colors border border-slate-200/70 dark:border-slate-700/70">
-                  <span className="material-symbols-outlined text-slate-400 text-[18px] shrink-0">calendar_today</span>
-                  <select
-                    id="home-date-select"
-                    value={dateFilter}
-                    aria-label="Filter events by date"
-                    onChange={(e) => setDateFilter(e.target.value as typeof dateFilter)}
-                    className="w-full bg-transparent text-[13px] font-medium text-[#0f172a] dark:text-white outline-none cursor-pointer"
-                  >
-                    <option value="all">{t('customer.allDates')}</option>
-                    <option value="weekend">{t('customer.thisWeekend')}</option>
-                    <option value="next-week">{t('customer.nextWeek')}</option>
-                  </select>
-                </div>
+                    {/* 2. Date Filter */}
+                    <div className="flex items-center gap-2.5 px-4 py-3.5 md:w-44 border-b md:border-b-0 md:border-r border-slate-100 dark:border-slate-800">
+                      <span className="material-symbols-outlined text-slate-400 text-[18px] shrink-0">calendar_today</span>
+                      <select
+                        id="home-date-select"
+                        value={dateFilter}
+                        aria-label="Filter events by date"
+                        onChange={(e) => setDateFilter(e.target.value as typeof dateFilter)}
+                        className="w-full bg-transparent text-[13px] font-medium text-[#0f172a] dark:text-white outline-none cursor-pointer"
+                      >
+                        <option value="all">{t('customer.allDates')}</option>
+                        <option value="weekend">{t('customer.thisWeekend')}</option>
+                        <option value="next-week">{t('customer.nextWeek')}</option>
+                      </select>
+                    </div>
 
-                {/* 3. Location Filter */}
-                <div className="md:col-span-3 flex items-center gap-2 px-3 py-2 bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100/80 dark:hover:bg-slate-800 rounded-xl transition-colors border border-slate-200/70 dark:border-slate-700/70">
-                  <span className="material-symbols-outlined text-slate-400 text-[18px] shrink-0">location_on</span>
-                  <select
-                    id="home-location-select"
-                    value={locationFilter}
-                    aria-label="Filter events by location"
-                    onChange={(e) => setLocationFilter(e.target.value)}
-                    className="w-full bg-transparent text-[13px] font-medium text-[#0f172a] dark:text-white outline-none cursor-pointer truncate"
-                  >
-                    {ETHIOPIA_LOCATIONS.map((loc) => (
-                      <option key={loc.key} value={loc.key}>
-                        {loc.key === 'all' ? t('customer.allLocations') : loc.label}
-                      </option>
-                    ))}
-                  </select>
-                </div>
+                    {/* 3. Location Filter */}
+                    <div className="flex items-center gap-2.5 px-4 py-3.5 md:w-52 border-b md:border-b-0 md:border-r border-slate-100 dark:border-slate-800">
+                      <span className="material-symbols-outlined text-slate-400 text-[18px] shrink-0">location_on</span>
+                      <select
+                        id="home-location-select"
+                        value={locationFilter}
+                        aria-label="Filter events by location"
+                        onChange={(e) => setLocationFilter(e.target.value)}
+                        className="w-full bg-transparent text-[13px] font-medium text-[#0f172a] dark:text-white outline-none cursor-pointer"
+                      >
+                        {ETHIOPIA_LOCATIONS.map((loc) => (
+                          <option key={loc.key} value={loc.key}>
+                            {loc.key === 'all' ? t('customer.allLocations') : loc.label}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
 
-                {/* 4. Search CTA Button */}
-                <div className="md:col-span-2">
-                  <button
-                    type="submit"
-                    id="home-search-btn"
-                    className="w-full h-full min-h-[42px] inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#f97316] hover:bg-[#ea580c] text-white font-bold text-[13px] shadow-sm shadow-orange-500/25 hover:shadow-orange-500/35 transition-all duration-150 active:scale-95 cursor-pointer"
-                  >
-                    <span className="material-symbols-outlined text-[18px]">search</span>
-                    <span>{t('customer.searchBtn')}</span>
-                  </button>
-                </div>
-              </form>
+                    {/* 4. Search CTA */}
+                    <button
+                      type="submit"
+                      id="home-search-btn"
+                      className="bg-[#f97316] hover:bg-[#ea580c] text-white font-bold text-[13px] px-6 py-3.5 flex items-center justify-center gap-2 transition-all duration-150 active:scale-95 cursor-pointer shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 shrink-0"
+                    >
+                      <span className="material-symbols-outlined text-[18px]">search</span>
+                      <span>{t('customer.searchBtn')}</span>
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* ── 4. Category Filter Pills ────────────────────────────────────────── */}
-        <section className="max-w-[80rem] mx-auto px-4 sm:px-6 mb-8" id="categories">
+        {/* â”€â”€ 4. Category Filter Pills â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
+        <section className="max-w-[80rem] mx-auto px-4 sm:px-6 mt-14 sm:mt-16 mb-8" id="categories">
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200/80">
             {/* Category Filter Pills Container */}
             <div className="flex items-center gap-2 overflow-x-auto no-scrollbar py-1" id="categoryFilterContainer">
@@ -463,8 +525,8 @@ export default function HomePage() {
                     onClick={() => setCategory(item.key)}
                     className={`category-filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-full whitespace-nowrap text-[13px] transition-all duration-150 active:scale-95 cursor-pointer ${
                       active
-                        ? 'bg-[#0f172a] dark:bg-white text-white dark:text-[#0f172a] font-bold shadow-sm'
-                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-[#0f172a] dark:hover:text-white border border-slate-200 dark:border-slate-700 font-medium'
+                        ? 'bg-[#0f172a] dark:bg-white text-white dark:text-[#0f172a] font-bold shadow-sm border border-transparent'
+                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/80 hover:text-[#0f172a] dark:hover:text-white border border-slate-200 dark:border-slate-700 font-medium hover:-translate-y-0.5'
                     }`}
                   >
                     <span className="material-symbols-outlined text-[18px]">{item.icon}</span>
@@ -482,8 +544,8 @@ export default function HomePage() {
                   onClick={() => setCategory(item)}
                   className={`category-filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-full whitespace-nowrap text-[13px] transition-all duration-150 active:scale-95 cursor-pointer ${
                     category === item
-                      ? 'bg-[#0f172a] dark:bg-white text-white dark:text-[#0f172a] font-bold shadow-sm'
-                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-[#0f172a] dark:hover:text-white border border-slate-200 dark:border-slate-700 font-medium'
+                      ? 'bg-[#0f172a] dark:bg-white text-white dark:text-[#0f172a] font-bold shadow-sm border border-transparent'
+                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/80 hover:text-[#0f172a] dark:hover:text-white border border-slate-200 dark:border-slate-700 font-medium hover:-translate-y-0.5'
                   }`}
                 >
                   <span className="material-symbols-outlined text-[18px]">local_activity</span>
@@ -495,7 +557,7 @@ export default function HomePage() {
             {/* Filter Count & Quick Reset Indicator */}
             <div className="flex items-center justify-between md:justify-end gap-4 shrink-0">
               <span className="text-[13px] font-medium text-slate-500" id="eventsCountText">
-                {t('customer.showingVerifiedEvents', { count: loading ? '…' : events.length })}
+                {t('customer.showingVerifiedEvents', { count: loading ? 'â€¦' : events.length })}
               </span>
               {(search || category !== 'all' || dateFilter !== 'all' || locationFilter !== 'all') && (
                 <button
@@ -512,7 +574,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        {/* ── 5. Popular / Featured Events Grid ──────────────────────────────── */}
+        {/* â”€â”€ 5. Popular / Featured Events Grid â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <section className="max-w-[80rem] mx-auto px-4 sm:px-6 pb-16" id="events">
           <div className="flex items-center justify-between mb-8">
             <div>
@@ -574,31 +636,47 @@ export default function HomePage() {
             </div>
           )}
 
-          {/* Empty State */}
-          {!loading && !error && events.length === 0 && (
+          {/* Empty State â€” compact card; fallback mock events shown below if no filters active */}
+          {!loading && !error && events.length === 0 && (search || category !== 'all' || dateFilter !== 'all' || locationFilter !== 'all') && (
             <div
               id="emptyState"
-              className="flex flex-col items-center justify-center py-16 px-4 text-center bg-white border border-slate-200/80 rounded-2xl shadow-xs"
+              className="py-10 px-6 text-center bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-800 rounded-2xl"
             >
-              <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mb-4 text-slate-400">
-                <span className="material-symbols-outlined text-[36px]">event_busy</span>
+              <div className="w-12 h-12 mx-auto rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-3 text-slate-400">
+                <span className="material-symbols-outlined text-[28px]">event_busy</span>
               </div>
-              <h3 className="text-[18px] font-bold text-[#131b2e] mb-1">{t('common.noEventsFound')}</h3>
-              <p className="text-[14px] text-slate-500 max-w-md mb-6">
-                {search || category !== 'all' || dateFilter !== 'all' || locationFilter !== 'all'
-                  ? "We couldn't find any events matching your selected criteria. Try adjusting your search or clearing the filters."
-                  : 'There are no active public events in the database yet.'}
+              <h3 className="text-[16px] font-bold text-[#0f172a] dark:text-white mb-1">{t('common.noEventsFound')}</h3>
+              <p className="text-[13px] text-slate-500 dark:text-slate-400 mb-4 max-w-sm mx-auto">
+                {"We couldn't find any events matching your criteria. Try adjusting your search or clearing the filters."}
               </p>
               <button
                 id="resetFilterBtn"
                 type="button"
                 onClick={resetFilters}
-                className="inline-flex items-center gap-2 bg-[#f97316] text-white font-semibold text-[13px] px-6 py-2.5 rounded-xl shadow-sm shadow-orange-500/20 hover:bg-[#ea580c] transition-all duration-150 active:scale-95 cursor-pointer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-[13px] hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer"
               >
-                <span className="material-symbols-outlined text-[18px]">restart_alt</span>
+                <span className="material-symbols-outlined text-[17px]">restart_alt</span>
                 <span>{t('customer.resetFilter')}</span>
               </button>
             </div>
+          )}
+
+          {/* Mock Dessie Featured Events â€” shown when DB has no events & no filter active */}
+          {!loading && !error && events.length === 0 && !search && category === 'all' && dateFilter === 'all' && locationFilter === 'all' && (
+            <>
+              <div className="mb-6">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 dark:bg-orange-950/40 border border-orange-200/60 dark:border-orange-800/40 text-[#f97316] text-[12px] font-bold uppercase tracking-wider mb-3">
+                  <span className="material-symbols-outlined text-[14px]">location_on</span>
+                  <span>Dessie, Ethiopia</span>
+                </div>
+                <p className="text-[14px] text-slate-500 dark:text-slate-400">Discover events happening near you</p>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="mockEventsGrid">
+                {MOCK_DESSIE_EVENTS.map((event) => (
+                  <EventCard key={event.id} event={event} />
+                ))}
+              </div>
+            </>
           )}
 
           {/* Real Events Grid */}
@@ -611,7 +689,7 @@ export default function HomePage() {
           )}
         </section>
 
-        {/* ── 6. Trust & Security Banner ─────────────────────────────────────── */}
+        {/* â”€â”€ 6. Trust & Security Banner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <section className="bg-white py-14 border-y border-slate-200/80">
           <div className="max-w-[80rem] mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -653,7 +731,7 @@ export default function HomePage() {
         </section>
       </main>
 
-      {/* ── 7. Footer ────────────────────────────────────────────────────────── */}
+      {/* â”€â”€ 7. Footer â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <footer className="bg-slate-50 border-t border-slate-200/80">
         <div className="max-w-[80rem] mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-4 w-full">
           {/* Brand & Copyright Statement */}

@@ -7,19 +7,15 @@ function isSoldOut(event: EventItem): boolean {
   return event.status === 'sold_out' || event.available_tickets <= 0;
 }
 
-function formatEventDate(value: string): string {
+function formatEventDate(value: string): { monthAbbr: string; day: string; timeStr: string } {
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) {
-    return value;
+    return { monthAbbr: '—', day: '—', timeStr: '—' };
   }
-  return date.toLocaleString('en-US', {
-    weekday: 'short',
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-    hour: 'numeric',
-    minute: '2-digit',
-  });
+  const monthAbbr = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
+  const day = String(date.getDate());
+  const timeStr = date.toLocaleString('en-US', { hour: 'numeric', minute: '2-digit' });
+  return { monthAbbr, day, timeStr };
 }
 
 function formatPrice(value: number | string): string {
@@ -92,7 +88,12 @@ export default function EventCard({ event }: { event: EventItem }) {
             </div>
           )}
 
-          {/* Category Chip */}
+          {/* Price Badge — floating top-left */}
+          <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[11px] font-bold">
+            {Number(event.ticket_price) === 0 ? 'FREE' : `ETB ${Number(event.ticket_price).toLocaleString()}`}
+          </div>
+
+          {/* Category Chip — bottom-left */}
           <div className="absolute bottom-3 left-3 px-3 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[12px] font-semibold flex items-center gap-1.5">
             <span className="material-symbols-outlined text-[14px]">{categoryIcon}</span>
             <span>{event.category}</span>
@@ -101,11 +102,17 @@ export default function EventCard({ event }: { event: EventItem }) {
 
         {/* Card Body */}
         <div className="p-5">
-          {/* Date & Time */}
-          <div className="flex items-center gap-1.5 text-[13px] font-semibold text-[#f97316] mb-2">
-            <span className="material-symbols-outlined text-[16px]">calendar_today</span>
-            <span>{formatEventDate(event.event_date)}</span>
-          </div>
+          {/* Date & Time — NOV 24 • 6:00 PM style */}
+          {(() => {
+            const { monthAbbr, day, timeStr } = formatEventDate(event.event_date);
+            return (
+              <div className="flex items-center gap-1.5 text-[12px] font-bold text-[#f97316] uppercase tracking-wide mb-1.5">
+                <span>{monthAbbr} {day}</span>
+                <span className="opacity-50">•</span>
+                <span>{timeStr}</span>
+              </div>
+            );
+          })()}
 
           {/* Title */}
           <h3 className="font-bold text-[18px] text-[#0f172a] dark:text-white leading-snug line-clamp-2 group-hover:text-[#f97316] transition-colors mb-2.5">
@@ -118,15 +125,24 @@ export default function EventCard({ event }: { event: EventItem }) {
             <span className="truncate">{event.location}</span>
           </div>
 
-          {/* Organizer */}
-          {event.organizer && (
-            <div className="flex items-center gap-2 pt-3 border-t border-slate-100 text-[12px] text-slate-500">
-              <span className="w-6 h-6 rounded-full bg-orange-50 dark:bg-orange-950/40 text-[#f97316] flex items-center justify-center font-bold text-[11px] border border-orange-200/50 dark:border-orange-800/40">
-                {event.organizer.name?.[0]?.toUpperCase() || 'O'}
-              </span>
-              <span className="truncate font-medium">{event.organizer.name}</span>
-            </div>
-          )}
+          {/* Organizer + Get Tickets */}
+          <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-700/50">
+            {event.organizer ? (
+              <div className="flex items-center gap-1.5 text-[12px] text-slate-500 min-w-0">
+                <span className="w-5 h-5 rounded-full bg-orange-50 dark:bg-orange-950/40 text-[#f97316] flex items-center justify-center font-bold text-[10px] border border-orange-200/50 dark:border-orange-800/40 shrink-0">
+                  {event.organizer.name?.[0]?.toUpperCase() || 'O'}
+                </span>
+                <span className="truncate font-medium">{event.organizer.name}</span>
+              </div>
+            ) : <span />}
+            <Link
+              href={detailsHref}
+              className="text-[#f97316] hover:text-[#ea580c] text-[12px] font-bold flex items-center gap-0.5 transition-colors shrink-0 ml-2"
+            >
+              {t('customer.viewDetails')}
+              <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
+            </Link>
+          </div>
         </div>
       </Link>
 
