@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
-import Script from 'next/script';
 import './globals.css';
 import { I18nProvider } from '@/lib/i18n';
+import ThemeSync from '@/components/ThemeSync';
 
 export const metadata: Metadata = {
   title: 'TiketHub - Discover & Book Unforgettable Events | ዝግጅቶችን ያስሱ እና ይያዙ',
@@ -17,13 +17,6 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <Script
-          id="theme-initializer"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `(function(){try{var t=localStorage.getItem('theme');var p=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(!t&&p)){document.documentElement.classList.add('dark');document.documentElement.classList.remove('light');}else{document.documentElement.classList.remove('dark');document.documentElement.classList.add('light');}}catch(e){}})();`,
-          }}
-        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
@@ -36,6 +29,7 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased min-h-screen">
+        <ThemeSync />
         <I18nProvider>
           {children}
         </I18nProvider>
