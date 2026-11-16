@@ -135,13 +135,12 @@ export default function EventCard({ event }: { event: EventItem }) {
                 <span className="truncate font-medium">{event.organizer.name}</span>
               </div>
             ) : <span />}
-            <Link
-              href={detailsHref}
-              className="text-[#f97316] hover:text-[#ea580c] text-[12px] font-bold flex items-center gap-0.5 transition-colors shrink-0 ml-2"
+            <span
+              className="text-[#f97316] group-hover:text-[#ea580c] text-[12px] font-bold flex items-center gap-0.5 transition-colors shrink-0 ml-2"
             >
               {t('customer.viewDetails')}
               <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
-            </Link>
+            </span>
           </div>
         </div>
       </Link>
