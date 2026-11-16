@@ -64,7 +64,7 @@ export default function EventCard({ event }: { event: EventItem }) {
               }`}
             />
           ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white">
+            <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white">
               <span className="material-symbols-outlined text-[48px] opacity-80">confirmation_number</span>
               <span className="text-[13px] font-semibold mt-1 opacity-90">{event.category}</span>
             </div>
@@ -106,7 +106,7 @@ export default function EventCard({ event }: { event: EventItem }) {
           {(() => {
             const { monthAbbr, day, timeStr } = formatEventDate(event.event_date);
             return (
-              <div className="flex items-center gap-1.5 text-[12px] font-bold text-[#f97316] uppercase tracking-wide mb-1.5">
+              <div className="flex items-center gap-1.5 text-[12px] font-bold text-orange-500 uppercase tracking-wide mb-1.5">
                 <span>{monthAbbr} {day}</span>
                 <span className="opacity-50">•</span>
                 <span>{timeStr}</span>
@@ -115,7 +115,7 @@ export default function EventCard({ event }: { event: EventItem }) {
           })()}
 
           {/* Title */}
-          <h3 className="font-bold text-[18px] text-[#0f172a] dark:text-white leading-snug line-clamp-2 group-hover:text-[#f97316] transition-colors mb-2.5">
+          <h3 className="font-bold text-[18px] text-[#0f172a] dark:text-white leading-snug line-clamp-2 group-hover:text-orange-500 transition-colors mb-2.5">
             {event.title}
           </h3>
 
@@ -129,14 +129,14 @@ export default function EventCard({ event }: { event: EventItem }) {
           <div className="flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-700/50">
             {event.organizer ? (
               <div className="flex items-center gap-1.5 text-[12px] text-slate-500 min-w-0">
-                <span className="w-5 h-5 rounded-full bg-orange-50 dark:bg-orange-950/40 text-[#f97316] flex items-center justify-center font-bold text-[10px] border border-orange-200/50 dark:border-orange-800/40 shrink-0">
+                <span className="w-5 h-5 rounded-full bg-orange-50 dark:bg-orange-950/40 text-orange-500 flex items-center justify-center font-bold text-[10px] border border-orange-200/50 dark:border-orange-800/40 shrink-0">
                   {event.organizer.name?.[0]?.toUpperCase() || 'O'}
                 </span>
                 <span className="truncate font-medium">{event.organizer.name}</span>
               </div>
             ) : <span />}
             <span
-              className="text-[#f97316] group-hover:text-[#ea580c] text-[12px] font-bold flex items-center gap-0.5 transition-colors shrink-0 ml-2"
+              className="text-orange-500 group-hover:text-orange-600 text-[12px] font-bold flex items-center gap-0.5 transition-colors shrink-0 ml-2"
             >
               {t('customer.viewDetails')}
               <span className="material-symbols-outlined text-[15px]">arrow_forward</span>
@@ -156,7 +156,7 @@ export default function EventCard({ event }: { event: EventItem }) {
 
         <Link
           href={detailsHref}
-          className="inline-flex items-center justify-center shrink-0 text-[13px] font-bold px-4 py-2 rounded-xl bg-[#0f172a] hover:bg-[#f97316] dark:bg-white dark:text-[#0f172a] dark:hover:bg-[#f97316] dark:hover:text-white text-white shadow-xs transition-all duration-150 active:scale-95 gap-1"
+          className="inline-flex items-center justify-center shrink-0 text-[13px] font-bold px-4 py-2 rounded-xl bg-[#0f172a] hover:bg-orange-500 dark:bg-white dark:text-[#0f172a] dark:hover:bg-orange-500 dark:hover:text-white text-white shadow-xs transition-all duration-150 active:scale-95 gap-1"
         >
           <span>{t('customer.viewDetails')}</span>
           <span className="material-symbols-outlined text-[16px]">arrow_forward</span>

@@ -40,11 +40,11 @@ export default function CustomerDashboard() {
       <header className="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between transition-colors duration-200">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-orange-500 to-orange-600 flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
               <span className="material-symbols-outlined text-[18px]">confirmation_number</span>
             </div>
             <span className="text-[20px] font-extrabold text-[#0f172a] dark:text-white tracking-tight">
-              Tiket<span className="text-[#f97316]">Hub</span>
+              Tiket<span className="text-orange-500">Hub</span>
             </span>
           </Link>
           <span className="hidden min-[420px]:inline-block ml-2 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40">
@@ -96,7 +96,7 @@ export default function CustomerDashboard() {
           </div>
         </div>
 
-        <div className="p-4 rounded-xl bg-indigo-50 border border-indigo-200 text-indigo-900 text-[13px] flex items-center gap-2">
+        <div className="p-4 rounded-xl bg-orange-50 border border-orange-200 text-orange-950 text-[13px] flex items-center gap-2">
           <span className="material-symbols-outlined text-[20px] text-[#3525cd]">info</span>
           <span>
             <strong>Phase 1 Complete:</strong> Customer Authentication and Role Redirection verified. Next module: Event Discovery and Booking.

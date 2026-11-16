@@ -245,11 +245,11 @@ export default function MyBookingsPage() {
       <header className="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between shadow-xs transition-colors duration-200">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-orange-500 to-orange-600 flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
               <span className="material-symbols-outlined text-[18px]">confirmation_number</span>
             </div>
             <span className="text-[20px] font-extrabold text-[#0f172a] dark:text-white tracking-tight">
-              Tiket<span className="text-[#f97316]">Hub</span>
+              Tiket<span className="text-orange-500">Hub</span>
             </span>
           </Link>
         </div>
@@ -269,7 +269,7 @@ export default function MyBookingsPage() {
           </div>
           <Link
             href="/"
-            className="w-fit px-4 py-2.5 rounded-xl bg-[#f97316] text-white text-[13px] font-bold hover:bg-[#ea580c] transition-all shadow-sm shadow-orange-500/20 flex items-center gap-1.5"
+            className="w-fit px-4 py-2.5 rounded-xl bg-orange-500 text-white text-[13px] font-bold hover:bg-orange-600 transition-all shadow-sm shadow-orange-500/20 flex items-center gap-1.5"
           >
             <span className="material-symbols-outlined text-[18px]">explore</span>
             {t('customer.browseEvents')}
@@ -309,7 +309,7 @@ export default function MyBookingsPage() {
             </p>
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#f97316] text-white font-bold text-[14px] hover:bg-[#ea580c] transition-all shadow-sm shadow-orange-500/25"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-orange-500 text-white font-bold text-[14px] hover:bg-orange-600 transition-all shadow-sm shadow-orange-500/25"
             >
               <span className="material-symbols-outlined text-[18px]">explore</span>
               {t('customer.browseEvents')}
@@ -410,7 +410,7 @@ export default function MyBookingsPage() {
                         <button
                           onClick={() => toggleViewTickets(booking.id)}
                           disabled={loadingTicketsId === booking.id}
-                          className="px-3.5 py-1.5 rounded-lg bg-[#f97316] hover:bg-[#ea580c] text-white text-[12px] font-bold transition-colors flex items-center gap-1 shadow-xs disabled:opacity-50"
+                          className="px-3.5 py-1.5 rounded-lg bg-orange-500 hover:bg-orange-600 text-white text-[12px] font-bold transition-colors flex items-center gap-1 shadow-xs disabled:opacity-50"
                         >
                           {loadingTicketsId === booking.id ? (
                             <span className="material-symbols-outlined text-[14px] animate-spin">progress_activity</span>

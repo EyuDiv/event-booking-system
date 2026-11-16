@@ -194,7 +194,7 @@ export default function HomePage() {
               href="/"
               className="flex items-center gap-2.5 text-[22px] font-extrabold tracking-tight transition-all duration-200 active:scale-95 shrink-0 group"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white shadow-sm shadow-orange-500/25 group-hover:scale-105 transition-transform">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-orange-500 to-orange-600 flex items-center justify-center text-white shadow-sm shadow-orange-500/25 group-hover:scale-105 transition-transform">
                 <span
                   className="material-symbols-outlined text-[20px]"
                   style={{ fontVariationSettings: "'FILL' 1" }}
@@ -203,7 +203,7 @@ export default function HomePage() {
                 </span>
               </div>
               <span className="text-[21px] font-extrabold text-[#0f172a] dark:text-white tracking-tight">
-                Tiket<span className="text-[#f97316]">Hub</span>
+                Tiket<span className="text-orange-500">Hub</span>
               </span>
             </Link>
 
@@ -211,7 +211,7 @@ export default function HomePage() {
             <nav className="hidden md:flex items-center gap-6">
               <Link
                 href="/"
-                className="text-[#0f172a] dark:text-white font-bold text-[14px] transition-all duration-200 relative py-1 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#f97316] after:rounded-full"
+                className="text-[#0f172a] dark:text-white font-bold text-[14px] transition-all duration-200 relative py-1 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-orange-500 after:rounded-full"
               >
                 {t('nav.discover')}
               </Link>
@@ -283,9 +283,7 @@ export default function HomePage() {
               <UserProfileDropdown user={user} />
             ) : (
               <Link
-                id="signin-btn"
-                href="/login"
-                className="inline-flex items-center justify-center text-[13px] font-bold px-4 py-2 rounded-xl bg-[#f97316] text-white hover:bg-[#ea580c] shadow-sm shadow-orange-500/25 hover:shadow-orange-500/35 transition-all duration-150 active:scale-95"
+                id="signin-btn" href="/login" className="inline-flex items-center justify-center text-[13px] font-bold px-4 py-2 rounded-xl bg-orange-500 text-white hover:bg-orange-600 shadow-sm shadow-orange-500/25 hover:shadow-orange-500/35 transition-all duration-150 active:scale-95"
               >
                 {t('nav.signIn')}
               </Link>
@@ -312,7 +310,7 @@ export default function HomePage() {
             {user ? (
               <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#f97316] to-[#ea580c] text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-orange-500 to-orange-600 text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
                     {user.name?.[0]?.toUpperCase() || 'U'}
                   </div>
                   <div className="min-w-0">
@@ -337,7 +335,7 @@ export default function HomePage() {
                 <Link
                   href="/login"
                   onClick={() => setMobileNavOpen(false)}
-                  className="flex-1 py-2 text-center text-[13px] font-bold rounded-xl bg-[#f97316] hover:bg-[#ea580c] text-white shadow-xs"
+                  className="flex-1 py-2 text-center text-[13px] font-bold rounded-xl bg-orange-500 hover:bg-orange-600 text-white shadow-xs"
                 >
                   {t('nav.signIn')}
                 </Link>
@@ -353,7 +351,7 @@ export default function HomePage() {
             <nav className="flex flex-col gap-1 pt-1">
               <Link
                 href="/"
-                className="text-[#f97316] font-bold py-2 px-3 rounded-lg bg-orange-50/60 dark:bg-orange-950/30 text-[14px]"
+                className="text-orange-500 font-bold py-2 px-3 rounded-lg bg-orange-50/60 dark:bg-orange-950/30 text-[14px]"
                 onClick={() => setMobileNavOpen(false)}
               >
                 {t('nav.discover')}
@@ -392,7 +390,7 @@ export default function HomePage() {
               {isOrganizerOrAdmin && (
                 <Link
                   href={user?.role === 'organizer' ? '/organizer/events/create' : '/admin'}
-                  className="text-[#f97316] font-semibold py-2 px-3 rounded-lg hover:bg-orange-50/60 dark:hover:bg-orange-950/30 text-[14px] flex items-center gap-1.5"
+                  className="text-orange-500 font-semibold py-2 px-3 rounded-lg hover:bg-orange-50/60 dark:hover:bg-orange-950/30 text-[14px] flex items-center gap-1.5"
                   onClick={() => setMobileNavOpen(false)}
                 >
                   <span className="material-symbols-outlined text-[16px]">add_circle</span>
@@ -408,11 +406,11 @@ export default function HomePage() {
       <main className="flex-grow">
         {/* â”€â”€ 2. Hero Section: Refined Deep Midnight Aesthetic (Eventbrite / Airbnb inspired) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
         <section className="max-w-[80rem] mx-auto px-4 sm:px-6 pt-5 sm:pt-6 pb-0">
-          <div className="relative rounded-3xl overflow-hidden bg-[#0f172a] px-6 py-10 sm:px-10 sm:py-14 md:py-16 text-white border border-slate-800/80">
+          <div className="relative rounded-3xl overflow-hidden bg-slate-900 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-slate-950 px-6 py-10 sm:px-10 sm:py-14 md:py-16 text-white border border-slate-800 shadow-2xl">
             {/* Radial Glow â€” coral top-right */}
-            <div className="absolute top-0 right-0 w-[480px] h-[480px] bg-[#f97316]/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3 pointer-events-none" />
+            <div className="absolute top-0 right-0 w-[480px] h-[480px] bg-orange-500/10 rounded-full blur-3xl -translate-y-1/3 translate-x-1/3 pointer-events-none" />
             {/* Indigo glow â€” bottom-left */}
-            <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo-900/25 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-72 h-72 bg-orange-600/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/4 pointer-events-none" />
             {/* Subtle dot-grid overlay */}
             <div
               className="absolute inset-0 opacity-[0.04] pointer-events-none"
@@ -426,7 +424,7 @@ export default function HomePage() {
             <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-orange-200 text-[13px] font-semibold mb-5 shadow-xs">
-                <span className="material-symbols-outlined text-[#f97316] text-[18px]">local_fire_department</span>
+                <span className="material-symbols-outlined text-orange-500 text-[18px]">local_fire_department</span>
                 <span>{t('customer.heroBadge')}</span>
               </div>
 
@@ -449,7 +447,7 @@ export default function HomePage() {
                   <div className="flex flex-col md:flex-row">
                     {/* 1. Keyword Search */}
                     <div className="flex items-center gap-3 px-4 py-3.5 md:flex-1 border-b md:border-b-0 md:border-r border-slate-100 dark:border-slate-800">
-                      <span className="material-symbols-outlined text-[#f97316] text-[20px] shrink-0">search</span>
+                      <span className="material-symbols-outlined text-orange-500 text-[20px] shrink-0">search</span>
                       <input
                         id="home-search-input"
                         type="text"
@@ -497,8 +495,7 @@ export default function HomePage() {
                     {/* 4. Search CTA */}
                     <button
                       type="submit"
-                      id="home-search-btn"
-                      className="bg-[#f97316] hover:bg-[#ea580c] text-white font-bold text-[13px] px-6 py-3.5 flex items-center justify-center gap-2 transition-all duration-150 active:scale-95 cursor-pointer shadow-lg shadow-orange-500/20 hover:shadow-orange-500/30 shrink-0"
+                      id="home-search-btn" className="bg-orange-500 hover:bg-orange-600 text-white font-bold text-[13px] px-6 py-3.5 flex items-center justify-center gap-2 transition-all duration-150 active:scale-95 cursor-pointer shadow-lg shadow-orange-500/25 hover:shadow-orange-500/35 shrink-0"
                     >
                       <span className="material-symbols-outlined text-[18px]">search</span>
                       <span>{t('customer.searchBtn')}</span>
@@ -524,8 +521,7 @@ export default function HomePage() {
                     data-filter={item.key}
                     onClick={() => setCategory(item.key)}
                     className={`category-filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-full whitespace-nowrap text-[13px] transition-all duration-150 active:scale-95 cursor-pointer ${
-                      active
-                        ? 'bg-[#0f172a] dark:bg-white text-white dark:text-[#0f172a] font-bold shadow-sm border border-transparent'
+                      active ? 'bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-md shadow-orange-500/20 border border-transparent'
                         : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/80 hover:text-[#0f172a] dark:hover:text-white border border-slate-200 dark:border-slate-700 font-medium hover:-translate-y-0.5'
                     }`}
                   >
@@ -543,8 +539,7 @@ export default function HomePage() {
                   data-filter={item}
                   onClick={() => setCategory(item)}
                   className={`category-filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-full whitespace-nowrap text-[13px] transition-all duration-150 active:scale-95 cursor-pointer ${
-                    category === item
-                      ? 'bg-[#0f172a] dark:bg-white text-white dark:text-[#0f172a] font-bold shadow-sm border border-transparent'
+                    category === item ? 'bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-md shadow-orange-500/20 border border-transparent'
                       : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/80 hover:text-[#0f172a] dark:hover:text-white border border-slate-200 dark:border-slate-700 font-medium hover:-translate-y-0.5'
                   }`}
                 >
@@ -562,9 +557,7 @@ export default function HomePage() {
               {(search || category !== 'all' || dateFilter !== 'all' || locationFilter !== 'all') && (
                 <button
                   type="button"
-                  id="resetFilterHeaderBtn"
-                  onClick={resetFilters}
-                  className="inline-flex items-center gap-1 text-[13px] font-semibold text-[#f97316] hover:text-[#ea580c] transition-colors cursor-pointer"
+                  id="resetFilterHeaderBtn" onClick={resetFilters} className="inline-flex items-center gap-1 text-[13px] font-semibold text-orange-500 hover:text-orange-600 transition-colors cursor-pointer"
                 >
                   <span className="material-symbols-outlined text-[17px]">restart_alt</span>
                   <span>{t('customer.resetFilter')}</span>
@@ -628,7 +621,7 @@ export default function HomePage() {
               <button
                 type="button"
                 onClick={() => void loadEvents()}
-                className="inline-flex items-center gap-2 bg-[#f97316] text-white font-semibold text-[13px] px-6 py-2.5 rounded-xl hover:bg-[#ea580c] shadow-sm shadow-orange-500/20 transition-all duration-150 active:scale-95 cursor-pointer"
+                className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold text-[13px] px-6 py-2.5 rounded-xl shadow-sm shadow-orange-500/20 transition-all duration-150 active:scale-95 cursor-pointer"
               >
                 <span className="material-symbols-outlined text-[18px]">refresh</span>
                 <span>{t('common.tryAgain')}</span>
@@ -650,10 +643,7 @@ export default function HomePage() {
                 {"We couldn't find any events matching your criteria. Try adjusting your search or clearing the filters."}
               </p>
               <button
-                id="resetFilterBtn"
-                type="button"
-                onClick={resetFilters}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold text-[13px] hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors cursor-pointer"
+                id="resetFilterBtn" type="button" onClick={resetFilters} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-semibold text-[13px] shadow-sm shadow-orange-500/20 transition-all duration-150 active:scale-95 cursor-pointer"
               >
                 <span className="material-symbols-outlined text-[17px]">restart_alt</span>
                 <span>{t('customer.resetFilter')}</span>
@@ -665,7 +655,7 @@ export default function HomePage() {
           {!loading && !error && events.length === 0 && !search && category === 'all' && dateFilter === 'all' && locationFilter === 'all' && (
             <>
               <div className="mb-6">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 dark:bg-orange-950/40 border border-orange-200/60 dark:border-orange-800/40 text-[#f97316] text-[12px] font-bold uppercase tracking-wider mb-3">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 dark:bg-orange-950/40 border border-orange-200/60 dark:border-orange-800/40 text-orange-500 text-[12px] font-bold uppercase tracking-wider mb-3">
                   <span className="material-symbols-outlined text-[14px]">location_on</span>
                   <span>Dessie, Ethiopia</span>
                 </div>
@@ -694,7 +684,7 @@ export default function HomePage() {
           <div className="max-w-[80rem] mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <div className="p-3 bg-orange-50 dark:bg-orange-950/40 rounded-xl text-[#f97316] shrink-0 border border-orange-200/60 dark:border-orange-800/40">
+                <div className="p-3 bg-orange-50 dark:bg-orange-950/40 rounded-xl text-orange-500 shrink-0 border border-orange-200/60 dark:border-orange-800/40">
                   <span className="material-symbols-outlined text-[28px]">bolt</span>
                 </div>
                 <div>
@@ -705,7 +695,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <div className="p-3 bg-orange-50 dark:bg-orange-950/40 rounded-xl text-[#f97316] shrink-0 border border-orange-200/60 dark:border-orange-800/40">
+                <div className="p-3 bg-orange-50 dark:bg-orange-950/40 rounded-xl text-orange-500 shrink-0 border border-orange-200/60 dark:border-orange-800/40">
                   <span className="material-symbols-outlined text-[28px]">verified_user</span>
                 </div>
                 <div>
@@ -716,7 +706,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <div className="p-3 bg-orange-50 dark:bg-orange-950/40 rounded-xl text-[#f97316] shrink-0 border border-orange-200/60 dark:border-orange-800/40">
+                <div className="p-3 bg-orange-50 dark:bg-orange-950/40 rounded-xl text-orange-500 shrink-0 border border-orange-200/60 dark:border-orange-800/40">
                   <span className="material-symbols-outlined text-[28px]">support_agent</span>
                 </div>
                 <div>
@@ -737,10 +727,10 @@ export default function HomePage() {
           {/* Brand & Copyright Statement */}
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
             <Link href="/" className="flex items-center gap-2 text-[20px] font-extrabold text-[#0f172a] dark:text-white tracking-tight">
-              <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white text-[15px] shadow-xs">
+              <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-orange-500 to-orange-600 flex items-center justify-center text-white text-[15px] shadow-xs">
                 <span className="material-symbols-outlined text-[16px]">confirmation_number</span>
               </div>
-              <span>Tiket<span className="text-[#f97316]">Hub</span></span>
+              <span>Tiket<span className="text-orange-500">Hub</span></span>
             </Link>
             <span className="hidden sm:inline text-slate-300 dark:text-slate-700">|</span>
             <p className="text-slate-500 text-[13px]">
@@ -750,25 +740,25 @@ export default function HomePage() {
 
           {/* Links */}
           <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] font-semibold text-slate-600 dark:text-slate-400">
-            <a href="#events" className="hover:text-[#f97316] transition-colors duration-150">
+            <a href="#events" className="hover:text-orange-500 transition-colors duration-150">
               {t('customer.exploreEvents')}
             </a>
             <Link
               href={user?.role === 'organizer' ? '/organizer/dashboard' : '/login'}
-              className="hover:text-[#f97316] transition-colors duration-150"
+              className="hover:text-orange-500 transition-colors duration-150"
             >
               {t('customer.sellTickets')}
             </Link>
-            <span className="hover:text-[#f97316] transition-colors duration-150 cursor-pointer">
+            <span className="hover:text-orange-500 transition-colors duration-150 cursor-pointer">
               {t('customer.pricingFees')}
             </span>
-            <span className="hover:text-[#f97316] transition-colors duration-150 cursor-pointer">
+            <span className="hover:text-orange-500 transition-colors duration-150 cursor-pointer">
               {t('customer.termsOfService')}
             </span>
-            <span className="hover:text-[#f97316] transition-colors duration-150 cursor-pointer">
+            <span className="hover:text-orange-500 transition-colors duration-150 cursor-pointer">
               {t('customer.privacyPolicy')}
             </span>
-            <span className="hover:text-[#f97316] transition-colors duration-150 cursor-pointer">
+            <span className="hover:text-orange-500 transition-colors duration-150 cursor-pointer">
               {t('customer.helpCenter')}
             </span>
           </div>

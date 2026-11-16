@@ -130,12 +130,12 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
         onClick={() => setOpen((prev) => !prev)}
         aria-haspopup="true"
         aria-expanded={open}
-        className="flex items-center gap-2 p-1 sm:pl-1.5 sm:pr-3 sm:py-1 rounded-full border border-slate-200/90 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 hover:bg-slate-50 dark:hover:bg-slate-700/70 hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-150 shadow-xs cursor-pointer group focus:outline-none focus:ring-2 focus:ring-[#f97316]/20"
+        className="flex items-center gap-2 p-1 sm:pl-1.5 sm:pr-3 sm:py-1 rounded-full border border-slate-200/90 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 hover:bg-slate-50 dark:hover:bg-slate-700/70 hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-150 shadow-xs cursor-pointer group focus:outline-none focus:ring-2 focus:ring-orange-500/20"
         title="Profile and Settings"
       >
         {/* User Avatar with Initials */}
         <div className="relative">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white text-[12px] font-bold tracking-tight shadow-sm shadow-orange-500/20">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-orange-500 to-orange-600 flex items-center justify-center text-white text-[12px] font-bold tracking-tight shadow-sm shadow-orange-500/20">
             {initials}
           </div>
           {/* Active online status dot (#10B981) */}
@@ -154,7 +154,7 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
 
         <span
           className={`material-symbols-outlined text-[18px] text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-transform duration-200 ${
-            open ? 'rotate-180 text-[#f97316]' : ''
+            open ? 'rotate-180 text-orange-500' : ''
           }`}
         >
           expand_more
@@ -175,7 +175,7 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
         <div className="p-4 border-b border-slate-100 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-800/40">
           <div className="flex items-start gap-3">
             {/* Expanded Avatar */}
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white text-[15px] font-bold shadow-sm shadow-orange-500/25 shrink-0">
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-orange-500 to-orange-600 flex items-center justify-center text-white text-[15px] font-bold shadow-sm shadow-orange-500/25 shrink-0">
               {initials}
             </div>
             <div className="min-w-0 flex-1">
@@ -217,7 +217,7 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
             className="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors cursor-pointer select-none group"
           >
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-orange-50 dark:group-hover:bg-orange-950/40 group-hover:text-[#f97316] transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-orange-50 dark:group-hover:bg-orange-950/40 group-hover:text-orange-500 transition-colors">
                 <span className="material-symbols-outlined text-[19px]">
                   {darkMode ? 'light_mode' : 'dark_mode'}
                 </span>
@@ -235,7 +235,7 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
             {/* Toggle Pill Switch */}
             <div
               className={`relative w-11 h-6 rounded-full transition-colors duration-200 ease-in-out shrink-0 ${
-                darkMode ? 'bg-[#f97316]' : 'bg-slate-200 dark:bg-slate-700'
+                darkMode ? 'bg-orange-500' : 'bg-slate-200 dark:bg-slate-700'
               }`}
             >
               <div
@@ -266,7 +266,7 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
             }}
             className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors text-left group cursor-pointer"
           >
-            <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-orange-50 dark:group-hover:bg-orange-950/40 group-hover:text-[#f97316] transition-colors">
+            <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-orange-50 dark:group-hover:bg-orange-950/40 group-hover:text-orange-500 transition-colors">
               <span className="material-symbols-outlined text-[19px]">
                 settings
               </span>
@@ -292,7 +292,7 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
               }}
               className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors text-left group cursor-pointer"
             >
-              <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-orange-50 dark:group-hover:bg-orange-950/40 group-hover:text-[#f97316] transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-orange-50 dark:group-hover:bg-orange-950/40 group-hover:text-orange-500 transition-colors">
                 <span className="material-symbols-outlined text-[19px]">
                   receipt_long
                 </span>
@@ -318,7 +318,7 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
               }}
               className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors text-left group cursor-pointer"
             >
-              <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-orange-50 dark:group-hover:bg-orange-950/40 group-hover:text-[#f97316] transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-orange-50 dark:group-hover:bg-orange-950/40 group-hover:text-orange-500 transition-colors">
                 <span className="material-symbols-outlined text-[19px]">
                   add_circle
                 </span>

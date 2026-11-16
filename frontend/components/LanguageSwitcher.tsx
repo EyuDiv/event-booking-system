@@ -203,9 +203,9 @@ export default function LanguageSwitcher({ className = '', variant = 'pill' }: L
                 onKeyDown={(e) => handleOptionKeyDown(e, index)}
                 className={`w-full flex items-center justify-between px-3 py-2 text-xs transition-colors text-left cursor-pointer ${
                   isSelected
-                    ? 'bg-orange-50 dark:bg-orange-950/40 text-[#f97316] font-bold'
+                    ? 'bg-orange-50 dark:bg-orange-950/40 text-orange-500 font-bold'
                     : 'text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-slate-900 font-medium'
-                } focus:outline-none focus:bg-orange-50 dark:focus:bg-orange-950/40 focus:text-[#f97316]`}
+                } focus:outline-none focus:bg-orange-50 dark:focus:bg-orange-950/40 focus:text-orange-500`}
               >
                 <span className="flex items-center gap-2">
                   <span className="text-[14px] leading-none" aria-hidden="true">{lang.flag}</span>
@@ -213,7 +213,7 @@ export default function LanguageSwitcher({ className = '', variant = 'pill' }: L
                 </span>
                 {isSelected && (
                   <span
-                    className="material-symbols-outlined text-[16px] text-[#f97316] font-bold"
+                    className="material-symbols-outlined text-[16px] text-orange-500 font-bold"
                     aria-hidden="true"
                   >
                     check
