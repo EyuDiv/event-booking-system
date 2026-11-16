@@ -1,6 +1,7 @@
 ﻿'use client';
 
 import React, { useEffect, useState } from 'react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { getStoredAuth } from '@/lib/api';
 import NotificationBell from '@/components/NotificationBell';
@@ -27,22 +28,26 @@ export default function CustomerDashboard() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#faf8ff]">
+      <div className="min-h-screen flex items-center justify-center bg-[#f8fafc]">
         <div className="text-[#3525cd] font-semibold text-lg animate-pulse">{t('common.loading')}</div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#faf8ff] flex flex-col">
+    <div className="min-h-screen bg-[#f8fafc] flex flex-col">
       {/* Top Navigation */}
-      <header className="bg-white border-b border-slate-200 px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between">
+      <header className="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between transition-colors duration-200">
         <div className="flex items-center gap-2">
-          <span className="material-symbols-outlined text-[#3525cd] text-[28px]">
-            confirmation_number
-          </span>
-          <span className="text-[20px] font-extrabold text-[#131b2e]">TiketHub</span>
-          <span className="hidden min-[420px]:inline-block ml-2 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-100 text-emerald-800">
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
+              <span className="material-symbols-outlined text-[18px]">confirmation_number</span>
+            </div>
+            <span className="text-[20px] font-extrabold text-[#0f172a] dark:text-white tracking-tight">
+              Tiket<span className="text-[#f97316]">Hub</span>
+            </span>
+          </Link>
+          <span className="hidden min-[420px]:inline-block ml-2 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40">
             {t('common.customer')}
           </span>
         </div>

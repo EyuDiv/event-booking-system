@@ -3,59 +3,68 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --font-sans: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-  --color-surface: #faf8ff;
+  /* Modern Refined Theme Palette (Inspired by Eventbrite & Airbnb) */
+  --color-background: #f8fafc;
+  --color-surface: #ffffff;
   --color-surface-container-lowest: #ffffff;
-  --color-surface-container-low: #f2f3ff;
-  --color-surface-container: #eaedff;
-  --color-surface-container-high: #e2e7ff;
-  --color-surface-container-highest: #dae2fd;
+  --color-surface-container-low: #f8fafc;
+  --color-surface-container: #f1f5f9;
+  --color-surface-container-high: #e2e8f0;
+  --color-surface-container-highest: #cbd5e1;
 
-  --color-primary: #3525cd;
-  --color-primary-container: #4f46e5;
+  /* Primary Accent: Vibrant Coral Orange (#F97316) with Hover (#EA580C) */
+  --color-primary: #f97316;
+  --color-primary-hover: #ea580c;
+  --color-primary-container: #ffedd5;
   --color-on-primary: #ffffff;
-  --color-on-primary-container: #dad7ff;
-  --color-primary-fixed: #e2dfff;
-  --color-primary-fixed-dim: #c3c0ff;
-  --color-on-primary-fixed: #0f0069;
-  --color-on-primary-fixed-variant: #3323cc;
+  --color-on-primary-container: #9a3412;
+  --color-primary-fixed: #ffedd5;
+  --color-primary-fixed-dim: #fed7aa;
+  --color-on-primary-fixed: #7c2d12;
+  --color-on-primary-fixed-variant: #c2410c;
 
-  --color-secondary: #712ae2;
-  --color-secondary-container: #8a4cfc;
-  --color-secondary-fixed: #eaddff;
-  --color-secondary-fixed-dim: #d2bbff;
+  /* Deep Midnight Navy & Secondary Tones (#0F172A) */
+  --color-secondary: #0f172a;
+  --color-secondary-container: #1e293b;
+  --color-secondary-fixed: #e2e8f0;
+  --color-secondary-fixed-dim: #cbd5e1;
   --color-on-secondary: #ffffff;
-  --color-on-secondary-container: #fffbff;
-  --color-on-secondary-fixed: #25005a;
-  --color-on-secondary-fixed-variant: #5a00c6;
+  --color-on-secondary-container: #f8fafc;
+  --color-on-secondary-fixed: #0f172a;
+  --color-on-secondary-fixed-variant: #334155;
 
-  --color-tertiary: #005338;
-  --color-tertiary-container: #006e4b;
-  --color-tertiary-fixed: #6ffbbe;
-  --color-tertiary-fixed-dim: #4edea3;
+  /* Success & Verified Badges: Emerald (#10B981) */
+  --color-tertiary: #10b981;
+  --color-tertiary-container: #d1fae5;
+  --color-tertiary-fixed: #a7f3d0;
+  --color-tertiary-fixed-dim: #6ee7b7;
   --color-on-tertiary: #ffffff;
-  --color-on-tertiary-container: #67f4b7;
-  --color-on-tertiary-fixed: #002113;
-  --color-on-tertiary-fixed-variant: #005236;
+  --color-on-tertiary-container: #065f46;
+  --color-on-tertiary-fixed: #064e3b;
+  --color-on-tertiary-fixed-variant: #047857;
 
-  --color-surface-dim: #d2d9f4;
-  --color-surface-bright: #faf8ff;
-  --color-surface-tint: #4d44e3;
+  --color-surface-dim: #e2e8f0;
+  --color-surface-bright: #ffffff;
+  --color-surface-tint: #f97316;
 
-  --color-on-surface: #131b2e;
-  --color-on-surface-variant: #464555;
-  --color-outline: #777587;
-  --color-outline-variant: #c7c4d8;
-  --color-error: #ba1a1a;
-  --color-error-container: #ffdad6;
+  /* Deep Midnight Navy Text (#0F172A) & Muted Text (#475569) */
+  --color-on-surface: #0f172a;
+  --color-on-surface-variant: #475569;
+  --color-outline: #94a3b8;
+  --color-outline-variant: #e2e8f0;
+
+  --color-error: #ef4444;
+  --color-error-container: #fee2e2;
   --color-on-error: #ffffff;
-  --color-on-error-container: #93000a;
-  --color-inverse-surface: #283044;
-  --color-inverse-on-surface: #eef0ff;
-  --color-inverse-primary: #c3c0ff;
-  --color-background: #faf8ff;
-  --color-on-background: #131b2e;
+  --color-on-error-container: #991b1b;
+
+  --color-inverse-surface: #0f172a;
+  --color-inverse-on-surface: #f8fafc;
+  --color-inverse-primary: #ffedd5;
+  --color-on-background: #0f172a;
 
   --spacing-space-2xs: 0.25rem;
   --spacing-space-xs: 0.5rem;
@@ -76,24 +85,71 @@ html, body {
 
 body {
   font-family: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, sans-serif;
-  background-color: #faf8ff;
-  color: #131b2e;
+  background-color: #f8fafc;
+  color: #0f172a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
+/* Headings with tight, modern letter-spacing (Airbnb / Eventbrite aesthetic) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, sans-serif;
+  color: #0f172a;
+  letter-spacing: -0.025em;
+  font-weight: 700;
+}
+
+h1 {
+  letter-spacing: -0.035em;
+}
+
+h2 {
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================================================
+   TIKETHUB GLOBAL THEME FOUNDATIONS & MODERN REFINEMENT
+   ========================================================================== */
+
+/* Glassmorphism Navbar Utility */
+.glassmorphic-nav,
+header.glassmorphic-nav {
+  background-color: rgba(255, 255, 255, 0.82) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+}
+
+/* Base Light Mode Legacy Harmonizers (Smooth migration without breaking) */
+.bg-\[\#faf8ff\],
+[class*="bg-[#faf8ff]"] {
+  background-color: #f8fafc !important;
+}
+
+.text-\[\#131b2e\],
+[class*="text-[#131b2e]"] {
+  color: #0f172a !important;
+}
+
+.text-\[\#464555\],
+[class*="text-[#464555]"] {
+  color: #475569 !important;
+}
+
 /* ==========================================================================
    TIKETHUB GLOBAL DARK THEME ENGINE
-   Transforms all surfaces, cards, headers, inputs, dropdowns, and borders
-   across the entire platform when dark mode is enabled.
    ========================================================================== */
 
 html.dark {
   color-scheme: dark;
 
-  --color-surface: #0b0f19;
-  --color-surface-container-lowest: #111827;
+  --color-surface: #0f172a;
+  --color-surface-container-lowest: #0b0f19;
   --color-surface-container-low: #1e293b;
   --color-surface-container: #1e293b;
   --color-surface-container-high: #334155;
@@ -101,14 +157,23 @@ html.dark {
   --color-on-surface: #f8fafc;
   --color-on-surface-variant: #94a3b8;
   --color-outline: #64748b;
-  --color-outline-variant: #334155;
+  --color-outline-variant: #1e293b;
   --color-background: #0b0f19;
   --color-on-background: #f8fafc;
 }
 
 html.dark body {
   background-color: #0b0f19 !important;
-  color: #f1f5f9 !important;
+  color: #f8fafc !important;
+}
+
+html.dark h1,
+html.dark h2,
+html.dark h3,
+html.dark h4,
+html.dark h5,
+html.dark h6 {
+  color: #f8fafc !important;
 }
 
 /* 1. Page Backgrounds & Canvas */
@@ -121,17 +186,21 @@ html.dark main {
 
 /* 2. Elevated Cards, Modals, Popovers & Panels */
 html.dark .bg-white {
-  background-color: #131b2e !important;
+  background-color: #1e293b !important;
 }
 
-/* Glassmorphism Header */
+/* Glassmorphism Header in Dark Mode */
+html.dark header,
 html.dark header.bg-white,
 html.dark header[class*="bg-white"],
+html.dark .glassmorphic-nav,
 html.dark .bg-white\/95,
-html.dark .bg-white\/90 {
-  background-color: rgba(15, 23, 42, 0.95) !important;
+html.dark .bg-white\/90,
+html.dark .bg-white\/80 {
+  background-color: rgba(15, 23, 42, 0.85) !important;
   backdrop-filter: blur(12px) !important;
-  border-color: #1e293b !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-color: #334155 !important;
 }
 
 /* Subtle & Secondary Container Surfaces */
@@ -148,7 +217,7 @@ html.dark [class*="bg-[#f2f3ff]"],
 html.dark .bg-\[\#f8f9ff\],
 html.dark [class*="bg-[#f8f9ff]"],
 html.dark .bg-slate-50\/50 {
-  background-color: #1a233a !important;
+  background-color: #1e293b !important;
 }
 
 /* 3. Typography Adaptations */
@@ -185,31 +254,6 @@ html.dark [class*="text-gray-500"] {
   color: #94a3b8 !important;
 }
 
-/* Brand Indigo readable accent on dark */
-html.dark .text-\[\#3525cd\],
-html.dark [class*="text-[#3525cd]"],
-html.dark a.text-\[\#3525cd\] {
-  color: #818cf8 !important;
-}
-
-html.dark .material-symbols-outlined.text-\[\#3525cd\] {
-  color: #818cf8 !important;
-}
-
-html.dark .after\:bg-\[\#3525cd\]::after {
-  background-color: #818cf8 !important;
-}
-
-/* Brand Purple readable accent on dark */
-html.dark .text-\[\#712ae2\],
-html.dark [class*="text-[#712ae2]"] {
-  color: #c084fc !important;
-}
-
-html.dark .material-symbols-outlined.text-\[\#712ae2\] {
-  color: #c084fc !important;
-}
-
 /* 4. Borders & Dividers */
 html.dark .border-slate-100,
 html.dark .border-slate-200,
@@ -223,10 +267,10 @@ html.dark .border-t-slate-100,
 html.dark .border-t-slate-200,
 html.dark [class*="border-slate-100"],
 html.dark [class*="border-slate-200"] {
-  border-color: #1e293b !important;
+  border-color: #334155 !important;
 }
 
-/* 5. Search Bar & Inputs */
+/* 5. Inputs */
 html.dark input:not([type="checkbox"]):not([type="radio"]),
 html.dark select,
 html.dark textarea {
@@ -239,7 +283,7 @@ html.dark textarea::placeholder {
 }
 
 html.dark select option {
-  background-color: #131b2e !important;
+  background-color: #1e293b !important;
   color: #f8fafc !important;
 }
 
@@ -248,7 +292,7 @@ html.dark .hover\:bg-slate-50:hover,
 html.dark .hover\:bg-slate-100:hover,
 html.dark .hover\:bg-gray-50:hover,
 html.dark .hover\:bg-gray-100:hover {
-  background-color: #1e293b !important;
+  background-color: #334155 !important;
 }
 
 /* 7. Footer */
@@ -265,7 +309,7 @@ html.dark footer .text-slate-600 {
   color: #cbd5e1 !important;
 }
 
-/* 8. Shadows in Dark Mode */
+/* 8. Shadows */
 html.dark .tier-1-shadow,
 html.dark .tier-2-shadow,
 html.dark .tier-3-shadow,
@@ -296,21 +340,22 @@ html.dark .shadow-2xl {
 }
 
 .tier-2-shadow {
-  box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 10px 25px -5px rgba(15, 23, 42, 0.06), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
 }
 
 .tier-3-shadow {
-  box-shadow: 0 20px 35px -8px rgba(15, 23, 42, 0.12), 0 10px 15px -5px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 20px 35px -8px rgba(15, 23, 42, 0.09), 0 10px 15px -5px rgba(15, 23, 42, 0.05);
 }
 
+/* Modern Primary CTA Button Gradient */
 .btn-gradient {
-  background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
-  box-shadow: 0 4px 14px 0 rgba(79, 70, 229, 0.25);
+  background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+  box-shadow: 0 4px 14px 0 rgba(249, 115, 22, 0.25);
   transition: all 0.2s ease;
 }
 
 .btn-gradient:hover:not(:disabled) {
-  box-shadow: 0 6px 20px 0 rgba(79, 70, 229, 0.35);
+  box-shadow: 0 6px 20px 0 rgba(249, 115, 22, 0.35);
   transform: translateY(-1px);
 }
 
@@ -342,29 +387,29 @@ html.dark .shadow-2xl {
   background: var(--color-outline);
 }
 
-/* Stitch Typography System */
+/* Stitch / High-End Typography System */
 .text-headline-xl {
   font-size: 36px;
   line-height: 44px;
-  letter-spacing: -0.025em;
-  font-weight: 700;
+  letter-spacing: -0.03em;
+  font-weight: 800;
 }
 .text-headline-lg {
   font-size: 28px;
   line-height: 36px;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
   font-weight: 700;
 }
 .text-headline-md {
   font-size: 22px;
   line-height: 30px;
-  letter-spacing: -0.015em;
-  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-weight: 700;
 }
 .text-headline-sm {
   font-size: 18px;
   line-height: 26px;
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
   font-weight: 600;
 }
 .text-body-lg {

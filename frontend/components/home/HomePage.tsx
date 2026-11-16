@@ -134,36 +134,40 @@ export default function HomePage() {
   );
 
   return (
-    <div className="bg-[#faf8ff] text-[#131b2e] min-h-screen flex flex-col font-sans">
-      {/* ── 1. Minimal Top Navigation ────────────────────────────────────────── */}
-      <header className="bg-white sticky top-0 z-40 border-b border-slate-200/80 shadow-xs">
+    <div className="bg-[#f8fafc] text-[#0f172a] min-h-screen flex flex-col font-sans">
+      {/* ── 1. Modern Glassmorphic Top Navigation ────────────────────────────────────────── */}
+      <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 shadow-xs transition-colors duration-200">
         <div className="max-w-[80rem] mx-auto px-4 sm:px-6 flex justify-between items-center h-16 w-full gap-4">
           {/* Brand & Main Nav Links */}
           <div className="flex items-center gap-8 min-w-0">
             <Link
               href="/"
-              className="flex items-center gap-2 text-[22px] font-extrabold text-[#3525cd] tracking-tight transition-all duration-200 active:scale-95 shrink-0"
+              className="flex items-center gap-2.5 text-[22px] font-extrabold tracking-tight transition-all duration-200 active:scale-95 shrink-0 group"
             >
-              <span
-                className="material-symbols-outlined text-[#3525cd] text-[28px]"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                confirmation_number
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white shadow-sm shadow-orange-500/25 group-hover:scale-105 transition-transform">
+                <span
+                  className="material-symbols-outlined text-[20px]"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  confirmation_number
+                </span>
+              </div>
+              <span className="text-[21px] font-extrabold text-[#0f172a] dark:text-white tracking-tight">
+                Tiket<span className="text-[#f97316]">Hub</span>
               </span>
-              <span>TiketHub</span>
             </Link>
 
             {/* Desktop Navigation Links */}
             <nav className="hidden md:flex items-center gap-6">
               <Link
                 href="/"
-                className="text-[#3525cd] font-bold text-[14px] transition-all duration-200 relative py-1 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#3525cd] after:rounded-full"
+                className="text-[#0f172a] dark:text-white font-bold text-[14px] transition-all duration-200 relative py-1 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#f97316] after:rounded-full"
               >
                 {t('nav.discover')}
               </Link>
               <Link
                 href={user ? '/my-bookings' : '/login'}
-                className="text-slate-600 font-medium hover:text-[#3525cd] text-[14px] transition-colors duration-150"
+                className="text-slate-600 dark:text-slate-400 font-medium hover:text-[#0f172a] dark:hover:text-white text-[14px] transition-colors duration-150"
               >
                 {t('nav.myBookings')}
               </Link>
@@ -176,7 +180,7 @@ export default function HomePage() {
                       ? '/admin'
                       : '/login'
                   }
-                  className="text-slate-600 font-medium hover:text-[#3525cd] text-[14px] transition-colors duration-150"
+                  className="text-slate-600 dark:text-slate-400 font-medium hover:text-[#0f172a] dark:hover:text-white text-[14px] transition-colors duration-150"
                 >
                   {t('nav.organizerHub')}
                 </Link>
@@ -196,7 +200,7 @@ export default function HomePage() {
               <Link
                 href="/notifications"
                 aria-label={t('nav.notifications')}
-                className="p-2 text-slate-600 hover:text-[#3525cd] hover:bg-slate-50 rounded-xl transition-colors duration-150 active:scale-95 hidden sm:inline-flex"
+                className="p-2 text-slate-600 dark:text-slate-400 hover:text-[#0f172a] dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800 rounded-xl transition-colors duration-150 active:scale-95 hidden sm:inline-flex"
               >
                 <span className="material-symbols-outlined text-[22px]">notifications</span>
               </Link>
@@ -206,7 +210,7 @@ export default function HomePage() {
             <Link
               href={user ? '/my-bookings' : '/login'}
               aria-label="My Tickets"
-              className="p-2 text-slate-600 hover:text-[#3525cd] hover:bg-slate-50 rounded-xl transition-colors duration-150 active:scale-95 hidden sm:inline-flex"
+              className="p-2 text-slate-600 dark:text-slate-400 hover:text-[#0f172a] dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800 rounded-xl transition-colors duration-150 active:scale-95 hidden sm:inline-flex"
             >
               <span className="material-symbols-outlined text-[22px]">confirmation_number</span>
             </Link>
@@ -214,10 +218,10 @@ export default function HomePage() {
             {/* Create Event CTA - Only visible to organizer or admin */}
             {isOrganizerOrAdmin && (
               <>
-                <div className="h-5 w-px bg-slate-200 mx-1 hidden sm:block" />
+                <div className="h-5 w-px bg-slate-200 dark:bg-slate-700 mx-1 hidden sm:block" />
                 <Link
                   href={user?.role === 'organizer' ? '/organizer/events/create' : '/admin'}
-                  className="hidden lg:inline-flex items-center justify-center text-[13px] font-semibold px-3.5 py-2 rounded-xl text-[#3525cd] border border-[#3525cd]/20 hover:bg-[#3525cd]/5 transition-colors duration-150 active:scale-95"
+                  className="hidden lg:inline-flex items-center justify-center text-[13px] font-semibold px-3.5 py-2 rounded-xl text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition-colors duration-150 active:scale-95"
                 >
                   {t('nav.createEvent')}
                 </Link>
@@ -231,7 +235,7 @@ export default function HomePage() {
               <Link
                 id="signin-btn"
                 href="/login"
-                className="inline-flex items-center justify-center text-[13px] font-bold px-3 sm:px-4 py-2 rounded-xl bg-[#3525cd] text-white hover:bg-[#3525cd]/90 shadow-sm transition-all duration-150 active:scale-95"
+                className="inline-flex items-center justify-center text-[13px] font-bold px-4 py-2 rounded-xl bg-[#f97316] text-white hover:bg-[#ea580c] shadow-sm shadow-orange-500/25 hover:shadow-orange-500/35 transition-all duration-150 active:scale-95"
               >
                 {t('nav.signIn')}
               </Link>
@@ -240,7 +244,7 @@ export default function HomePage() {
             {/* Mobile Navigation Toggle */}
             <button
               type="button"
-              className="md:hidden p-2 text-slate-600 hover:text-[#3525cd] rounded-xl hover:bg-slate-100"
+              className="md:hidden p-2 text-slate-600 dark:text-slate-400 hover:text-[#0f172a] dark:hover:text-white rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"
               aria-label="Toggle navigation menu"
               onClick={() => setMobileNavOpen((open) => !open)}
             >
@@ -253,17 +257,17 @@ export default function HomePage() {
 
         {/* Mobile Navigation Drawer */}
         {mobileNavOpen && (
-          <div className="md:hidden border-t border-slate-200 px-4 py-4 space-y-3 bg-white shadow-xl animate-in fade-in duration-150">
+          <div className="md:hidden border-t border-slate-200/80 dark:border-slate-800 px-4 py-4 space-y-3 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-xl animate-in fade-in duration-150">
             {/* User Profile Summary on Mobile */}
             {user ? (
-              <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
                 <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="w-8 h-8 rounded-full bg-[#f2f3ff] text-[#3525cd] font-bold text-xs flex items-center justify-center border border-[#3525cd]/20 shrink-0">
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#f97316] to-[#ea580c] text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-xs">
                     {user.name?.[0]?.toUpperCase() || 'U'}
                   </div>
                   <div className="min-w-0">
-                    <div className="text-[13px] font-bold text-[#131b2e] truncate">{user.name}</div>
-                    <div className="text-[11px] text-slate-500 capitalize">{user.role}</div>
+                    <div className="text-[13px] font-bold text-[#0f172a] dark:text-white truncate">{user.name}</div>
+                    <div className="text-[11px] text-slate-500 dark:text-slate-400 capitalize">{user.role}</div>
                   </div>
                 </div>
                 <button
@@ -272,18 +276,18 @@ export default function HomePage() {
                     setMobileNavOpen(false);
                     void handleLogout();
                   }}
-                  className="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition-colors flex items-center gap-1 shrink-0"
+                  className="px-2.5 py-1 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors flex items-center gap-1 shrink-0"
                 >
                   <span className="material-symbols-outlined text-[14px]">logout</span>
                   {t('nav.logout')}
                 </button>
               </div>
             ) : (
-              <div className="flex items-center gap-2 pb-3 border-b border-slate-100">
+              <div className="flex items-center gap-2 pb-3 border-b border-slate-100 dark:border-slate-800">
                 <Link
                   href="/login"
                   onClick={() => setMobileNavOpen(false)}
-                  className="flex-1 py-2 text-center text-[13px] font-bold rounded-xl bg-[#3525cd] text-white"
+                  className="flex-1 py-2 text-center text-[13px] font-bold rounded-xl bg-[#f97316] hover:bg-[#ea580c] text-white shadow-xs"
                 >
                   {t('nav.signIn')}
                 </Link>
@@ -291,22 +295,22 @@ export default function HomePage() {
             )}
 
             {/* Mobile Language Switcher Row */}
-            <div className="flex items-center justify-between pb-3 border-b border-slate-100">
-              <span className="text-[13px] font-semibold text-slate-600">{t('common.language')}</span>
+            <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+              <span className="text-[13px] font-semibold text-slate-600 dark:text-slate-300">{t('common.language')}</span>
               <LanguageSwitcher variant="pill" />
             </div>
 
             <nav className="flex flex-col gap-1 pt-1">
               <Link
                 href="/"
-                className="text-[#3525cd] font-bold py-2 px-3 rounded-lg bg-[#3525cd]/5 text-[14px]"
+                className="text-[#f97316] font-bold py-2 px-3 rounded-lg bg-orange-50/60 dark:bg-orange-950/30 text-[14px]"
                 onClick={() => setMobileNavOpen(false)}
               >
                 {t('nav.discover')}
               </Link>
               <Link
                 href={user ? '/my-bookings' : '/login'}
-                className="text-slate-700 font-medium py-2 px-3 rounded-lg hover:bg-slate-50 text-[14px]"
+                className="text-slate-700 dark:text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 text-[14px]"
                 onClick={() => setMobileNavOpen(false)}
               >
                 {t('nav.myBookings')}
@@ -320,7 +324,7 @@ export default function HomePage() {
                       ? '/admin'
                       : '/login'
                   }
-                  className="text-slate-700 font-medium py-2 px-3 rounded-lg hover:bg-slate-50 text-[14px]"
+                  className="text-slate-700 dark:text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 text-[14px]"
                   onClick={() => setMobileNavOpen(false)}
                 >
                   {t('nav.organizerHub')}
@@ -329,7 +333,7 @@ export default function HomePage() {
               {user && (
                 <Link
                   href="/notifications"
-                  className="text-slate-700 font-medium py-2 px-3 rounded-lg hover:bg-slate-50 text-[14px]"
+                  className="text-slate-700 dark:text-slate-300 font-medium py-2 px-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-800 text-[14px]"
                   onClick={() => setMobileNavOpen(false)}
                 >
                   {t('nav.notifications')}
@@ -338,7 +342,7 @@ export default function HomePage() {
               {isOrganizerOrAdmin && (
                 <Link
                   href={user?.role === 'organizer' ? '/organizer/events/create' : '/admin'}
-                  className="text-[#3525cd] font-semibold py-2 px-3 rounded-lg hover:bg-[#3525cd]/5 text-[14px] flex items-center gap-1.5"
+                  className="text-[#f97316] font-semibold py-2 px-3 rounded-lg hover:bg-orange-50/60 dark:hover:bg-orange-950/30 text-[14px] flex items-center gap-1.5"
                   onClick={() => setMobileNavOpen(false)}
                 >
                   <span className="material-symbols-outlined text-[16px]">add_circle</span>
@@ -352,57 +356,57 @@ export default function HomePage() {
 
       {/* ── Main Content ─────────────────────────────────────────────────────── */}
       <main className="flex-grow">
-        {/* ── 2. Hero Section: Clean, Strong & Modern ───────────────────────── */}
+        {/* ── 2. Hero Section: Refined Deep Midnight Aesthetic (Eventbrite / Airbnb inspired) ───────────────────────── */}
         <section className="max-w-[80rem] mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-8">
-          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#3525cd] via-[#4338ca] to-[#6d28d9] px-6 py-12 sm:px-12 sm:py-16 md:py-20 text-white shadow-xl">
+          <div className="relative rounded-3xl overflow-hidden bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] px-6 py-12 sm:px-12 sm:py-16 md:py-20 text-white shadow-xl border border-slate-800">
             {/* Ambient Background Accents */}
-            <div className="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-[#8a4cfc]/30 blur-3xl pointer-events-none" />
-            <div className="absolute left-1/4 bottom-0 w-72 h-72 rounded-full bg-[#38bdf8]/15 blur-2xl pointer-events-none" />
+            <div className="absolute -right-16 -top-16 w-80 h-80 rounded-full bg-[#f97316]/15 blur-3xl pointer-events-none" />
+            <div className="absolute left-1/4 bottom-0 w-72 h-72 rounded-full bg-[#ea580c]/10 blur-2xl pointer-events-none" />
 
             <div className="relative z-10 max-w-3xl mx-auto text-center flex flex-col items-center">
-              {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-white text-[13px] font-semibold mb-5 shadow-xs">
-                <span className="material-symbols-outlined text-[#6ffbbe] text-[18px]">local_fire_department</span>
+              {/* Badge with Vibrant Coral Fire Icon */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/15 text-orange-200 text-[13px] font-semibold mb-5 shadow-xs">
+                <span className="material-symbols-outlined text-[#f97316] text-[18px]">local_fire_department</span>
                 <span>{t('customer.heroBadge')}</span>
               </div>
 
-              {/* Main Headline */}
-              <h1 className="text-[34px] sm:text-[44px] md:text-[52px] font-extrabold tracking-tight leading-[1.15] mb-4">
+              {/* Main Headline with Tight Modern Typography */}
+              <h1 className="text-[34px] sm:text-[44px] md:text-[52px] font-extrabold tracking-tight leading-[1.15] mb-4 text-white">
                 {t('customer.heroTitle')}
               </h1>
 
               {/* Supporting Subtitle */}
-              <p className="text-[15px] sm:text-[17px] leading-relaxed text-indigo-100/90 max-w-2xl mb-8">
+              <p className="text-[15px] sm:text-[17px] leading-relaxed text-slate-300 max-w-2xl mb-8">
                 {t('customer.heroSubtitle')}
               </p>
 
-              {/* ── 3. Integrated Event Search Bar ─────────────────────────── */}
+              {/* ── 3. Modern High-End Search Bar ─────────────────────────── */}
               <form
                 onSubmit={handleSearchSubmit}
-                className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl p-2.5 sm:p-3 text-slate-800 border border-white/40 grid grid-cols-1 md:grid-cols-12 gap-2 sm:gap-3 items-center"
+                className="w-full max-w-4xl bg-white dark:bg-slate-900 rounded-2xl shadow-2xl shadow-black/25 p-2.5 sm:p-3 text-slate-800 dark:text-slate-100 border border-slate-200/90 dark:border-slate-800 grid grid-cols-1 md:grid-cols-12 gap-2 sm:gap-3 items-center"
               >
                 {/* 1. Keyword Search */}
-                <div className="md:col-span-4 flex items-center gap-2.5 px-3 py-2 bg-slate-50 hover:bg-slate-100/80 rounded-xl transition-colors border border-slate-100">
-                  <span className="material-symbols-outlined text-[#3525cd] text-[20px] shrink-0">search</span>
+                <div className="md:col-span-4 flex items-center gap-2.5 px-3 py-2 bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100/80 dark:hover:bg-slate-800 rounded-xl transition-colors border border-slate-200/70 dark:border-slate-700/70">
+                  <span className="material-symbols-outlined text-[#f97316] text-[20px] shrink-0">search</span>
                   <input
                     id="home-search-input"
                     type="text"
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                     placeholder={t('customer.searchEventsPlaceholder')}
-                    className="w-full bg-transparent text-[13px] font-medium text-[#131b2e] placeholder:text-slate-400 outline-none"
+                    className="w-full bg-transparent text-[13px] font-medium text-[#0f172a] dark:text-white placeholder:text-slate-400 outline-none"
                   />
                 </div>
 
                 {/* 2. Date Filter */}
-                <div className="md:col-span-3 flex items-center gap-2 px-3 py-2 bg-slate-50 hover:bg-slate-100/80 rounded-xl transition-colors border border-slate-100">
+                <div className="md:col-span-3 flex items-center gap-2 px-3 py-2 bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100/80 dark:hover:bg-slate-800 rounded-xl transition-colors border border-slate-200/70 dark:border-slate-700/70">
                   <span className="material-symbols-outlined text-slate-400 text-[18px] shrink-0">calendar_today</span>
                   <select
                     id="home-date-select"
                     value={dateFilter}
                     aria-label="Filter events by date"
                     onChange={(e) => setDateFilter(e.target.value as typeof dateFilter)}
-                    className="w-full bg-transparent text-[13px] font-medium text-[#131b2e] outline-none cursor-pointer"
+                    className="w-full bg-transparent text-[13px] font-medium text-[#0f172a] dark:text-white outline-none cursor-pointer"
                   >
                     <option value="all">{t('customer.allDates')}</option>
                     <option value="weekend">{t('customer.thisWeekend')}</option>
@@ -411,14 +415,14 @@ export default function HomePage() {
                 </div>
 
                 {/* 3. Location Filter */}
-                <div className="md:col-span-3 flex items-center gap-2 px-3 py-2 bg-slate-50 hover:bg-slate-100/80 rounded-xl transition-colors border border-slate-100">
+                <div className="md:col-span-3 flex items-center gap-2 px-3 py-2 bg-slate-50 dark:bg-slate-800/80 hover:bg-slate-100/80 dark:hover:bg-slate-800 rounded-xl transition-colors border border-slate-200/70 dark:border-slate-700/70">
                   <span className="material-symbols-outlined text-slate-400 text-[18px] shrink-0">location_on</span>
                   <select
                     id="home-location-select"
                     value={locationFilter}
                     aria-label="Filter events by location"
                     onChange={(e) => setLocationFilter(e.target.value)}
-                    className="w-full bg-transparent text-[13px] font-medium text-[#131b2e] outline-none cursor-pointer truncate"
+                    className="w-full bg-transparent text-[13px] font-medium text-[#0f172a] dark:text-white outline-none cursor-pointer truncate"
                   >
                     {ETHIOPIA_LOCATIONS.map((loc) => (
                       <option key={loc.key} value={loc.key}>
@@ -433,7 +437,7 @@ export default function HomePage() {
                   <button
                     type="submit"
                     id="home-search-btn"
-                    className="w-full h-full min-h-[42px] inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#3525cd] hover:bg-[#3525cd]/90 text-white font-bold text-[13px] shadow-sm transition-all duration-150 active:scale-95 cursor-pointer"
+                    className="w-full h-full min-h-[42px] inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#f97316] hover:bg-[#ea580c] text-white font-bold text-[13px] shadow-sm shadow-orange-500/25 hover:shadow-orange-500/35 transition-all duration-150 active:scale-95 cursor-pointer"
                   >
                     <span className="material-symbols-outlined text-[18px]">search</span>
                     <span>{t('customer.searchBtn')}</span>
@@ -459,8 +463,8 @@ export default function HomePage() {
                     onClick={() => setCategory(item.key)}
                     className={`category-filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-full whitespace-nowrap text-[13px] transition-all duration-150 active:scale-95 cursor-pointer ${
                       active
-                        ? 'bg-[#3525cd] text-white font-bold shadow-sm'
-                        : 'bg-white text-slate-700 hover:bg-slate-100 hover:text-[#3525cd] border border-slate-200 font-medium'
+                        ? 'bg-[#0f172a] dark:bg-white text-white dark:text-[#0f172a] font-bold shadow-sm'
+                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-[#0f172a] dark:hover:text-white border border-slate-200 dark:border-slate-700 font-medium'
                     }`}
                   >
                     <span className="material-symbols-outlined text-[18px]">{item.icon}</span>
@@ -478,8 +482,8 @@ export default function HomePage() {
                   onClick={() => setCategory(item)}
                   className={`category-filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-full whitespace-nowrap text-[13px] transition-all duration-150 active:scale-95 cursor-pointer ${
                     category === item
-                      ? 'bg-[#3525cd] text-white font-bold shadow-sm'
-                      : 'bg-white text-slate-700 hover:bg-slate-100 hover:text-[#3525cd] border border-slate-200 font-medium'
+                      ? 'bg-[#0f172a] dark:bg-white text-white dark:text-[#0f172a] font-bold shadow-sm'
+                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 hover:text-[#0f172a] dark:hover:text-white border border-slate-200 dark:border-slate-700 font-medium'
                   }`}
                 >
                   <span className="material-symbols-outlined text-[18px]">local_activity</span>
@@ -498,7 +502,7 @@ export default function HomePage() {
                   type="button"
                   id="resetFilterHeaderBtn"
                   onClick={resetFilters}
-                  className="inline-flex items-center gap-1 text-[13px] font-semibold text-[#3525cd] hover:text-[#3525cd]/80 transition-colors cursor-pointer"
+                  className="inline-flex items-center gap-1 text-[13px] font-semibold text-[#f97316] hover:text-[#ea580c] transition-colors cursor-pointer"
                 >
                   <span className="material-symbols-outlined text-[17px]">restart_alt</span>
                   <span>{t('customer.resetFilter')}</span>
@@ -562,7 +566,7 @@ export default function HomePage() {
               <button
                 type="button"
                 onClick={() => void loadEvents()}
-                className="inline-flex items-center gap-2 bg-[#3525cd] text-white font-semibold text-[13px] px-6 py-2.5 rounded-xl hover:bg-[#3525cd]/90 transition-all duration-150 active:scale-95 cursor-pointer"
+                className="inline-flex items-center gap-2 bg-[#f97316] text-white font-semibold text-[13px] px-6 py-2.5 rounded-xl hover:bg-[#ea580c] shadow-sm shadow-orange-500/20 transition-all duration-150 active:scale-95 cursor-pointer"
               >
                 <span className="material-symbols-outlined text-[18px]">refresh</span>
                 <span>{t('common.tryAgain')}</span>
@@ -589,7 +593,7 @@ export default function HomePage() {
                 id="resetFilterBtn"
                 type="button"
                 onClick={resetFilters}
-                className="inline-flex items-center gap-2 bg-[#3525cd] text-white font-semibold text-[13px] px-6 py-2.5 rounded-xl shadow-sm hover:bg-[#3525cd]/90 transition-all duration-150 active:scale-95 cursor-pointer"
+                className="inline-flex items-center gap-2 bg-[#f97316] text-white font-semibold text-[13px] px-6 py-2.5 rounded-xl shadow-sm shadow-orange-500/20 hover:bg-[#ea580c] transition-all duration-150 active:scale-95 cursor-pointer"
               >
                 <span className="material-symbols-outlined text-[18px]">restart_alt</span>
                 <span>{t('customer.resetFilter')}</span>
@@ -612,7 +616,7 @@ export default function HomePage() {
           <div className="max-w-[80rem] mx-auto px-4 sm:px-6">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <div className="p-3 bg-[#f2f3ff] rounded-xl text-[#3525cd] shrink-0 border border-[#3525cd]/15">
+                <div className="p-3 bg-orange-50 dark:bg-orange-950/40 rounded-xl text-[#f97316] shrink-0 border border-orange-200/60 dark:border-orange-800/40">
                   <span className="material-symbols-outlined text-[28px]">bolt</span>
                 </div>
                 <div>
@@ -623,7 +627,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <div className="p-3 bg-[#f2f3ff] rounded-xl text-[#3525cd] shrink-0 border border-[#3525cd]/15">
+                <div className="p-3 bg-orange-50 dark:bg-orange-950/40 rounded-xl text-[#f97316] shrink-0 border border-orange-200/60 dark:border-orange-800/40">
                   <span className="material-symbols-outlined text-[28px]">verified_user</span>
                 </div>
                 <div>
@@ -634,7 +638,7 @@ export default function HomePage() {
                 </div>
               </div>
               <div className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100">
-                <div className="p-3 bg-[#f2f3ff] rounded-xl text-[#3525cd] shrink-0 border border-[#3525cd]/15">
+                <div className="p-3 bg-orange-50 dark:bg-orange-950/40 rounded-xl text-[#f97316] shrink-0 border border-orange-200/60 dark:border-orange-800/40">
                   <span className="material-symbols-outlined text-[28px]">support_agent</span>
                 </div>
                 <div>
@@ -654,36 +658,39 @@ export default function HomePage() {
         <div className="max-w-[80rem] mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-4 w-full">
           {/* Brand & Copyright Statement */}
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-            <Link href="/" className="text-[20px] font-extrabold text-[#3525cd] tracking-tight">
-              TiketHub
+            <Link href="/" className="flex items-center gap-2 text-[20px] font-extrabold text-[#0f172a] dark:text-white tracking-tight">
+              <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white text-[15px] shadow-xs">
+                <span className="material-symbols-outlined text-[16px]">confirmation_number</span>
+              </div>
+              <span>Tiket<span className="text-[#f97316]">Hub</span></span>
             </Link>
-            <span className="hidden sm:inline text-slate-300">|</span>
+            <span className="hidden sm:inline text-slate-300 dark:text-slate-700">|</span>
             <p className="text-slate-500 text-[13px]">
               {t('customer.footerRights')}
             </p>
           </div>
 
           {/* Links */}
-          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] font-semibold text-slate-600">
-            <a href="#events" className="hover:text-[#3525cd] transition-colors duration-150">
+          <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[13px] font-semibold text-slate-600 dark:text-slate-400">
+            <a href="#events" className="hover:text-[#f97316] transition-colors duration-150">
               {t('customer.exploreEvents')}
             </a>
             <Link
               href={user?.role === 'organizer' ? '/organizer/dashboard' : '/login'}
-              className="hover:text-[#3525cd] transition-colors duration-150"
+              className="hover:text-[#f97316] transition-colors duration-150"
             >
               {t('customer.sellTickets')}
             </Link>
-            <span className="hover:text-[#3525cd] transition-colors duration-150 cursor-pointer">
+            <span className="hover:text-[#f97316] transition-colors duration-150 cursor-pointer">
               {t('customer.pricingFees')}
             </span>
-            <span className="hover:text-[#3525cd] transition-colors duration-150 cursor-pointer">
+            <span className="hover:text-[#f97316] transition-colors duration-150 cursor-pointer">
               {t('customer.termsOfService')}
             </span>
-            <span className="hover:text-[#3525cd] transition-colors duration-150 cursor-pointer">
+            <span className="hover:text-[#f97316] transition-colors duration-150 cursor-pointer">
               {t('customer.privacyPolicy')}
             </span>
-            <span className="hover:text-[#3525cd] transition-colors duration-150 cursor-pointer">
+            <span className="hover:text-[#f97316] transition-colors duration-150 cursor-pointer">
               {t('customer.helpCenter')}
             </span>
           </div>

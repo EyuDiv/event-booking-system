@@ -215,7 +215,7 @@ export default function MyBookingsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-[#faf8ff] flex flex-col">
+      <div className="min-h-screen bg-[#f8fafc] flex flex-col">
         <header className="bg-white border-b border-slate-200 px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <span className="material-symbols-outlined text-[#3525cd] text-[28px]">confirmation_number</span>
@@ -240,16 +240,16 @@ export default function MyBookingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#faf8ff] flex flex-col font-sans">
+    <div className="min-h-screen bg-[#f8fafc] flex flex-col font-sans">
       {/* Header */}
-      <header className="bg-white border-b border-slate-200 px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between sticky top-0 z-30 shadow-xs">
+      <header className="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 px-4 sm:px-6 py-3.5 sm:py-4 flex items-center justify-between shadow-xs transition-colors duration-200">
         <div className="flex items-center gap-2">
-          <Link href="/" className="flex items-center gap-2 group">
-            <span className="material-symbols-outlined text-[#3525cd] text-[28px]" style={{ fontVariationSettings: "'FILL' 1" }}>
-              confirmation_number
-            </span>
-            <span className="text-[20px] font-extrabold text-[#131b2e] group-hover:text-[#3525cd] transition-colors">
-              TiketHub
+          <Link href="/" className="flex items-center gap-2.5 group">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white shadow-xs group-hover:scale-105 transition-transform">
+              <span className="material-symbols-outlined text-[18px]">confirmation_number</span>
+            </div>
+            <span className="text-[20px] font-extrabold text-[#0f172a] dark:text-white tracking-tight">
+              Tiket<span className="text-[#f97316]">Hub</span>
             </span>
           </Link>
         </div>
@@ -269,7 +269,7 @@ export default function MyBookingsPage() {
           </div>
           <Link
             href="/"
-            className="w-fit px-4 py-2.5 rounded-xl bg-[#3525cd] text-white text-[13px] font-bold hover:bg-[#4f46e5] transition-all shadow-xs flex items-center gap-1.5"
+            className="w-fit px-4 py-2.5 rounded-xl bg-[#f97316] text-white text-[13px] font-bold hover:bg-[#ea580c] transition-all shadow-sm shadow-orange-500/20 flex items-center gap-1.5"
           >
             <span className="material-symbols-outlined text-[18px]">explore</span>
             {t('customer.browseEvents')}
@@ -309,7 +309,7 @@ export default function MyBookingsPage() {
             </p>
             <Link
               href="/"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#3525cd] text-white font-bold text-[14px] hover:bg-[#4f46e5] transition-all shadow-sm"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-[#f97316] text-white font-bold text-[14px] hover:bg-[#ea580c] transition-all shadow-sm shadow-orange-500/25"
             >
               <span className="material-symbols-outlined text-[18px]">explore</span>
               {t('customer.browseEvents')}
@@ -410,7 +410,7 @@ export default function MyBookingsPage() {
                         <button
                           onClick={() => toggleViewTickets(booking.id)}
                           disabled={loadingTicketsId === booking.id}
-                          className="px-3.5 py-1.5 rounded-lg bg-[#3525cd] hover:bg-[#4f46e5] text-white text-[12px] font-bold transition-colors flex items-center gap-1 shadow-xs disabled:opacity-50"
+                          className="px-3.5 py-1.5 rounded-lg bg-[#f97316] hover:bg-[#ea580c] text-white text-[12px] font-bold transition-colors flex items-center gap-1 shadow-xs disabled:opacity-50"
                         >
                           {loadingTicketsId === booking.id ? (
                             <span className="material-symbols-outlined text-[14px] animate-spin">progress_activity</span>

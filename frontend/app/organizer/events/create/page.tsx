@@ -208,10 +208,12 @@ export default function CreateEventPage() {
     return (
       <div className="min-h-screen bg-[#faf8ff] dark:bg-slate-950 flex flex-col font-sans">
         {/* Header */}
-        <header className="bg-white dark:bg-slate-900 border-b border-slate-200/80 dark:border-slate-800 px-4 sm:px-6 h-16 flex items-center justify-between sticky top-0 z-40">
-          <Link href="/" className="flex items-center gap-2 text-[20px] font-extrabold text-[#3525cd] dark:text-indigo-400">
-            <span className="material-symbols-outlined text-[#3525cd] text-[26px]">confirmation_number</span>
-            <span>TiketHub</span>
+        <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 px-4 sm:px-6 h-16 flex items-center justify-between transition-colors duration-200">
+          <Link href="/" className="flex items-center gap-2.5 text-[21px] font-extrabold tracking-tight">
+            <div className="w-8 h-8 rounded-xl bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white shadow-xs">
+              <span className="material-symbols-outlined text-[18px]">confirmation_number</span>
+            </div>
+            <span className="text-[#0f172a] dark:text-white">Tiket<span className="text-[#f97316]">Hub</span></span>
           </Link>
           {user && <UserProfileDropdown user={user} />}
         </header>
@@ -238,7 +240,7 @@ export default function CreateEventPage() {
             <div className="space-y-2.5">
               <Link
                 href="/"
-                className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#3525cd] text-white text-sm font-semibold hover:bg-[#3525cd]/90 transition-all shadow-sm active:scale-98"
+                className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl bg-[#f97316] text-white text-sm font-semibold hover:bg-[#ea580c] transition-all shadow-sm shadow-orange-500/20 active:scale-98"
               >
                 <span className="material-symbols-outlined text-[18px]">explore</span>
                 Browse Events

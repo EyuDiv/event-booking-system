@@ -516,29 +516,33 @@ export default function EventDetailsClient({ eventId }: Props) {
 
 
   return (
-    <div className="bg-[#faf8ff] text-[#131b2e] min-h-screen flex flex-col font-sans selection:bg-[#4f46e5] selection:text-white">
-      {/* TopNavBar (Matching Stitch and TiketHub header) */}
-      <header className="bg-white sticky top-0 z-40 border-b border-[#c7c4d8]/30 shadow-sm">
+    <div className="bg-[#f8fafc] text-[#0f172a] min-h-screen flex flex-col font-sans selection:bg-[#f97316] selection:text-white">
+      {/* TopNavBar Modern Glassmorphic Header */}
+      <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 shadow-xs transition-colors duration-200">
         <div className="max-w-[80rem] mx-auto px-4 sm:px-6 flex justify-between items-center h-16 w-full gap-4">
           {/* Brand & Main Nav Links */}
           <div className="flex items-center gap-6 md:gap-8">
             <Link
               href="/"
-              className="flex items-center gap-2 text-[22px] font-extrabold text-[#3525cd] tracking-tight hover:opacity-90 transition-opacity"
+              className="flex items-center gap-2.5 text-[22px] font-extrabold tracking-tight transition-all duration-200 active:scale-95 shrink-0 group"
             >
-              <span
-                className="material-symbols-outlined text-[#3525cd] text-[28px]"
-                style={{ fontVariationSettings: "'FILL' 1" }}
-              >
-                confirmation_number
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white shadow-sm shadow-orange-500/25 group-hover:scale-105 transition-transform">
+                <span
+                  className="material-symbols-outlined text-[20px]"
+                  style={{ fontVariationSettings: "'FILL' 1" }}
+                >
+                  confirmation_number
+                </span>
+              </div>
+              <span className="text-[21px] font-extrabold text-[#0f172a] dark:text-white tracking-tight">
+                Tiket<span className="text-[#f97316]">Hub</span>
               </span>
-              <span>TiketHub</span>
             </Link>
 
             <nav className="hidden md:flex items-center gap-6">
               <Link
                 href="/"
-                className="text-[#3525cd] font-bold border-b-2 border-[#3525cd] pb-1 text-[15px]"
+                className="text-[#0f172a] dark:text-white font-bold border-b-2 border-[#f97316] pb-1 text-[15px]"
               >
                 {t('nav.discover')}
               </Link>
@@ -581,7 +585,7 @@ export default function EventDetailsClient({ eventId }: Props) {
                 </Link>
                 <Link
                   href="/login"
-                  className="px-4 py-1.5 rounded-xl bg-[#3525cd] hover:bg-[#4f46e5] text-white text-[13px] font-semibold transition-all shadow-sm"
+                  className="px-4 py-2 rounded-xl bg-[#f97316] hover:bg-[#ea580c] text-white text-[13px] font-semibold transition-all shadow-sm shadow-orange-500/20 active:scale-95"
                 >
                   {t('nav.register')}
                 </Link>
@@ -610,7 +614,7 @@ export default function EventDetailsClient({ eventId }: Props) {
               <Link
                 href="/"
                 onClick={() => setMobileMenuOpen(false)}
-                className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-[#3525cd] bg-[#f2f3ff] text-[14px]"
+                className="flex items-center gap-3 px-3 py-2.5 rounded-xl font-bold text-[#f97316] bg-orange-50/60 dark:bg-orange-950/30 text-[14px]"
               >
                 <span className="material-symbols-outlined text-[20px]">explore</span>
                 {t('nav.discover')}

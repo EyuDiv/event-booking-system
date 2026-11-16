@@ -53,7 +53,7 @@ export default function EventCard({ event }: { event: EventItem }) {
   return (
     <article
       data-event-id={event.id}
-      className="event-card bg-white border border-slate-200/80 rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:border-[#3525cd]/40 hover:-translate-y-1 group"
+      className="event-card bg-white dark:bg-slate-800/90 border border-slate-200/80 dark:border-slate-800 rounded-2xl overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:shadow-slate-900/5 hover:border-slate-300 dark:hover:border-slate-700 hover:-translate-y-1 group"
     >
       <Link href={detailsHref} className="block">
         {/* Event Image Container */}
@@ -68,7 +68,7 @@ export default function EventCard({ event }: { event: EventItem }) {
               }`}
             />
           ) : (
-            <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#3525cd] via-[#4f46e5] to-[#712ae2] text-white">
+            <div className="w-full h-full flex flex-col items-center justify-center bg-gradient-to-br from-[#0f172a] via-[#1e293b] to-[#0f172a] text-white">
               <span className="material-symbols-outlined text-[48px] opacity-80">confirmation_number</span>
               <span className="text-[13px] font-semibold mt-1 opacity-90">{event.category}</span>
             </div>
@@ -86,7 +86,7 @@ export default function EventCard({ event }: { event: EventItem }) {
               <span>{event.available_tickets} {t('customer.ticketsLeft')}</span>
             </div>
           ) : (
-            <div className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-600/90 backdrop-blur-md text-white shadow-sm text-[11px] font-bold">
+            <div className="absolute top-3 right-3 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#10b981] backdrop-blur-md text-white shadow-sm text-[11px] font-bold">
               <span className="w-1.5 h-1.5 rounded-full bg-white" />
               <span>{t('customer.available')}</span>
             </div>
@@ -102,13 +102,13 @@ export default function EventCard({ event }: { event: EventItem }) {
         {/* Card Body */}
         <div className="p-5">
           {/* Date & Time */}
-          <div className="flex items-center gap-1.5 text-[13px] font-semibold text-[#3525cd] mb-2">
+          <div className="flex items-center gap-1.5 text-[13px] font-semibold text-[#f97316] mb-2">
             <span className="material-symbols-outlined text-[16px]">calendar_today</span>
             <span>{formatEventDate(event.event_date)}</span>
           </div>
 
           {/* Title */}
-          <h3 className="font-bold text-[18px] text-[#131b2e] leading-snug line-clamp-2 group-hover:text-[#3525cd] transition-colors mb-2.5">
+          <h3 className="font-bold text-[18px] text-[#0f172a] dark:text-white leading-snug line-clamp-2 group-hover:text-[#f97316] transition-colors mb-2.5">
             {event.title}
           </h3>
 
@@ -121,7 +121,7 @@ export default function EventCard({ event }: { event: EventItem }) {
           {/* Organizer */}
           {event.organizer && (
             <div className="flex items-center gap-2 pt-3 border-t border-slate-100 text-[12px] text-slate-500">
-              <span className="w-6 h-6 rounded-full bg-[#f2f3ff] text-[#3525cd] flex items-center justify-center font-bold text-[11px] border border-[#3525cd]/15">
+              <span className="w-6 h-6 rounded-full bg-orange-50 dark:bg-orange-950/40 text-[#f97316] flex items-center justify-center font-bold text-[11px] border border-orange-200/50 dark:border-orange-800/40">
                 {event.organizer.name?.[0]?.toUpperCase() || 'O'}
               </span>
               <span className="truncate font-medium">{event.organizer.name}</span>
@@ -131,17 +131,17 @@ export default function EventCard({ event }: { event: EventItem }) {
       </Link>
 
       {/* Card Footer */}
-      <div className="px-5 py-4 border-t border-slate-100 bg-slate-50/50 flex items-center justify-between gap-3 mt-auto">
+      <div className="px-5 py-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 flex items-center justify-between gap-3 mt-auto">
         <div className="min-w-0">
           <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{t('common.price')}</div>
-          <div className="text-[17px] font-extrabold text-[#131b2e] truncate">
+          <div className="text-[17px] font-extrabold text-[#0f172a] dark:text-white truncate">
             {Number(event.ticket_price) === 0 ? t('common.free') : formatPrice(event.ticket_price)}
           </div>
         </div>
 
         <Link
           href={detailsHref}
-          className="inline-flex items-center justify-center shrink-0 text-[13px] font-bold px-4 py-2 rounded-xl bg-[#3525cd] text-white hover:bg-[#3525cd]/90 shadow-sm transition-all duration-150 active:scale-95 gap-1"
+          className="inline-flex items-center justify-center shrink-0 text-[13px] font-bold px-4 py-2 rounded-xl bg-[#0f172a] hover:bg-[#f97316] dark:bg-white dark:text-[#0f172a] dark:hover:bg-[#f97316] dark:hover:text-white text-white shadow-xs transition-all duration-150 active:scale-95 gap-1"
         >
           <span>{t('customer.viewDetails')}</span>
           <span className="material-symbols-outlined text-[16px]">arrow_forward</span>

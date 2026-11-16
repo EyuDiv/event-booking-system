@@ -10,11 +10,31 @@ interface UserProfileDropdownProps {
 }
 
 const ROLE_CONFIG: Record<string, { label: string; color: string; icon: string }> = {
-  'super-admin': { label: 'Super Admin',   color: 'bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200 dark:border-rose-800/40',    icon: 'admin_panel_settings' },
-  'admin':       { label: 'Administrator', color: 'bg-rose-100 text-rose-700 dark:bg-rose-950/60 dark:text-rose-300 border border-rose-200 dark:border-rose-800/40',    icon: 'admin_panel_settings' },
-  'organizer':   { label: 'Organizer',     color: 'bg-purple-100 text-purple-700 dark:bg-purple-950/60 dark:text-purple-300 border border-purple-200 dark:border-purple-800/40', icon: 'campaign' },
-  'customer':    { label: 'Customer',      color: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40', icon: 'confirmation_number' },
-  'attendee':    { label: 'Attendee',      color: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40', icon: 'confirmation_number' },
+  'super-admin': {
+    label: 'Super Admin',
+    color: 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 border border-slate-700/60 dark:border-slate-300',
+    icon: 'admin_panel_settings',
+  },
+  'admin': {
+    label: 'Administrator',
+    color: 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 border border-slate-700/60 dark:border-slate-300',
+    icon: 'admin_panel_settings',
+  },
+  'organizer': {
+    label: 'Organizer',
+    color: 'bg-orange-50 text-orange-700 dark:bg-orange-950/60 dark:text-orange-300 border border-orange-200 dark:border-orange-800/40',
+    icon: 'campaign',
+  },
+  'customer': {
+    label: 'Customer',
+    color: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700',
+    icon: 'confirmation_number',
+  },
+  'attendee': {
+    label: 'Attendee',
+    color: 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300 border border-slate-200 dark:border-slate-700',
+    icon: 'confirmation_number',
+  },
 };
 
 function getInitials(name: string): string {
@@ -103,28 +123,28 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
 
   return (
     <div className="relative inline-block text-left" ref={dropdownRef}>
-      {/* ── Profile Trigger Button ── */}
+      {/* ── Refined Airbnb / Eventbrite Style Trigger Button ── */}
       <button
         id="user-profile-btn"
         type="button"
         onClick={() => setOpen((prev) => !prev)}
         aria-haspopup="true"
         aria-expanded={open}
-        className="flex items-center gap-2 p-1 sm:pl-1.5 sm:pr-2.5 sm:py-1 rounded-full sm:rounded-xl border border-slate-200/90 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 hover:bg-slate-50 dark:hover:bg-slate-700/70 hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-150 shadow-xs cursor-pointer group focus:outline-none focus:ring-2 focus:ring-[#3525cd]/20"
+        className="flex items-center gap-2 p-1 sm:pl-1.5 sm:pr-3 sm:py-1 rounded-full border border-slate-200/90 dark:border-slate-700/80 bg-white dark:bg-slate-800/90 hover:bg-slate-50 dark:hover:bg-slate-700/70 hover:border-slate-300 dark:hover:border-slate-600 transition-all duration-150 shadow-xs cursor-pointer group focus:outline-none focus:ring-2 focus:ring-[#f97316]/20"
         title="Profile and Settings"
       >
         {/* User Avatar with Initials */}
         <div className="relative">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#3525cd] via-[#4f46e5] to-[#712ae2] flex items-center justify-center text-white text-[12px] font-bold tracking-tight shadow-xs">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white text-[12px] font-bold tracking-tight shadow-sm shadow-orange-500/20">
             {initials}
           </div>
-          {/* Active online status dot */}
-          <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-slate-800" />
+          {/* Active online status dot (#10B981) */}
+          <span className="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 rounded-full bg-[#10b981] ring-2 ring-white dark:ring-slate-800" />
         </div>
 
-        {/* User Name & Chevron */}
+        {/* User Name & Role */}
         <div className="hidden sm:flex flex-col text-left leading-tight">
-          <span className="text-[13px] font-bold text-[#131b2e] dark:text-slate-100 truncate max-w-[110px]">
+          <span className="text-[13px] font-bold text-[#0f172a] dark:text-slate-100 truncate max-w-[110px]">
             {user.name}
           </span>
           <span className="text-[10px] text-slate-500 dark:text-slate-400 font-medium capitalize">
@@ -133,8 +153,8 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
         </div>
 
         <span
-          className={`material-symbols-outlined text-[18px] text-slate-400 dark:text-slate-500 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-transform duration-200 ${
-            open ? 'rotate-180 text-[#3525cd] dark:text-indigo-400' : ''
+          className={`material-symbols-outlined text-[18px] text-slate-400 dark:text-slate-500 group-hover:text-slate-700 dark:group-hover:text-slate-300 transition-transform duration-200 ${
+            open ? 'rotate-180 text-[#f97316]' : ''
           }`}
         >
           expand_more
@@ -145,21 +165,21 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
       <div
         role="menu"
         aria-orientation="vertical"
-        className={`absolute right-0 mt-2 w-76 sm:w-80 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-2xl z-50 overflow-hidden transition-all duration-200 origin-top-right ${
+        className={`absolute right-0 mt-2 w-76 sm:w-80 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200/90 dark:border-slate-800 shadow-xl shadow-slate-900/10 dark:shadow-black/40 z-50 overflow-hidden transition-all duration-200 origin-top-right ${
           open
             ? 'opacity-100 scale-100 translate-y-0 pointer-events-auto'
             : 'opacity-0 scale-95 -translate-y-2 pointer-events-none'
         }`}
       >
         {/* User Information & Status Section */}
-        <div className="p-4 border-b border-slate-100 dark:border-slate-800/80 bg-gradient-to-br from-[#f8f9ff] to-white dark:from-slate-900 dark:to-slate-900/50">
+        <div className="p-4 border-b border-slate-100 dark:border-slate-800/80 bg-slate-50/70 dark:bg-slate-800/40">
           <div className="flex items-start gap-3">
             {/* Expanded Avatar */}
-            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#3525cd] to-[#712ae2] flex items-center justify-center text-white text-[15px] font-bold shadow-md shrink-0">
+            <div className="w-11 h-11 rounded-xl bg-gradient-to-tr from-[#f97316] to-[#ea580c] flex items-center justify-center text-white text-[15px] font-bold shadow-sm shadow-orange-500/25 shrink-0">
               {initials}
             </div>
             <div className="min-w-0 flex-1">
-              <h3 className="text-[14px] font-bold text-[#131b2e] dark:text-white truncate leading-snug">
+              <h3 className="text-[14px] font-bold text-[#0f172a] dark:text-white truncate leading-snug">
                 {user.name}
               </h3>
               <p className="text-[12px] text-slate-500 dark:text-slate-400 truncate mt-0.5" title={user.email}>
@@ -168,9 +188,9 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
 
               {/* Status and Role Badges */}
               <div className="flex items-center gap-1.5 mt-2 flex-wrap">
-                {/* Account Active Indicator */}
+                {/* Account Active Indicator with #10B981 */}
                 <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 dark:bg-emerald-950/60 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-800/40">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" />
                   Active Account
                 </span>
 
@@ -194,16 +214,16 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
             tabIndex={0}
             onClick={toggleDarkMode}
             onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') toggleDarkMode(); }}
-            className="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/80 transition-colors cursor-pointer select-none group"
+            className="flex items-center justify-between px-3 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors cursor-pointer select-none group"
           >
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-[#3525cd]/10 group-hover:text-[#3525cd] dark:group-hover:text-indigo-400 transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-orange-50 dark:group-hover:bg-orange-950/40 group-hover:text-[#f97316] transition-colors">
                 <span className="material-symbols-outlined text-[19px]">
                   {darkMode ? 'light_mode' : 'dark_mode'}
                 </span>
               </div>
               <div>
-                <div className="text-[13px] font-semibold text-[#131b2e] dark:text-slate-100 leading-tight">
+                <div className="text-[13px] font-semibold text-[#0f172a] dark:text-slate-100 leading-tight">
                   Theme
                 </div>
                 <div className="text-[11px] text-slate-500 dark:text-slate-400">
@@ -215,7 +235,7 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
             {/* Toggle Pill Switch */}
             <div
               className={`relative w-11 h-6 rounded-full transition-colors duration-200 ease-in-out shrink-0 ${
-                darkMode ? 'bg-[#3525cd] dark:bg-indigo-600' : 'bg-slate-200 dark:bg-slate-700'
+                darkMode ? 'bg-[#f97316]' : 'bg-slate-200 dark:bg-slate-700'
               }`}
             >
               <div
@@ -223,7 +243,7 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
                   darkMode ? 'translate-x-5' : 'translate-x-0'
                 }`}
               >
-                <span className={`material-symbols-outlined text-[12px] ${darkMode ? 'text-indigo-600' : 'text-amber-500'}`}>
+                <span className={`material-symbols-outlined text-[12px] ${darkMode ? 'text-orange-600' : 'text-amber-500'}`}>
                   {darkMode ? 'dark_mode' : 'light_mode'}
                 </span>
               </div>
@@ -244,15 +264,15 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
                 router.push('/dashboard');
               }
             }}
-            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/80 transition-colors text-left group cursor-pointer"
+            className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors text-left group cursor-pointer"
           >
-            <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-[#3525cd]/10 group-hover:text-[#3525cd] dark:group-hover:text-indigo-400 transition-colors">
+            <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-orange-50 dark:group-hover:bg-orange-950/40 group-hover:text-[#f97316] transition-colors">
               <span className="material-symbols-outlined text-[19px]">
                 settings
               </span>
             </div>
             <div>
-              <div className="text-[13px] font-semibold text-[#131b2e] dark:text-slate-100 leading-tight">
+              <div className="text-[13px] font-semibold text-[#0f172a] dark:text-slate-100 leading-tight">
                 Account Settings
               </div>
               <div className="text-[11px] text-slate-500 dark:text-slate-400">
@@ -270,15 +290,15 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
                 setOpen(false);
                 router.push('/my-bookings');
               }}
-              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/80 transition-colors text-left group cursor-pointer"
+              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors text-left group cursor-pointer"
             >
-              <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-[#3525cd]/10 group-hover:text-[#3525cd] dark:group-hover:text-indigo-400 transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-orange-50 dark:group-hover:bg-orange-950/40 group-hover:text-[#f97316] transition-colors">
                 <span className="material-symbols-outlined text-[19px]">
                   receipt_long
                 </span>
               </div>
               <div>
-                <div className="text-[13px] font-semibold text-[#131b2e] dark:text-slate-100 leading-tight">
+                <div className="text-[13px] font-semibold text-[#0f172a] dark:text-slate-100 leading-tight">
                   My Bookings
                 </div>
                 <div className="text-[11px] text-slate-500 dark:text-slate-400">
@@ -296,15 +316,15 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
                 setOpen(false);
                 router.push('/organizer/events/create');
               }}
-              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-100/80 dark:hover:bg-slate-800/80 transition-colors text-left group cursor-pointer"
+              className="w-full flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-800/80 transition-colors text-left group cursor-pointer"
             >
-              <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-[#712ae2]/10 group-hover:text-[#712ae2] dark:group-hover:text-purple-400 transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-600 dark:text-slate-300 group-hover:bg-orange-50 dark:group-hover:bg-orange-950/40 group-hover:text-[#f97316] transition-colors">
                 <span className="material-symbols-outlined text-[19px]">
                   add_circle
                 </span>
               </div>
               <div>
-                <div className="text-[13px] font-semibold text-[#131b2e] dark:text-slate-100 leading-tight">
+                <div className="text-[13px] font-semibold text-[#0f172a] dark:text-slate-100 leading-tight">
                   Create New Event
                 </div>
                 <div className="text-[11px] text-slate-500 dark:text-slate-400">
