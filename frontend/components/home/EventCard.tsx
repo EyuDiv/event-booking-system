@@ -102,7 +102,7 @@ export default function EventCard({ event }: { event: EventItem }) {
 
           {/* Price Tag Chip: Top-Left */}
           <div className="absolute top-3 left-3 px-2.5 py-1 rounded-lg bg-black/60 backdrop-blur-md text-white text-[11px] font-bold shadow-xs">
-            {isFree ? 'FREE' : `ETB ${Number(event.ticket_price).toLocaleString()}`}
+            {isFree ? t('common.free') : formatPrice(event.ticket_price)}
           </div>
 
           {/* Availability Status Badge: Top-Right */}

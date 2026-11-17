@@ -23,23 +23,34 @@ const dictionaries: Record<Locale, Record<string, unknown>> = {
 
 const I18nContext = createContext<I18nContextType | null>(null);
 
-export function I18nProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('en');
+export interface I18nProviderProps {
+  children: React.ReactNode;
+  initialLocale?: Locale;
+}
 
-  // Initialize from localStorage or navigator
+export function I18nProvider({ children, initialLocale = 'en' }: I18nProviderProps) {
+  const [locale, setLocaleState] = useState<Locale>(initialLocale);
+
+  // Sync with client-side localStorage preference after mount if different
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY) as Locale | null;
-      if (stored === 'en' || stored === 'am') {
-        queueMicrotask(() => {
-          setLocaleState(stored);
-          document.documentElement.lang = stored;
-        });
+      if (stored && (stored === 'en' || stored === 'am')) {
+        if (stored !== initialLocale) {
+          queueMicrotask(() => {
+            setLocaleState(stored);
+            document.cookie = `${COOKIE_NAME}=${stored}; path=/; max-age=31536000; SameSite=Lax`;
+            document.documentElement.lang = stored;
+          });
+        }
+      } else {
+        localStorage.setItem(STORAGE_KEY, initialLocale);
+        document.cookie = `${COOKIE_NAME}=${initialLocale}; path=/; max-age=31536000; SameSite=Lax`;
       }
     } catch {
       // ignore SSR or storage exceptions
     }
-  }, []);
+  }, [initialLocale]);
 
   const setLocale = useCallback((newLocale: Locale) => {
     setLocaleState(newLocale);

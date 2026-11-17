@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import './globals.css';
-import { I18nProvider } from '@/lib/i18n';
+import { I18nProvider, type Locale } from '@/lib/i18n';
 import ThemeSync from '@/components/ThemeSync';
 
 export const metadata: Metadata = {
@@ -9,13 +10,17 @@ export const metadata: Metadata = {
     'Browse real concerts, festivals, and conferences with instant mobile ticketing powered by TiketHub.',
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const cookieStore = await cookies();
+  const localeCookie = cookieStore.get('NEXT_LOCALE')?.value;
+  const initialLocale: Locale = localeCookie === 'am' || localeCookie === 'en' ? localeCookie : 'en';
+
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={initialLocale} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -30,7 +35,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased min-h-screen" suppressHydrationWarning>
         <ThemeSync />
-        <I18nProvider>
+        <I18nProvider initialLocale={initialLocale}>
           {children}
         </I18nProvider>
       </body>
