@@ -6,7 +6,17 @@
   --font-sans: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 
-  /* Modern Refined Theme Palette (Inspired by Eventbrite & Airbnb) */
+  /* Brand Design System: TiketHub Premium Discovery */
+  --color-brand-primary: #FF6500;
+  --color-brand-primary-hover: #E05A00;
+  --color-brand-secondary: #101828;
+  --color-brand-bg: #F8FAFC;
+  --color-brand-surface: #FFFFFF;
+  --color-brand-text: #101828;
+  --color-brand-text-muted: #667085;
+  --color-brand-border: #E4E7EC;
+
+  /* Modern Refined Theme Palette */
   --color-background: #f8fafc;
   --color-surface: #ffffff;
   --color-surface-container-lowest: #ffffff;
@@ -15,9 +25,9 @@
   --color-surface-container-high: #e2e8f0;
   --color-surface-container-highest: #cbd5e1;
 
-  /* Primary Accent: Vibrant Coral Orange (#F97316) with Hover (#EA580C) */
-  --color-primary: #f97316;
-  --color-primary-hover: #ea580c;
+  /* Primary Accent: Brand Orange (#FF6500) with Hover (#E05A00) */
+  --color-primary: #FF6500;
+  --color-primary-hover: #E05A00;
   --color-primary-container: #ffedd5;
   --color-on-primary: #ffffff;
   --color-on-primary-container: #9a3412;
@@ -26,14 +36,14 @@
   --color-on-primary-fixed: #7c2d12;
   --color-on-primary-fixed-variant: #c2410c;
 
-  /* Deep Midnight Navy & Secondary Tones (#0F172A) */
-  --color-secondary: #0f172a;
+  /* Deep Midnight Navy & Secondary Tones (#101828) */
+  --color-secondary: #101828;
   --color-secondary-container: #1e293b;
   --color-secondary-fixed: #e2e8f0;
   --color-secondary-fixed-dim: #cbd5e1;
   --color-on-secondary: #ffffff;
   --color-on-secondary-container: #f8fafc;
-  --color-on-secondary-fixed: #0f172a;
+  --color-on-secondary-fixed: #101828;
   --color-on-secondary-fixed-variant: #334155;
 
   /* Success & Verified Badges: Emerald (#10B981) */
@@ -48,23 +58,23 @@
 
   --color-surface-dim: #e2e8f0;
   --color-surface-bright: #ffffff;
-  --color-surface-tint: #f97316;
+  --color-surface-tint: #FF6500;
 
-  /* Deep Midnight Navy Text (#0F172A) & Muted Text (#475569) */
-  --color-on-surface: #0f172a;
-  --color-on-surface-variant: #475569;
+  /* Deep Navy Text (#101828) & Muted Text (#667085) */
+  --color-on-surface: #101828;
+  --color-on-surface-variant: #667085;
   --color-outline: #94a3b8;
-  --color-outline-variant: #e2e8f0;
+  --color-outline-variant: #E4E7EC;
 
   --color-error: #ef4444;
   --color-error-container: #fee2e2;
   --color-on-error: #ffffff;
   --color-on-error-container: #991b1b;
 
-  --color-inverse-surface: #0f172a;
+  --color-inverse-surface: #101828;
   --color-inverse-on-surface: #f8fafc;
   --color-inverse-primary: #ffedd5;
-  --color-on-background: #0f172a;
+  --color-on-background: #101828;
 
   --spacing-space-2xs: 0.25rem;
   --spacing-space-xs: 0.5rem;
@@ -86,7 +96,7 @@ html, body {
 body {
   font-family: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, sans-serif;
   background-color: #f8fafc;
-  color: #0f172a;
+  color: #101828;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   transition: background-color 0.2s ease, color 0.2s ease;
@@ -95,7 +105,7 @@ body {
 /* Headings with tight, modern letter-spacing (Airbnb / Eventbrite aesthetic) */
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, sans-serif;
-  color: #0f172a;
+  color: #101828;
   letter-spacing: -0.025em;
   font-weight: 700;
 }
