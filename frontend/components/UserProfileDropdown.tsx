@@ -55,13 +55,15 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
   useEffect(() => {
     const stored = typeof window !== 'undefined' ? localStorage.getItem('theme') : null;
     const prefersDark = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (stored === 'dark' || (!stored && prefersDark)) {
-      setDarkMode(true);
-      document.documentElement.classList.add('dark');
-    } else {
-      setDarkMode(false);
-      document.documentElement.classList.remove('dark');
-    }
+    const isDark = Boolean(stored === 'dark' || (!stored && prefersDark));
+    queueMicrotask(() => {
+      setDarkMode(isDark);
+      if (isDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
+    });
   }, []);
 
   const toggleDarkMode = useCallback(() => {
@@ -70,9 +72,11 @@ export default function UserProfileDropdown({ user }: UserProfileDropdownProps) 
       if (next) {
         document.documentElement.classList.add('dark');
         localStorage.setItem('theme', 'dark');
+        document.cookie = 'theme=dark; path=/; max-age=31536000; SameSite=Lax';
       } else {
         document.documentElement.classList.remove('dark');
         localStorage.setItem('theme', 'light');
+        document.cookie = 'theme=light; path=/; max-age=31536000; SameSite=Lax';
       }
       return next;
     });

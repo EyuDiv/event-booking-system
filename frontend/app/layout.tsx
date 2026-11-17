@@ -19,17 +19,16 @@ export default async function RootLayout({
   const localeCookie = cookieStore.get('NEXT_LOCALE')?.value;
   const initialLocale: Locale = localeCookie === 'am' || localeCookie === 'en' ? localeCookie : 'en';
 
+  const themeCookie = cookieStore.get('theme')?.value;
+  const initialTheme = themeCookie === 'dark' ? 'dark' : 'light';
+
   return (
-    <html lang={initialLocale} suppressHydrationWarning>
+    <html lang={initialLocale} className={initialTheme} suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
           href="https://fonts.googleapis.com/css2?family=Noto+Sans+Ethiopic:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
           rel="stylesheet"
         />
       </head>

@@ -31,7 +31,7 @@ export default function Navbar({ user, onLogout, activeRoute = 'discover' }: Nav
             href="/"
             className="flex items-center gap-2.5 transition-transform duration-150 active:scale-95 shrink-0 group"
           >
-            <div className="w-9 h-9 rounded-xl bg-[#FF6500] text-white flex items-center justify-center shadow-xs shadow-[#FF6500]/25 group-hover:scale-105 transition-transform">
+            <div className="w-9 h-9 rounded-xl bg-[#FF6500] text-white flex items-center justify-center shadow-xs shadow-[#FF6500]/25 group-hover:scale-105 transition-transform overflow-hidden shrink-0">
               <span
                 className="material-symbols-outlined text-[20px]"
                 style={{ fontVariationSettings: "'FILL' 1" }}

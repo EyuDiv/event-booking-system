@@ -2,6 +2,14 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
+@font-face {
+  font-family: 'Material Symbols Outlined';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: block;
+  src: url('/fonts/material-symbols-outlined.woff2') format('woff2');
+}
+
 @theme {
   --font-sans: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -89,37 +97,44 @@
   --spacing-container-max: 80rem;
 }
 
-html, body {
+html,
+body {
   overflow-x: clip;
 }
 
-body {
-  font-family: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, sans-serif;
-  background-color: #f8fafc;
-  color: #101828;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, sans-serif;
+    background-color: #f8fafc;
+    color: #101828;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
 
-/* Headings with tight, modern letter-spacing (Airbnb / Eventbrite aesthetic) */
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, sans-serif;
-  color: #101828;
-  letter-spacing: -0.025em;
-  font-weight: 700;
-}
+  /* Headings with tight, modern letter-spacing (Airbnb / Eventbrite aesthetic) */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: 'Plus Jakarta Sans', 'Noto Sans Ethiopic', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.025em;
+    font-weight: 700;
+  }
 
-h1 {
-  letter-spacing: -0.035em;
-}
+  h1 {
+    letter-spacing: -0.035em;
+  }
 
-h2 {
-  letter-spacing: -0.025em;
-}
+  h2 {
+    letter-spacing: -0.025em;
+  }
 
-h3 {
-  letter-spacing: -0.02em;
+  h3 {
+    letter-spacing: -0.02em;
+  }
 }
 
 /* ==========================================================================
@@ -329,7 +344,7 @@ html.dark .shadow-2xl {
 }
 
 .material-symbols-outlined {
-  font-family: 'Material Symbols Outlined';
+  font-family: 'Material Symbols Outlined', sans-serif;
   font-weight: normal;
   font-style: normal;
   font-size: 24px;
@@ -341,6 +356,11 @@ html.dark .shadow-2xl {
   word-wrap: normal;
   direction: ltr;
   -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  overflow: hidden;
+  user-select: none;
   vertical-align: middle;
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
@@ -386,13 +406,16 @@ html.dark .shadow-2xl {
   width: 6px;
   height: 6px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-track {
   background: rgba(241, 245, 249, 0.6);
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb {
   background: var(--color-outline-variant);
   border-radius: 9999px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
   background: var(--color-outline);
 }
@@ -404,60 +427,70 @@ html.dark .shadow-2xl {
   letter-spacing: -0.03em;
   font-weight: 800;
 }
+
 .text-headline-lg {
   font-size: 28px;
   line-height: 36px;
   letter-spacing: -0.025em;
   font-weight: 700;
 }
+
 .text-headline-md {
   font-size: 22px;
   line-height: 30px;
   letter-spacing: -0.02em;
   font-weight: 700;
 }
+
 .text-headline-sm {
   font-size: 18px;
   line-height: 26px;
   letter-spacing: -0.015em;
   font-weight: 600;
 }
+
 .text-body-lg {
   font-size: 16px;
   line-height: 26px;
   letter-spacing: -0.005em;
   font-weight: 400;
 }
+
 .text-body-md {
   font-size: 14px;
   line-height: 22px;
   letter-spacing: 0em;
   font-weight: 400;
 }
+
 .text-body-sm {
   font-size: 13px;
   line-height: 18px;
   letter-spacing: 0em;
   font-weight: 400;
 }
+
 .text-label-lg {
   font-size: 15px;
   line-height: 20px;
   letter-spacing: 0em;
   font-weight: 600;
 }
+
 .text-label-md {
   font-size: 13px;
   line-height: 18px;
   letter-spacing: 0.01em;
   font-weight: 600;
 }
+
 .text-label-sm {
   font-size: 11px;
   line-height: 14px;
   letter-spacing: 0.04em;
   font-weight: 700;
 }
+
 .text-numeric-data {
   font-size: 15px;
   line-height: 22px;

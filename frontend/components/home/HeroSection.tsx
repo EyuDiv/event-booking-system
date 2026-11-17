@@ -9,7 +9,7 @@ export default function HeroSection() {
   return (
     <section className="relative max-w-[80rem] mx-auto px-4 sm:px-6 pt-4 sm:pt-6">
       {/* Hero Box */}
-      <div className="relative rounded-3xl bg-[#101828] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-900 via-[#101828] to-[#070b13] px-6 pt-9 pb-16 sm:px-10 sm:pt-12 sm:pb-20 md:pt-14 md:pb-22 text-white border border-slate-800/90 shadow-2xl overflow-hidden text-center flex flex-col items-center">
+      <div className="relative rounded-3xl bg-[#101828] bg-gradient-to-b from-slate-900 via-[#101828] to-[#0a0f1a] px-6 pt-9 pb-16 sm:px-10 sm:pt-12 sm:pb-20 md:pt-14 md:pb-22 text-white border border-slate-800/90 shadow-2xl overflow-hidden text-center flex flex-col items-center">
         
         {/* Subtle decorative glow elements */}
         <div
@@ -41,9 +41,8 @@ export default function HeroSection() {
 
           {/* Main Headline - Solid crisp text, no ghosting or duplicate text artifacts */}
           <h1 className="text-[30px] sm:text-[40px] md:text-[46px] font-black tracking-tight leading-[1.14] mb-3 text-white">
-            Discover Events.
-            <br />
-            <span className="text-slate-100 font-extrabold">
+            <span className="text-white block">Discover Events.</span>
+            <span className="text-slate-100 font-extrabold block">
               Create Unforgettable Memories.
             </span>
           </h1>

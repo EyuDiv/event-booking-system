@@ -21,7 +21,7 @@ export default function Footer({ user }: FooterProps) {
             href="/"
             className="flex items-center gap-2 text-[20px] font-extrabold text-[#101828] dark:text-white tracking-tight"
           >
-            <div className="w-7 h-7 rounded-lg bg-[#FF6500] flex items-center justify-center text-white text-[15px] shadow-xs shadow-[#FF6500]/25">
+            <div className="w-7 h-7 rounded-lg bg-[#FF6500] flex items-center justify-center text-white text-[15px] shadow-xs shadow-[#FF6500]/25 overflow-hidden shrink-0">
               <span className="material-symbols-outlined text-[16px]">confirmation_number</span>
             </div>
             <span>

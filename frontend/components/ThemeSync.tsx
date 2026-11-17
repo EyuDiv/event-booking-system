@@ -2,26 +2,6 @@
 
 import { useEffect } from 'react';
 
-// Immediately runs on the client as soon as this module is evaluated in the browser,
-// before React even finishes mounting components, eliminating any flash of light theme.
-if (typeof window !== 'undefined') {
-  try {
-    const stored = localStorage.getItem('theme');
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (stored === 'dark' || (!stored && prefersDark)) {
-      document.documentElement.classList.add('dark');
-      document.documentElement.classList.remove('light');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.documentElement.classList.add('light');
-    }
-  } catch {
-    // Ignore restricted localStorage contexts
-  }
-}
-
 export default function ThemeSync() {
   useEffect(() => {
     try {
@@ -29,13 +9,19 @@ export default function ThemeSync() {
       const prefersDark =
         window.matchMedia &&
         window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (stored === 'dark' || (!stored && prefersDark)) {
+      const isDark = stored === 'dark' || (!stored && prefersDark);
+      const activeTheme = isDark ? 'dark' : 'light';
+
+      if (isDark) {
         document.documentElement.classList.add('dark');
         document.documentElement.classList.remove('light');
       } else {
         document.documentElement.classList.remove('dark');
         document.documentElement.classList.add('light');
       }
+
+      // Synchronize cookie for future SSR renders
+      document.cookie = `theme=${activeTheme}; path=/; max-age=31536000; SameSite=Lax`;
     } catch {
       // Ignore storage errors in restricted contexts
     }
