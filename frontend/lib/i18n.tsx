@@ -16,29 +16,29 @@ export interface I18nContextType {
 const STORAGE_KEY = 'tikethub_locale';
 const COOKIE_NAME = 'NEXT_LOCALE';
 
-const dictionaries: Record<Locale, any> = {
-  en: enMessages,
-  am: amMessages,
+const dictionaries: Record<Locale, Record<string, unknown>> = {
+  en: enMessages as Record<string, unknown>,
+  am: amMessages as Record<string, unknown>,
 };
 
 const I18nContext = createContext<I18nContextType | null>(null);
 
 export function I18nProvider({ children }: { children: React.ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>('en');
-  const [mounted, setMounted] = useState(false);
 
   // Initialize from localStorage or navigator
   useEffect(() => {
     try {
       const stored = localStorage.getItem(STORAGE_KEY) as Locale | null;
       if (stored === 'en' || stored === 'am') {
-        setLocaleState(stored);
-        document.documentElement.lang = stored;
+        queueMicrotask(() => {
+          setLocaleState(stored);
+          document.documentElement.lang = stored;
+        });
       }
     } catch {
       // ignore SSR or storage exceptions
     }
-    setMounted(true);
   }, []);
 
   const setLocale = useCallback((newLocale: Locale) => {
@@ -60,10 +60,10 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
       // Split dot-notation key (e.g., "common.loading" or "admin.totalUsers")
       const keys = key.split('.');
 
-      let value: any = activeDict;
+      let value: unknown = activeDict;
       for (const k of keys) {
         if (value && typeof value === 'object' && k in value) {
-          value = value[k];
+          value = (value as Record<string, unknown>)[k];
         } else {
           value = undefined;
           break;
@@ -72,10 +72,10 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
       // Fallback to English if not found in active dictionary
       if (value === undefined || value === null) {
-        let fallbackValue: any = fallbackDict;
+        let fallbackValue: unknown = fallbackDict;
         for (const k of keys) {
           if (fallbackValue && typeof fallbackValue === 'object' && k in fallbackValue) {
-            fallbackValue = fallbackValue[k];
+            fallbackValue = (fallbackValue as Record<string, unknown>)[k];
           } else {
             fallbackValue = undefined;
             break;

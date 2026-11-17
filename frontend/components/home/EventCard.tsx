@@ -9,15 +9,36 @@ function isSoldOut(event: EventItem): boolean {
   return event.status === 'sold_out' || event.available_tickets <= 0;
 }
 
+const MONTH_NAMES = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'] as const;
+
 function formatEventDate(value: string): { monthAbbr: string; day: string; timeStr: string } {
+  if (!value) return { monthAbbr: '—', day: '—', timeStr: '—' };
+
+  // Parse YYYY-MM-DDTHH:mm:ss directly to be 100% deterministic across server & client
+  const isoMatch = value.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
+  if (isoMatch) {
+    const [, , m, d, h, min] = isoMatch;
+    const monthIndex = parseInt(m, 10) - 1;
+    const monthAbbr = MONTH_NAMES[monthIndex] || '—';
+    const day = String(parseInt(d, 10));
+    const hourNum = parseInt(h, 10);
+    const ampm = hourNum >= 12 ? 'PM' : 'AM';
+    const hour12 = hourNum % 12 || 12;
+    const timeStr = `${hour12}:${min} ${ampm}`;
+    return { monthAbbr, day, timeStr };
+  }
+
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) {
     return { monthAbbr: '—', day: '—', timeStr: '—' };
   }
-  const monthAbbr = date.toLocaleString('en-US', { month: 'short' }).toUpperCase();
-  const day = String(date.getDate());
-  const timeStr = date.toLocaleString('en-US', { hour: 'numeric', minute: '2-digit' });
-  return { monthAbbr, day, timeStr };
+  const monthAbbr = MONTH_NAMES[date.getUTCMonth()] || '—';
+  const day = String(date.getUTCDate());
+  const hours = date.getUTCHours();
+  const mins = String(date.getUTCMinutes()).padStart(2, '0');
+  const ampm = hours >= 12 ? 'PM' : 'AM';
+  const hour12 = hours % 12 || 12;
+  return { monthAbbr, day, timeStr: `${hour12}:${mins} ${ampm}` };
 }
 
 function formatPrice(value: number | string): string {
