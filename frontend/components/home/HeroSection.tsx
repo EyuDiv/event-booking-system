@@ -5,6 +5,10 @@ import { useTranslation } from '@/lib/i18n';
 
 export default function HeroSection() {
   const { t } = useTranslation();
+  const heroTitle = t('customer.heroTitle');
+  const titleParts = heroTitle.split('\n');
+  const firstLine = titleParts[0] || heroTitle;
+  const secondLine = titleParts[1] || '';
 
   return (
     <section className="relative max-w-[80rem] mx-auto px-4 sm:px-6 pt-4 sm:pt-6">
@@ -39,12 +43,14 @@ export default function HeroSection() {
             <span>{t('customer.heroBadge')}</span>
           </div>
 
-          {/* Main Headline - Solid crisp text, no ghosting or duplicate text artifacts */}
+          {/* Main Headline - Solid crisp text, localized and split across two balanced lines */}
           <h1 className="text-[30px] sm:text-[40px] md:text-[46px] font-black tracking-tight leading-[1.14] mb-3 text-white">
-            <span className="text-white block">Discover Events.</span>
-            <span className="text-slate-100 font-extrabold block">
-              Create Unforgettable Memories.
-            </span>
+            <span className="text-white block">{firstLine}</span>
+            {secondLine && (
+              <span className="text-slate-100 font-extrabold block">
+                {secondLine}
+              </span>
+            )}
           </h1>
 
           {/* Supporting Description */}

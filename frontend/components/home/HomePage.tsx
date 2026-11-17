@@ -206,7 +206,7 @@ export default function HomePage() {
                       : 'text-[#667085] hover:text-[#101828] dark:text-slate-400 dark:hover:text-white'
                   }`}
                 >
-                  Popular
+                  {t('common.popular')}
                 </button>
                 <button
                   type="button"
@@ -217,7 +217,7 @@ export default function HomePage() {
                       : 'text-[#667085] hover:text-[#101828] dark:text-slate-400 dark:hover:text-white'
                   }`}
                 >
-                  Upcoming
+                  {t('common.upcoming')}
                 </button>
               </div>
             )}
