@@ -22,26 +22,30 @@ export default function EventEmptyState({
       id="emptyState"
       role="region"
       aria-label="No events found"
-      className="py-14 px-6 text-center bg-white dark:bg-slate-900 border border-[#E4E7EC] dark:border-slate-800 rounded-3xl max-w-2xl mx-auto shadow-sm"
+      className="py-12 px-6 text-center bg-white dark:bg-slate-900 border border-[#E4E7EC] dark:border-slate-800 rounded-3xl max-w-xl mx-auto shadow-xs"
     >
-      {/* Icon with refined brand glow container */}
-      <div className="w-16 h-16 mx-auto rounded-2xl bg-orange-50 dark:bg-orange-950/40 border border-orange-200/60 dark:border-orange-800/40 flex items-center justify-center mb-5 text-[#FF6500]">
-        <span className="material-symbols-outlined text-[32px]">
-          {hasFilters ? 'search_off' : 'event_busy'}
+      {/* Calendar / Discovery Icon in refined subtle orange circle */}
+      <div className="w-14 h-14 mx-auto rounded-2xl bg-orange-50 dark:bg-orange-950/40 border border-orange-200/60 dark:border-orange-800/40 flex items-center justify-center mb-4 text-[#FF6500]">
+        <span className="material-symbols-outlined text-[30px]">
+          calendar_month
         </span>
       </div>
 
       {/* Heading */}
-      <h3 className="text-[20px] font-bold text-[#101828] dark:text-white mb-2">
+      <h3 className="text-[19px] font-bold text-[#101828] dark:text-white mb-2">
         {t('common.noEventsFound')}
       </h3>
 
-      {/* Description */}
-      <p className="text-[14px] text-[#667085] dark:text-slate-400 mb-6 max-w-md mx-auto leading-relaxed">
-        {hasFilters
-          ? "We couldn't find any events matching your selected criteria. Try adjusting your search query, location, or clearing the active filters."
-          : "There are currently no active events scheduled in this area. Check back soon as new concerts, conferences, and meetups are frequently added across Ethiopia."}
+      {/* Supporting text */}
+      <p className="text-[14px] text-[#667085] dark:text-slate-400 mb-5 max-w-md mx-auto leading-relaxed">
+        There are currently no verified events matching your selection. Check back soon for new experiences.
       </p>
+
+      {/* Zero count badge */}
+      <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-[#667085] dark:text-slate-300 text-[12px] font-semibold mb-6">
+        <span className="w-1.5 h-1.5 rounded-full bg-slate-400" />
+        <span>0 verified events</span>
+      </div>
 
       {/* Actions */}
       <div className="flex flex-wrap items-center justify-center gap-3">

@@ -4,7 +4,7 @@ import React from 'react';
 import { useTranslation } from '@/lib/i18n';
 
 interface EventErrorStateProps {
-  message: string;
+  message?: string;
   onRetry: () => void;
 }
 
@@ -15,10 +15,10 @@ export default function EventErrorState({ message, onRetry }: EventErrorStatePro
     <div
       id="errorState"
       role="alert"
-      className="flex flex-col items-center justify-center py-16 px-6 text-center bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900/50 rounded-3xl max-w-xl mx-auto shadow-sm"
+      className="flex flex-col items-center justify-center py-12 px-6 text-center bg-white dark:bg-slate-900 border border-rose-200 dark:border-rose-900/50 rounded-3xl max-w-xl mx-auto shadow-xs"
     >
-      <div className="w-16 h-16 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200/60 dark:border-rose-800/40 flex items-center justify-center mb-4 text-rose-600 dark:text-rose-400">
-        <span className="material-symbols-outlined text-[32px]">error</span>
+      <div className="w-14 h-14 rounded-2xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200/60 dark:border-rose-800/40 flex items-center justify-center mb-4 text-rose-600 dark:text-rose-400">
+        <span className="material-symbols-outlined text-[28px]">error</span>
       </div>
 
       <h3 className="text-[19px] font-bold text-[#101828] dark:text-white mb-2">
@@ -26,7 +26,7 @@ export default function EventErrorState({ message, onRetry }: EventErrorStatePro
       </h3>
 
       <p className="text-[14px] text-[#667085] dark:text-slate-400 max-w-md mb-6 leading-relaxed">
-        {message || t('common.somethingWentWrong')}
+        {message || 'We could not retrieve events from the server. Please check your connection and try again.'}
       </p>
 
       <button
