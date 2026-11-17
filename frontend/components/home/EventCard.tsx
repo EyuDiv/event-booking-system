@@ -115,7 +115,7 @@ export default function EventCard({ event }: { event: EventItem }) {
           })()}
 
           {/* Title */}
-          <h3 className="font-bold text-[18px] text-[#0f172a] dark:text-white leading-snug line-clamp-2 group-hover:text-orange-500 transition-colors mb-2.5">
+          <h3 className="font-bold text-[18px] text-slate-900 dark:text-white leading-snug line-clamp-2 group-hover:text-orange-500 transition-colors mb-2.5">
             {event.title}
           </h3>
 
@@ -149,14 +149,14 @@ export default function EventCard({ event }: { event: EventItem }) {
       <div className="px-5 py-4 border-t border-slate-100 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/40 flex items-center justify-between gap-3 mt-auto">
         <div className="min-w-0">
           <div className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{t('common.price')}</div>
-          <div className="text-[17px] font-extrabold text-[#0f172a] dark:text-white truncate">
+          <div className="text-[17px] font-extrabold text-slate-900 dark:text-white truncate">
             {Number(event.ticket_price) === 0 ? t('common.free') : formatPrice(event.ticket_price)}
           </div>
         </div>
 
         <Link
           href={detailsHref}
-          className="inline-flex items-center justify-center shrink-0 text-[13px] font-bold px-4 py-2 rounded-xl bg-[#0f172a] hover:bg-orange-500 dark:bg-white dark:text-[#0f172a] dark:hover:bg-orange-500 dark:hover:text-white text-white shadow-xs transition-all duration-150 active:scale-95 gap-1"
+          className="inline-flex items-center justify-center shrink-0 text-[13px] font-bold px-4 py-2 rounded-xl bg-slate-900 hover:bg-orange-500 dark:bg-white dark:text-slate-900 dark:hover:bg-orange-500 dark:hover:text-white text-white shadow-xs transition-all duration-150 active:scale-95 gap-1"
         >
           <span>{t('customer.viewDetails')}</span>
           <span className="material-symbols-outlined text-[16px]">arrow_forward</span>

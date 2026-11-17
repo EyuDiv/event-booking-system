@@ -184,7 +184,7 @@ export default function HomePage() {
   );
 
   return (
-    <div className="bg-[#f8fafc] text-[#0f172a] min-h-screen flex flex-col font-sans">
+    <div className="bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-white min-h-screen flex flex-col font-sans">
       {/* â”€â”€ 1. Modern Glassmorphic Top Navigation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */}
       <header className="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 shadow-xs transition-colors duration-200">
         <div className="max-w-[80rem] mx-auto px-4 sm:px-6 flex justify-between items-center h-16 w-full gap-4">
@@ -202,7 +202,7 @@ export default function HomePage() {
                   confirmation_number
                 </span>
               </div>
-              <span className="text-[21px] font-extrabold text-[#0f172a] dark:text-white tracking-tight">
+              <span className="text-[21px] font-extrabold text-slate-900 dark:text-white tracking-tight">
                 Tiket<span className="text-orange-500">Hub</span>
               </span>
             </Link>
@@ -211,13 +211,13 @@ export default function HomePage() {
             <nav className="hidden md:flex items-center gap-6">
               <Link
                 href="/"
-                className="text-[#0f172a] dark:text-white font-bold text-[14px] transition-all duration-200 relative py-1 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-orange-500 after:rounded-full"
+                className="text-slate-900 dark:text-white font-bold text-[14px] transition-all duration-200 relative py-1 after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-orange-500 after:rounded-full"
               >
                 {t('nav.discover')}
               </Link>
               <Link
                 href={user ? '/my-bookings' : '/login'}
-                className="text-slate-600 dark:text-slate-400 font-medium hover:text-[#0f172a] dark:hover:text-white text-[14px] transition-colors duration-150"
+                className="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-white text-[14px] transition-colors duration-150"
               >
                 {t('nav.myBookings')}
               </Link>
@@ -230,7 +230,7 @@ export default function HomePage() {
                       ? '/admin'
                       : '/login'
                   }
-                  className="text-slate-600 dark:text-slate-400 font-medium hover:text-[#0f172a] dark:hover:text-white text-[14px] transition-colors duration-150"
+                  className="text-slate-600 dark:text-slate-400 font-medium hover:text-slate-900 dark:hover:text-white text-[14px] transition-colors duration-150"
                 >
                   {t('nav.organizerHub')}
                 </Link>
@@ -250,7 +250,7 @@ export default function HomePage() {
               <Link
                 href="/notifications"
                 aria-label={t('nav.notifications')}
-                className="p-2 text-slate-600 dark:text-slate-400 hover:text-[#0f172a] dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800 rounded-xl transition-colors duration-150 active:scale-95 hidden sm:inline-flex"
+                className="p-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800 rounded-xl transition-colors duration-150 active:scale-95 hidden sm:inline-flex"
               >
                 <span className="material-symbols-outlined text-[22px]">notifications</span>
               </Link>
@@ -260,7 +260,7 @@ export default function HomePage() {
             <Link
               href={user ? '/my-bookings' : '/login'}
               aria-label="My Tickets"
-              className="p-2 text-slate-600 dark:text-slate-400 hover:text-[#0f172a] dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800 rounded-xl transition-colors duration-150 active:scale-95 hidden sm:inline-flex"
+              className="p-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800 rounded-xl transition-colors duration-150 active:scale-95 hidden sm:inline-flex"
             >
               <span className="material-symbols-outlined text-[22px]">confirmation_number</span>
             </Link>
@@ -292,7 +292,7 @@ export default function HomePage() {
             {/* Mobile Navigation Toggle */}
             <button
               type="button"
-              className="md:hidden p-2 text-slate-600 dark:text-slate-400 hover:text-[#0f172a] dark:hover:text-white rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"
+              className="md:hidden p-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800"
               aria-label="Toggle navigation menu"
               onClick={() => setMobileNavOpen((open) => !open)}
             >
@@ -314,7 +314,7 @@ export default function HomePage() {
                     {user.name?.[0]?.toUpperCase() || 'U'}
                   </div>
                   <div className="min-w-0">
-                    <div className="text-[13px] font-bold text-[#0f172a] dark:text-white truncate">{user.name}</div>
+                    <div className="text-[13px] font-bold text-slate-900 dark:text-white truncate">{user.name}</div>
                     <div className="text-[11px] text-slate-500 dark:text-slate-400 capitalize">{user.role}</div>
                   </div>
                 </div>
@@ -454,7 +454,7 @@ export default function HomePage() {
                         value={searchInput}
                         onChange={(e) => setSearchInput(e.target.value)}
                         placeholder={t('customer.searchEventsPlaceholder')}
-                        className="w-full bg-transparent text-[13px] font-medium text-[#0f172a] dark:text-white placeholder:text-slate-400 outline-none"
+                        className="w-full bg-transparent text-[13px] font-medium text-slate-900 dark:text-white placeholder:text-slate-400 outline-none"
                       />
                     </div>
 
@@ -466,7 +466,7 @@ export default function HomePage() {
                         value={dateFilter}
                         aria-label="Filter events by date"
                         onChange={(e) => setDateFilter(e.target.value as typeof dateFilter)}
-                        className="w-full bg-transparent text-[13px] font-medium text-[#0f172a] dark:text-white outline-none cursor-pointer"
+                        className="w-full bg-transparent text-[13px] font-medium text-slate-900 dark:text-white outline-none cursor-pointer"
                       >
                         <option value="all">{t('customer.allDates')}</option>
                         <option value="weekend">{t('customer.thisWeekend')}</option>
@@ -482,7 +482,7 @@ export default function HomePage() {
                         value={locationFilter}
                         aria-label="Filter events by location"
                         onChange={(e) => setLocationFilter(e.target.value)}
-                        className="w-full bg-transparent text-[13px] font-medium text-[#0f172a] dark:text-white outline-none cursor-pointer"
+                        className="w-full bg-transparent text-[13px] font-medium text-slate-900 dark:text-white outline-none cursor-pointer"
                       >
                         {ETHIOPIA_LOCATIONS.map((loc) => (
                           <option key={loc.key} value={loc.key}>
@@ -522,7 +522,7 @@ export default function HomePage() {
                     onClick={() => setCategory(item.key)}
                     className={`category-filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-full whitespace-nowrap text-[13px] transition-all duration-150 active:scale-95 cursor-pointer ${
                       active ? 'bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-md shadow-orange-500/20 border border-transparent'
-                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/80 hover:text-[#0f172a] dark:hover:text-white border border-slate-200 dark:border-slate-700 font-medium hover:-translate-y-0.5'
+                        : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/80 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 font-medium hover:-translate-y-0.5'
                     }`}
                   >
                     <span className="material-symbols-outlined text-[18px]">{item.icon}</span>
@@ -540,7 +540,7 @@ export default function HomePage() {
                   onClick={() => setCategory(item)}
                   className={`category-filter-btn inline-flex items-center gap-1.5 px-4 py-2 rounded-full whitespace-nowrap text-[13px] transition-all duration-150 active:scale-95 cursor-pointer ${
                     category === item ? 'bg-orange-500 hover:bg-orange-600 text-white font-bold shadow-md shadow-orange-500/20 border border-transparent'
-                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/80 hover:text-[#0f172a] dark:hover:text-white border border-slate-200 dark:border-slate-700 font-medium hover:-translate-y-0.5'
+                      : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-700/80 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 font-medium hover:-translate-y-0.5'
                   }`}
                 >
                   <span className="material-symbols-outlined text-[18px]">local_activity</span>
@@ -571,7 +571,7 @@ export default function HomePage() {
         <section className="max-w-[80rem] mx-auto px-4 sm:px-6 pb-16" id="events">
           <div className="flex items-center justify-between mb-8">
             <div>
-              <h2 className="text-[26px] sm:text-[30px] font-extrabold text-[#131b2e] tracking-tight">
+              <h2 className="text-[26px] sm:text-[30px] font-extrabold text-slate-900 dark:text-white tracking-tight">
                 {t('customer.popularEvents')}
               </h2>
               <p className="text-[14px] text-slate-500 mt-1">
@@ -616,7 +616,7 @@ export default function HomePage() {
               <div className="w-16 h-16 rounded-full bg-rose-50 flex items-center justify-center mb-4 text-rose-600">
                 <span className="material-symbols-outlined text-[36px]">error</span>
               </div>
-              <h3 className="text-[18px] font-bold text-[#131b2e] mb-1">{t('common.unableToLoadEvents')}</h3>
+              <h3 className="text-[18px] font-bold text-slate-900 dark:text-white mb-1">{t('common.unableToLoadEvents')}</h3>
               <p className="text-[14px] text-slate-500 max-w-md mb-6">{error}</p>
               <button
                 type="button"
@@ -638,7 +638,7 @@ export default function HomePage() {
               <div className="w-12 h-12 mx-auto rounded-xl bg-slate-100 dark:bg-slate-700 flex items-center justify-center mb-3 text-slate-400">
                 <span className="material-symbols-outlined text-[28px]">event_busy</span>
               </div>
-              <h3 className="text-[16px] font-bold text-[#0f172a] dark:text-white mb-1">{t('common.noEventsFound')}</h3>
+              <h3 className="text-[16px] font-bold text-slate-900 dark:text-white mb-1">{t('common.noEventsFound')}</h3>
               <p className="text-[13px] text-slate-500 dark:text-slate-400 mb-4 max-w-sm mx-auto">
                 {"We couldn't find any events matching your criteria. Try adjusting your search or clearing the filters."}
               </p>
@@ -688,7 +688,7 @@ export default function HomePage() {
                   <span className="material-symbols-outlined text-[28px]">bolt</span>
                 </div>
                 <div>
-                  <h4 className="text-[16px] font-bold text-[#131b2e]">{t('customer.instantPayTitle')}</h4>
+                  <h4 className="text-[16px] font-bold text-slate-900 dark:text-white">{t('customer.instantPayTitle')}</h4>
                   <p className="text-[13px] text-slate-500 mt-1 leading-relaxed">
                     {t('customer.instantPayDesc')}
                   </p>
@@ -699,7 +699,7 @@ export default function HomePage() {
                   <span className="material-symbols-outlined text-[28px]">verified_user</span>
                 </div>
                 <div>
-                  <h4 className="text-[16px] font-bold text-[#131b2e]">{t('customer.antiFraudTitle')}</h4>
+                  <h4 className="text-[16px] font-bold text-slate-900 dark:text-white">{t('customer.antiFraudTitle')}</h4>
                   <p className="text-[13px] text-slate-500 mt-1 leading-relaxed">
                     {t('customer.antiFraudDesc')}
                   </p>
@@ -710,7 +710,7 @@ export default function HomePage() {
                   <span className="material-symbols-outlined text-[28px]">support_agent</span>
                 </div>
                 <div>
-                  <h4 className="text-[16px] font-bold text-[#131b2e]">{t('customer.supportTitle')}</h4>
+                  <h4 className="text-[16px] font-bold text-slate-900 dark:text-white">{t('customer.supportTitle')}</h4>
                   <p className="text-[13px] text-slate-500 mt-1 leading-relaxed">
                     {t('customer.supportDesc')}
                   </p>
@@ -726,7 +726,7 @@ export default function HomePage() {
         <div className="max-w-[80rem] mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row justify-between items-center gap-4 w-full">
           {/* Brand & Copyright Statement */}
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-            <Link href="/" className="flex items-center gap-2 text-[20px] font-extrabold text-[#0f172a] dark:text-white tracking-tight">
+            <Link href="/" className="flex items-center gap-2 text-[20px] font-extrabold text-slate-900 dark:text-white tracking-tight">
               <div className="w-7 h-7 rounded-lg bg-gradient-to-tr from-orange-500 to-orange-600 flex items-center justify-center text-white text-[15px] shadow-xs">
                 <span className="material-symbols-outlined text-[16px]">confirmation_number</span>
               </div>
